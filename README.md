@@ -13,7 +13,7 @@ This is a template for how your thesis files and directory structure might look.
 When you `git clone` this repository you should first copy the contents of this directory into the directory (please, for your own sake make that directory be a Git repo) that you're going to actually write your thesis in.
 
 ```bash
-cp -r Dedman-Thesis-Latex-Template/* my_thesis_repo/
+rsync -r --exclude=.git* Dedman-Thesis-Latex-Template/* my_thesis_repo/
 ```
 
 You'll want to rename a few things and organize them as you see fit.
@@ -52,6 +52,6 @@ As [Make is GNU software](https://www.gnu.org/software/make/) it is not limited 
 A Docker image with TexLive 2017 in it exists: [LaTeX-Docker](https://hub.docker.com/r/matthewfeickert/latex-docker/)
 
 
-## Authors:
+## Authors
 
  - Maintainer (of fork): [Matthew Feickert](http://www.matthewfeickert.com/)
