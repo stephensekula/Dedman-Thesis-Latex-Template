@@ -6,7 +6,17 @@ Fork of the [SMU Dedman College Ph.D. Thesis LaTeX template](https://www.smu.edu
 
 ## Use
 
-The template should compile out of the box. You'll want to rename a few things and organize them as you see fit.
+This is a template for how your thesis files and directory structure might look. This is **not** an area for you to actually build your thesis. As this is a version controlled repository changes to the template files _will_ occur, and will overwrite any files of the same name.
+
+> Note: There is probably some smarter way to incorporate changes directly into a thesis repo using Git submodules or using selective `git cherry-pick`. However, the maintainer hasn't spent time figuring that out yet.
+
+When you `git clone` this repo you should first copy the contents of this directory into the directory (please, for your own sake make that directory be a Git repo) that you're going to actually write your thesis in.
+
+```bash
+cp -r Dedman-Thesis-Latex-Template/* my_thesis_repo/
+```
+
+You'll want to rename a few things and organize them as you see fit.
 
 - `user_thesis.tex`: Rename to the output of `$USER` or your last name and replace contents as needed
 - `Makefile`: Change `user_thesis` to the name of whatever you renamed `user_thesis.tex` to
@@ -18,6 +28,8 @@ The template should compile out of the box. You'll want to rename a few things a
 - `src/appendix_A.tex`: Rename to a descriptive name of the contents of the file
 
 ## Compilation
+
+The template should compile out of the box. For Unix like operating systems a template `Makefile` is provided.
 
 ### Linux
 
