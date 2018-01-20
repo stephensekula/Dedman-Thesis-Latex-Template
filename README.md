@@ -10,7 +10,7 @@ This is a template for how your thesis files and directory structure might look.
 
 > Note: There is probably some smarter way to incorporate changes directly into a thesis repo using Git submodules or using selective `git cherry-pick`. However, the maintainer hasn't spent time figuring that out yet.
 
-When you `git clone` this repo you should first copy the contents of this directory into the directory (please, for your own sake make that directory be a Git repo) that you're going to actually write your thesis in.
+When you `git clone` this repository you should first copy the contents of this directory into the directory (please, for your own sake make that directory be a Git repo) that you're going to actually write your thesis in.
 
 ```bash
 cp -r Dedman-Thesis-Latex-Template/* my_thesis_repo/
@@ -45,7 +45,7 @@ make [text,document,final,clean,realclean]
 
 ### Windows
 
-TBA
+As [Make is GNU software](https://www.gnu.org/software/make/) it is not limited to Unix like operating systems. You might consider looking into [Microsoft's `NMAKE`](https://msdn.microsoft.com/en-us/library/dd9y37ha.aspx), which should allow you to use the provided `Makefile` template with very slight changes.
 
 ### Docker
 
