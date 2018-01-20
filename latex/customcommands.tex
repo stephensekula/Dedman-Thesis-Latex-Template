@@ -1,0 +1,302 @@
+%======================================================================
+% Custom Commands  Inital Creation TCM 2015
+%======================================================================
+% Use this document to place all of your global new commands
+%======================================================================
+
+%======================================================================
+% BEGIN SMU Custom Commands
+%======================================================================
+% The many of the following commands were originally in the smu_thesis.sty
+% file. Commands and comments were moved here to make style file more about
+% document style. While custom environments can technically be considered 
+% style, the student created environments are included here to simplify
+% the style file. Often these commands were created by students over the
+% years and placed in the style file.  The commands have not been 
+% verified and can be obsolete LaTeX commands. The Commands can be used 
+% or ignored. 
+%======================================================================
+%----------------------------------------------------------------------
+% BEGIN TCM Commands to set formatting for Paragraph section to have line
+%           feed after heading & Numbered. This custom command makes
+%           \paragraph, in essence, a form of \subsubsubsection.
+%           Uncomment to use.
+%----------------------------------------------------------------------
+%  \makeatletter
+%  \renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
+%    {-3.25ex\@plus -1ex \@minus -.2ex}%
+%    {1.5ex \@plus .2ex}%
+%    {\normalfont\normalsize\bfseries}}
+%  \makeatother
+%----------------------------------------------------------------------
+% END of Commands to set formatting for Paragraph section to have line
+%       feed after heading TCM
+%----------------------------------------------------------------------
+%----------------------------------------------------------------------
+% BEGIN Shortcuts to insert calligraphic letters in Math Mode Only
+%----------------------------------------------------------------------
+\newcommand{\cA}{{\mathcal A}}
+\newcommand{\cB}{{\mathcal B}}
+\newcommand{\cC}{{\mathcal C}}
+\newcommand{\cD}{{\mathcal D}}
+\newcommand{\cE}{{\mathcal E}}
+\newcommand{\cF}{{\mathcal F}}
+\newcommand{\cG}{{\mathcal G}}
+\newcommand{\cH}{{\mathcal H}}
+\newcommand{\cI}{{\mathcal I}}
+\newcommand{\cJ}{{\mathcal J}}
+\newcommand{\cK}{{\mathcal K}}
+\newcommand{\cL}{{\mathcal L}}
+\newcommand{\cM}{{\mathcal M}}
+\newcommand{\cN}{{\mathcal N}}
+\newcommand{\cO}{{\mathcal O}}
+\newcommand{\cP}{{\mathcal P}}
+\newcommand{\cQ}{{\mathcal Q}}
+\newcommand{\cR}{{\mathcal R}}
+\newcommand{\cS}{{\mathcal S}}
+\newcommand{\cT}{{\mathcal T}}
+\newcommand{\cU}{{\mathcal U}}
+\newcommand{\cV}{{\mathcal V}}
+\newcommand{\cW}{{\mathcal W}}
+\newcommand{\cX}{{\mathcal X}}
+\newcommand{\cY}{{\mathcal Y}}
+\newcommand{\cZ}{{\mathcal Z}}
+% Lower case caligraphy letters
+\newcommand{\cw}{{\mathcal w}}
+%----------------------------------------------------------------------
+% END Shortcuts to insert calligraphic letters in Math Mode Only
+%----------------------------------------------------------------------
+%----------------------------------------------------------------------
+% BEGIN Shortcuts to insert boldface letters 
+%----------------------------------------------------------------------
+\newcommand{\bA}{{\bf A}}
+\newcommand{\bB}{{\bf B}}
+\newcommand{\bC}{{\bf C}}
+\newcommand{\bD}{{\bf D}}
+\newcommand{\bE}{{\bf E}}
+\newcommand{\bF}{{\bf F}}
+\newcommand{\bG}{{\bf G}}
+\newcommand{\bH}{{\bf H}}
+\newcommand{\bI}{{\bf I}}
+\newcommand{\bJ}{{\bf J}}
+\newcommand{\bK}{{\bf K}}
+\newcommand{\bL}{{\bf L}}
+\newcommand{\bM}{{\bf M}}
+\newcommand{\bN}{{\bf N}}
+\newcommand{\bO}{{\bf O}}
+\newcommand{\bP}{{\bf P}}
+\newcommand{\bQ}{{\bf Q}}
+\newcommand{\bR}{{\bf R}}
+\newcommand{\bS}{{\bf S}}
+\newcommand{\bT}{{\bf T}}
+\newcommand{\bU}{{\bf U}}
+\newcommand{\bV}{{\bf V}}
+\newcommand{\bW}{{\bf W}}
+\newcommand{\bX}{{\bf X}}
+\newcommand{\bY}{{\bf Y}}
+\newcommand{\bZ}{{\bf Z}}
+%----------------------------------------------------------------------
+% END Shortcuts to insert boldface letters 
+%----------------------------------------------------------------------
+%----------------------------------------------------------------------
+% BEGIN Shortcuts to insert overline symbols in Math Mode Only
+%----------------------------------------------------------------------
+\newcommand{\oA}{{\overline A}}
+\newcommand{\oB}{{\overline B}}
+\newcommand{\oC}{{\overline C}}
+\newcommand{\oD}{{\overline D}}
+\newcommand{\oE}{{\overline E}}
+\newcommand{\oF}{{\overline F}}
+\newcommand{\oG}{{\overline G}}
+\newcommand{\oH}{{\overline H}}
+\newcommand{\oI}{{\overline I}}
+\newcommand{\oJ}{{\overline J}}
+\newcommand{\oK}{{\overline K}}
+\newcommand{\oL}{{\overline L}}
+\newcommand{\oM}{{\overline M}}
+\newcommand{\oN}{{\overline N}}
+\newcommand{\oO}{{\overline O}}
+\newcommand{\oP}{{\overline P}}
+\newcommand{\oQ}{{\overline Q}}
+\newcommand{\oR}{{\overline R}}
+\newcommand{\oS}{{\overline S}}
+\newcommand{\oT}{{\overline T}}
+\newcommand{\oU}{{\overline U}}
+\newcommand{\oV}{{\overline V}}
+\newcommand{\oW}{{\overline W}}
+\newcommand{\oX}{{\overline X}}
+\newcommand{\oY}{{\overline Y}}
+\newcommand{\oZ}{{\overline Z}}
+% Lower case overline
+\newcommand{\ovd}{{\overline d}}
+\newcommand{\ove}{{\overline e}}
+\newcommand{\ovf}{{\overline f}}
+\newcommand{\ovg}{{\overline g}}
+\newcommand{\ovh}{{\overline h}}
+\newcommand{\ovi}{{\overline i}}
+%----------------------------------------------------------------------
+% END Shortcuts to insert overline symbols in Math Mode Only
+%----------------------------------------------------------------------
+%----------------------------------------------------------------------
+% BEGIN Shortcuts to insert vector symbols in Math Mode Only
+%----------------------------------------------------------------------
+\newcommand{\vS}{{\vec S}}
+\newcommand{\vT}{{\vec T}}
+\newcommand{\vU}{{\vec U}}
+\newcommand{\vV}{{\vec V}}
+\newcommand{\vW}{{\vec W}}
+\newcommand{\vX}{{\vec X}}
+\newcommand{\vY}{{\vec Y}}
+\newcommand{\vZ}{{\vec Z}}
+% Lower case vectors
+\newcommand{\vs}{{\vec s}}
+\newcommand{\vt}{{\vec t}}
+\newcommand{\vu}{{\vec u}}
+\newcommand{\vv}{{\vec v}}
+\newcommand{\vw}{{\vec w}}
+\newcommand{\vx}{{\vec x}}
+%----------------------------------------------------------------------
+% END Shortcuts to insert vector symbols in Math Mode Only
+%----------------------------------------------------------------------
+%----------------------------------------------------------------------
+% BEGIN Misc. Commands defined by students
+%----------------------------------------------------------------------
+\newcommand{\myqed}{\vspace{-1.1cm} \qed \vspace{0.9cm}}
+\newcommand{\qed}{\mbox{$\ \Box$}}
+\newcommand{\lqed}{\qed\vspace{.1in}}
+\newcommand{\nf}{{\mbox{$\sim$}}}
+\newcommand{\wt}{\mbox{$\widehat{T}$}}
+\newcommand{\as}{\mbox{$/\hspace{-2mm}>$}}
+\newcommand{\equi}{\mbox{$\leftrightarrow$}}
+\newcommand{\myeq}{\mbox{$\leftrightarrow$}}
+%\newcommand{\tab}{\hspace*{4em}}
+%\newcommand{\ind}{\hspace*{2em}}
+%\newcommand{\mif}{\mbox{ :- }}
+%\newcommand{\dd}{\mbox{$\bullet$}}
+\newcommand{\dd}{\mbox{\ $\mid$\ }}
+
+\newcommand{\ind}{\hspace*{2.0em}}
+\newcommand{\tab}{\hspace*{4em}}
+
+\newcommand{\myp}{\protect{$+$}}
+\newcommand{\mypp}[1]{\protect{${#1}$}}
+\newcommand{\myf}[2]{\protect{\ \(\frac{\mbox{\rm #1}}{\mbox{\rm #2}}\)}\ }
+\newcommand{\myup}{\protect{$ \uparrow$}}
+\newcommand{\scc}[1]{\protect{\ \ \ $ SCC = {#1} $}}
+
+\newcommand{\twoheadrightarrow}{{\rightarrow \hspace{-0.3cm} \rightarrow \hspace{0.2cm}}}
+
+\newcommand{\chap}[1]{\chapter{\protect{\bf {#1}}}}
+\newcommand{\mytab}{\hspace*{13em}}
+\newcommand{\bleft}{\left \{\ }
+\newcommand{\bright}{\ \right \}}
+\newcommand{\sind}{ \ \ \ }
+\newcommand{\mand}{ \ \&\ }
+\newcommand{\mif}{\mbox{\ :-\ }}
+%%%\newcommand{\nf}{\sim}
+\newcommand{\posI}{$I^+$}
+\newcommand{\negI}{$I^-$}
+%\newcommand{\AST}{$AST(P)$}
+\newcommand{\Ip}[1]{${\mathcal I}_{#1}$}
+\newcommand{\II}[1]{${\mathcal I}({#1})$}
+%\newcommand{\HU}[1]{${\mathcal HU}_{#1}$}
+%\newcommand{\US}{${\mathcal US}$}
+%\newcommand{\HB}[1]{${\mathcal HB}_{#1}$}
+%----- chen  -----------------
+%\newcommand{\emptyset}{\phi}
+\newcommand{\cUS}{{\mathcal US}}
+\newcommand{\cHU}{{\mathcal HU}}
+\newcommand{\cHB}{{\mathcal HB}}
+\newcommand{\cUC}{{\mathcal UC}s}
+\newcommand{\cBody}{{\mathcal B}ody}
+\newcommand{\wA}{\widetilde{\rm A}}
+\newcommand{\LF}{${\mathcal LF}$}
+\newcommand{\DI}{DI^+ \cup DI^-}
+\newcommand{\AI}{AI^+ \cup AI^-}
+\newcommand{\Asp}{\tt asp}
+\newcommand{\Aspt}[1]{${\tt asp}({#1})$}
+\newcommand{\BP}[1]{${\mathcal BP}({#1})$}
+\newcommand{\myarrow}{-\hspace*{-0.23cm}-\hspace*{-0.23cm}-\hspace*{-0.23cm}\longrightarrow}
+\newcommand{\nedge}{\rightarrow\hspace*{-0.39cm}{\prime} \hspace*{0.29cm}}
+\newcommand{\jmp}[1] {\hspace*{0.3in}{#1}\hspace*{0.3in}}
+\newcommand{\Aro}[1]{\stackrel{#1}\longrightarrow}
+\newcommand{\MyAro}[1]{\stackrel{#1}\myarrow}
+\newcommand{\MyLoAro}[1]{\stackrel{#1}{-\hspace*{-0.23cm}-\hspace*{-0.23cm}\myarrow}}
+
+%----- For figures  ---------------------------------------------------
+
+\newcommand{\myfigureold}[3]{ \begin{figure}[tbp]
+  \begin{center}
+   \fbox{
+    \begin{minipage}[t]{5.7in}
+    \rule[-.1cm]{0cm}{0.5cm} % changed by saeed to 0.01cm was 0.5cm
+    \centerline{\psfig{#1}}
+    \end{minipage}
+    }
+    \end{center}
+       \caption{#2} \label{#3} \vskip -0.14in \end{figure} } % changed by saeed was -0.14 changed to -0.01in
+
+\newcommand{\mytabfig}[3]{ \begin{figure}[tbp]
+  \begin{center}
+   \fbox{
+    \begin{minipage}[t]{5.7in}
+    \rule[-.1cm]{0cm}{0.5cm} % changed by saeed to 0.01cm was 0.5cm
+#1
+    \end{minipage}
+        }
+        \end{center}
+       \caption{#2} \label{#3} \vskip -0.14in \end{figure} } % changed by saeed was -0.14 changed to -0.01in
+
+\newcommand{\myfigure}[3]{ \begin{figure}[tbp]
+    \begin{center}
+    #1
+    \end{center}
+    \caption{#2} \label{#3} \vskip -0.14in \end{figure} } % changed by saeed was -0.14 changed to -0.01in
+
+\newcommand{\mytable}[3]{ \begin{table}[tbp]
+  \begin{center}
+  \caption{#2}
+    #1
+  \label{#3} \vskip -0.01in \end{center} \end{table} }
+
+\newcommand{\myendfig}{\vskip -0.14in \end{figure} } % changed by saeed was -0.14in changed to -0.01in
+\newcommand{\myendtab}{\vskip -0.01in \end{table} }
+
+%----------------- theorem definitions --------------------------------
+
+\newtheorem{ex}{Example}[chapter]
+\newtheorem{theor}{Theorem}[chapter]
+\newtheorem{mtd}{Method}[chapter]
+\newtheorem{mydef}{Definition}[chapter]
+%\newtheorem{mylem}{Lemma}[chapter]
+\newtheorem{mylem}[theor]{Lemma}
+
+%\newtheorem{algorithm}{Algorithm}[chapter]
+%\newtheorem{corollary}[theorem]{Corollary}
+%\newtheorem{proposition}{Proposition}[section]
+%\newtheorem{remark}{Remark}[section]
+
+%----------------------------------------------------------------------
+%\font\pf=rpcrr at 11pt    % TCM Comment out if using Overleaf.com
+%\font\spf=rpcrr at 11pt   % TCM Comment out if using Overleaf.com
+%----------------------------------------------------------------------
+
+%-------------------- environment definitions -------------------------
+\newenvironment{example}{\begin{ex} \rm}{\hfill \qed \end{ex}}
+\newenvironment{theorem}{\begin{theor}}{ \end{theor}}
+\newenvironment{method}{\begin{mtd} \rm}{\hfill \qed \end{mtd}}
+\newenvironment{definition}{\begin{mydef} \rm}{\hfill \qed \end{mydef}}
+%\newenvironment{lemma}{\begin{mylem} \rm}{\hfill \qed \end{mylem}}
+\newenvironment{lemma}{\begin{mylem}}{ \end{mylem}}
+
+\newenvironment{vers}{\vspace{-0.1cm} \begin{verse}}{\vspace{-0.1cm} \end{verse}}
+\newenvironment{vers2}{\vspace{-0.2cm} \begin{verse}}{\vspace{-0.1cm} \end{verse}}
+
+\newenvironment{proof}[0]{\vspace{0.3cm}\noindent {\bf Proof:} \rm }{\hfill \lqed}
+\newenvironment{proof-of}[1]{\noindent {\bf Proof of #1:}}{\hfill \lqed}
+%----------------------------------------------------------------------
+% END Misc. Commands defined by students
+%----------------------------------------------------------------------
+%======================================================================
+% END SMU Custom Commands
+%======================================================================

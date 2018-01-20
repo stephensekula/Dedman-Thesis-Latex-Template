@@ -1,0 +1,116 @@
+%======================================================================
+% Front Pages  Initial Creation TCM 2015
+%======================================================================
+% This file sets up the initial pages of the thesis/dissertation/praxis
+% Change all the sample information for your specific document.
+%======================================================================
+
+%----------------------------------------------------------------------
+%%  Last name, First name, Initial
+%----------------------------------------------------------------------
+\Name{Stuent}{Graduate}{} % Don't put anything in the last brackets
+
+%----------------------------------------------------------------------
+% Title -- you have up to three lines to specify your title each line
+% should be no more than 48 characters long
+%----------------------------------------------------------------------
+\Title{Title first part}{continued title}{last part of title}
+
+%----------------------------------------------------------------------
+% Previous Earned Degrees
+%----------------------------------------------------------------------
+\DegreeA{B.S., Physics, University A}
+\DegreeB{M.S., Physics, Southern Methodist University}
+
+
+%----------------------------------------------------------------------
+% Degree you are seeking
+%----------------------------------------------------------------------
+\DegreeSought{Doctor of Philosophy}
+
+%----------------------------------------------------------------------
+% Major of the degree you are seeking
+%----------------------------------------------------------------------
+\Major{Physics}
+
+\University{Southern Methodist University}
+
+%----------------------------------------------------------------------
+% School from which the degree will be from
+%----------------------------------------------------------------------
+\School{Dedman College}
+
+%----------------------------------------------------------------------
+% Date the degree will be conferred
+%----------------------------------------------------------------------
+\DegreeDate{January 1, 2019}
+
+%----------------------------------------------------------------------
+% Date the thesis will be defended
+%----------------------------------------------------------------------
+\ThesisDate{January 1, 2019}
+
+
+%----------------------------------------------------------------------
+% Is this a thesis, dissertation, or something else?
+%----------------------------------------------------------------------
+\ThesisType{Dissertation}
+
+%----------------------------------------------------------------------
+% Your Committee
+%----------------------------------------------------------------------
+\Advisor{Dr.~Advisor Name}
+\AdvisorTitle{Associate Professor}
+
+\CommitteeMemberA{Dr.~Committee Chair}
+\CommitteeMemberTitleA{Professor}
+
+\CommitteeMemberB{Dr.~Committee Member}
+\CommitteeMemberTitleB{Associate Professor}
+
+\CommitteeMemberC{Dr.~External Member}
+\CommitteeMemberTitleC{Assistant Professor}
+
+% \CommitteeMemberD{}           % Uncomment if needed
+% \CommitteeMemberTitleD{}      % Uncomment if needed
+
+
+%===================================================================
+%   Create the front pages of the thesis
+%===================================================================
+
+\ApprovalTitlePages
+
+\Copyright% TCM Copyright Page per Dedman 2016 Standards
+
+%----------------------------------------------------------------------
+% Include your acknowledgments
+% If no dedication, move Acknowledgment to where dedication is and add to
+% Table of contents
+%----------------------------------------------------------------------
+% \addcontentsline{toc}{chapter}{\protect \noindent {ACKNOWLEDGMENTS}}
+\begin{Acknowledgment}
+ \input{latex/acknowledgements}
+\end{Acknowledgment}
+
+%----------------------------------------------------------------------
+% Include your abstract
+%----------------------------------------------------------------------
+\begin{Abstract}
+ \input{latex/abstract}
+\end{Abstract}
+
+\PreliminaryPages
+
+%----------------------------------------------------------------------
+% Need a List of Symbols Page?
+%----------------------------------------------------------------------
+% Uncomment to insert a list of symbols from symbols.tex (or elsewhere)
+%\begin{listofsymbols}
+%\input{symbols}
+%\end{listofsymbols}
+
+%----------------------------------------------------------------------
+% Include your dedication
+%----------------------------------------------------------------------
+\Dedicate{Dedication text goes here}

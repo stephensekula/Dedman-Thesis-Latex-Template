@@ -1,0 +1,110 @@
+% \usepackage{DL_thesis_v2016}
+\usepackage{adjustbox}       % TCM Extends the graphicx package to do trimming and other adjustments.
+\usepackage{algorithm}       % TCM Algorithm block See http://algorithms.berlios.de/
+\usepackage{algorithmic}     % TCM Algorithm & Peudocode See http://en.wikibooks.org/wiki/LaTeX/Algorithms_and_Pseudocode
+\usepackage{amsmath}         % Need for subequations
+\usepackage{mathrsfs} %https://ctan.org/pkg/mathrsfs
+%\usepackage{amssymb}        % amssymb-telda and math symbols
+\usepackage{booktabs}        % TCM Allows fancy Tables
+\usepackage{boxedminipage}   % Boxes around figures
+\usepackage{breqn}           % TCM Automatically breaks long equation lines - usually
+\usepackage{changepage} 	 % TCM Allows one to temporarily change right and left margins
+\usepackage{cite} 	 		 % TCM Allows improved handling of numeric citations including automatic ordering and ranges of multiple cites
+\usepackage{enumitem} 		 % TCM Allows one to easily change the labels for enumerate list
+%\usepackage{epsf}           % TCM This EPS file package is greatly depreciated for the graphicx package bundle. Use at own risk.
+\usepackage{fancyhdr}
+\usepackage{flafter}         % Floats should always appear after their definition
+\usepackage[flushleft]{threeparttable}  % TCM This package allows for notes under tables.  Flushleft option flushes the note left margin of table (center is default)
+\usepackage{geometry}		 % TCM Allows to customize paper size and margins.
+\usepackage{graphicx}        % TCM Extends graphics package for figures. Provides op­tional ar­gu­ments to the \in­clude­graph­ics com­mand
+\usepackage{epstopdf}        % TCM Converts eps images to PDF to use in graphicx package.  Must be loaded after graphicx package
+\usepackage{longtable}       % TCM Allows for Automatic page breaks for long tables
+%\usepackage{jneurosci}       % TCM The jneurosci bibliography style makes use of some commands - for example, \citeauthoryear.  Must include if using named or acmsmall bib style
+\usepackage{ltablex}		 % TCM Modifies Tabularx Package by combining properties of tabularx and longtable.
+\usepackage[maxfloats=36]{morefloats}      % Latex will handle more floats 18-36
+\usepackage{moresize}        % TCM Adds \HUGE and \ssmall font sizes
+\usepackage{multirow}        % TCM Allows multirow cells in tables (similar to merge and center in Excel)
+%\usepackage{named}           % TCM Bibliography style that allows for more fine-tuned citing. Commands include \cite, \citeauthor, \citeyear and \shortcite (for after you've already used \citeauthor).
+\usepackage{outlines}		 % TCM Needed for outlines
+\usepackage{rotate}			 % TCM Performs rotations of floating environments (images w/ cations, etc)
+\usepackage{rotating}        % Need for sidewaystable
+\usepackage{scrextend}		 % TCM package that allows for KOMA-Script classes available for other classes: e.g., labeling lists etc.  See package documentation for further information.
+\usepackage{pdflscape}		 % TCM Allows Landscape Page
+%%\usepackage{qtree}         % Need for trees
+\usepackage{setspace}        % TCM Allows for more intuitive commands for single and double spacing
+\usepackage{siunitx}		 % TCM package required to ensure units are typeset properly with numbers e.g. \SI{10}{\kg\m\per\square\s}
+\sisetup{output-exponent-marker=\ensuremath{\mathrm{E}}}  % TCM Option allows for Scientific notation of Numbers.  Format is \num{#.####E##}
+% \usepackage[superscript]{cite}		  % TCM Makes citations superscript instead of [#]
+\usepackage [table]{xcolor}	 % TCM Allows coloring of tables
+\usepackage{tabularx}		 % TCM Package which allows paragraphs in Tables
+% \usepackage{thumbpdf}		  % TCM Comment out as causes warnings, can easily create thumbs in Adobe if needed.
+
+%===========================================================
+%  Color ToDo Comment Notes for editing
+%===========================================================
+\usepackage[colorinlistoftodos,textwidth=25mm,shadow,backgroundcolor=green]{todonotes}				  % TCM Allows margin comments
+\usepackage{marginnote}				  % TCM Require for Todonotes in Align Envionment
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% TCM  BEGIN Altering Todonotes Commands to use Marginnote instead of Marginpar to use todonotes in align environment
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\makeatletter
+\renewcommand{\@todonotes@drawMarginNoteWithLine}{%
+ \begin{tikzpicture}[remember picture, overlay, baseline=-0.75ex]%
+  \node [coordinate] (inText) {};%
+ \end{tikzpicture}%
+ \marginnote[{% Draw note in left margin
+  \@todonotes@drawMarginNote%
+  \@todonotes@drawLineToLeftMargin%
+  }]{% Draw note in right margin
+  \@todonotes@drawMarginNote%
+  \@todonotes@drawLineToRightMargin%
+ }%
+}
+\makeatother
+%----------------------------------------------------
+% TCM  BEGIN New Todonotes Command to use single line spacing (sls) in note
+%----------------------------------------------------
+\newcommand{\slstodo}[2][]
+{\todo[caption={#2}, size=\small, #1]{\renewcommand{\baselinestretch}{0.5}\selectfont#2\par}}
+%----------------------------------------------------
+% TCM  END New Todonotes Command to use single spacing in note
+%----------------------------------------------------
+
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% TCM  END Altering Todonotes Commands to use Marginnote instead of Marginpar to use todonotes in align
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+\usepackage{verbatim}        % TCM Verbatim text block
+\usepackage{wrapfig}         % Wrap figures
+\usepackage{xspace}          % Allows dynamic space in global text variables. This can allow you to just use \newCommandName rather than \newCommandName{}.
+\usepackage [bookmarks=true,backref=page, hyperfigures=true, pdfpagelabels=false] {hyperref}
+\hypersetup{
+ % TCM Added more precise definition and options for Hyperref package.
+ % TCM Comment out or change hyperref preferences
+ % TCM \hypersetup should be loaded last
+ bookmarksopen=true,				  % True: Open bookmark tree
+ bookmarksnumbered=true, 		  % True: put section numbers in bookmarks
+ breaklinks=true,				  % True: split the url over multiple lines
+ %    draft=true,						  % True: do not do any hyper linking
+ filecolor=magenta, 				  % Color of file links
+ citecolor=blue, 				  % Color of links to bibliography
+ colorlinks=true, 				  % False: boxed links; true: colored links
+ linkcolor=blue, 				  % Color of internal links
+ linktocpage=true, 				  % True: Makes the page number of TOC the link vs the text
+ %    pagebackref=true,				  % True: Links references back to referring page
+ pdfnewwindow=true,         		  % True: URL links in new window
+ plainpages=false, 				  % True: do page number anchors as plain Arabic
+ pdffitwindow=false,        		  % Window fit to page when opened
+ pdfmenubar=true,           		  % Show Acrobat menu
+ pdfstartview={FitH},       		  % Fits the width of the page to the window
+ pdftoolbar=true, 				  % Show Acrobat toolbar
+ pdfauthor={Author}, 			  % Author in PDF document properties
+ pdfcreator={Author}, 			  % Creator of the document in PDF document properties
+ pdfkeywords={Keyword1} {Keyword2} {Keyword3} {Keyword4} {Author}, % List of keywords in PDF document properties
+ pdfproducer={Producer}, 		  % Producer of the document in PDF document properties
+ pdfsubject={Subject},   % Subject of the document in PDF document properties
+ pdftitle={Title of Dissertation}, % Title in PDF document properties
+ unicode=false,             		  % Non-Latin characters in Acrobat bookmarks
+ urlcolor=cyan 					  % Color of external links
+}
+\usepackage{bookmark}		 		  % TCM Eliminates Warning Bookmark level greater than one.  Must be loaded after Hyperref

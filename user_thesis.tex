@@ -1,0 +1,63 @@
+\documentclass[12pt]{report}
+
+\usepackage{sty/DL_thesis_v2016}  % Global Style for particular SMU College, e.g. DL_thesis_v2016.sty
+
+\input{latex/packages.tex}
+
+\geometry{letterpaper, margin=1in} % Dedman/Lyle Standard 2016
+
+\linespread{1.6}
+\setcounter{secnumdepth}{4} % Sets number subsections
+\setcounter{tocdepth}{4}    % Set the number of subsections in TOC
+
+\urlstyle{same} % Set URL style to same font as text verses mono-spaced, i.e., courier
+
+\input{latex/customcommands.tex}
+
+%-----------------------------------------------------------
+%  Reduce compile warnings for overfull and underfull hboxes & vboxes
+%       Adjust up or down to fit your specific needs
+%-----------------------------------------------------------
+\hbadness=50000
+\vbadness=50000
+\hfuzz=150pt
+%-----------------------------------------------------------
+% Reduce compile warnings for overfull and underfull hboxes
+%-----------------------------------------------------------
+%-----------------------------------------------------------
+% eliminate compile warnings for noindent hfill hbox in PDF bookmarks
+%-----------------------------------------------------------
+\pdfstringdefDisableCommands{
+\def\hbox{ }% hyperref (temporarily) changes \hbox to a space in this context.
+\def\hfill{ }% hyperref (temporarily) changes \hfill to a space in this context.
+\def\noindent{ }% hyperref (temporarily) changes \noindent to a space in this context.
+\def\hskip{ }% hyperref (temporarily) changes \hskip to a space in this context.
+}
+
+% \thesisdraft % uncomment if want draft printing
+
+\begin{document}
+
+\input{latex/FrontPages}
+
+\begin{thesis}
+
+ \input{src/preface.tex}
+
+ \input{src/introduction.tex}
+
+ \StartAppendix%
+
+ \input{src/appendix_A.tex}
+
+ % Bibliography goes below
+ % Check with specific department on the appropriate
+ % bibliography style to use
+
+ \nocite{*}
+ \bibliographystyle{bib/JHEP}
+ \raggedright
+ \bibliography{bib/example}
+
+\end{thesis}
+\end{document}
