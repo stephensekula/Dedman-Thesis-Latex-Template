@@ -6,17 +6,27 @@ Fork of the [SMU Dedman College Ph.D. Thesis LaTeX template](https://www.smu.edu
 
 ## Use
 
-This is a template for how your thesis files and directory structure might look. This is **not** an area for you to actually build your thesis. As this is a version controlled repository changes to the template files _will_ occur, and will overwrite any files of the same name.
+This is a template for how your thesis files and directory structure might look. This is **not** an area for you to actually build your thesis, but rather should be used as a Git submodule of the Git repository that contains your thesis.
 
-> Note: There is probably some smarter way to incorporate changes directly into a thesis repo using Git submodules or using selective `git cherry-pick`. However, the maintainer hasn't spent time figuring that out yet.
+### Setup
 
-When you `git clone` this repository you should first copy the contents of this directory into the directory (please, for your own sake make that directory be a Git repo) that you're going to actually write your thesis in.
+To use the template, add the template as a Git submodule after you've setup your thesis Git repository.
 
 ```bash
-rsync -r --exclude=.git* Dedman-Thesis-Latex-Template/* my_thesis_repo/
+git submodule add git@github.com:matthewfeickert/Dedman-Thesis-Latex-Template.git
 ```
 
-You'll want to rename a few things and organize them as you see fit.
+Then **from your thesis repository** run the installer
+
+```bash
+bash Dedman-Thesis-Latex-Template/update_template.sh install
+```
+
+> Note: The above assumes that you've setup an `ssh` key with GitHub
+
+You should now have the template setup in your thesis repository and it should compile.
+
+After checking that it complies, you'll want to rename a few things and organize them as you see fit.
 
 - `user_thesis.tex`: Rename to the output of `$USER` or your last name and replace contents as needed
 - `Makefile`: Change `user_thesis` to the name of whatever you renamed `user_thesis.tex` to
@@ -26,6 +36,18 @@ You'll want to rename a few things and organize them as you see fit.
 - `latex/abstract.tex`: Replace with your abstract
 - `latex/acknowledgements.tex`: Replace with your acknowledgements
 - `src/appendix_A.tex`: Rename to a descriptive name of the contents of the file
+
+> Note: There is probably some smarter way to incorporate changes directly into a thesis repo using Git submodules or using selective `git cherry-pick`. However, the maintainer hasn't spent time figuring that out yet.
+
+Now that you've added the submodule remember to commit the generated `.gitmodules` file and the submodule.
+
+### Update
+
+To update the submodule with the remote and then update your base LaTeX files run the updater.
+
+```bash
+bash Dedman-Thesis-Latex-Template/update_template.sh
+```
 
 ## Compilation
 
