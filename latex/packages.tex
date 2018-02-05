@@ -1,5 +1,6 @@
 % \usepackage{DL_thesis_v2016}
 \usepackage{adjustbox}       % TCM Extends the graphicx package to do trimming and other adjustments.
+\usepackage{notoccite} % Avoid references in captions causing numbering issues due to TOC
 \usepackage{algorithm}       % TCM Algorithm block See http://algorithms.berlios.de/
 \usepackage{algorithmic}     % TCM Algorithm & Peudocode See http://en.wikibooks.org/wiki/LaTeX/Algorithms_and_Pseudocode
 \usepackage{amsmath}         % Need for subequations
@@ -17,6 +18,7 @@
 \usepackage[flushleft]{threeparttable}  % TCM This package allows for notes under tables.  Flushleft option flushes the note left margin of table (center is default)
 \usepackage{geometry}		 % TCM Allows to customize paper size and margins.
 \usepackage{graphicx}        % TCM Extends graphics package for figures. Provides op­tional ar­gu­ments to the \in­clude­graph­ics com­mand
+\graphicspath{{images/figures/}}
 \usepackage{epstopdf}        % TCM Converts eps images to PDF to use in graphicx package.  Must be loaded after graphicx package
 \usepackage{longtable}       % TCM Allows for Automatic page breaks for long tables
 %\usepackage{jneurosci}       % TCM The jneurosci bibliography style makes use of some commands - for example, \citeauthoryear.  Must include if using named or acmsmall bib style
