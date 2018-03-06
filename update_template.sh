@@ -12,7 +12,7 @@ function update {
     # Update only if the submodule's have been updated more recently then user's
     rsync -r --update Dedman-Thesis-Latex-Template/sty .
     rsync -r --update Dedman-Thesis-Latex-Template/latex/packages.tex ./latex/packages.tex
-    rsync -r --update Dedman-Thesis-Latex-Template/latex/customcommands.tex ./latex/customcommands.tex
+    rsync -r --update Dedman-Thesis-Latex-Template/latex/custom_commands.tex ./latex/custom_commands.tex
     rsync -r --update Dedman-Thesis-Latex-Template/latex/preamble.tex ./latex/preamble.tex
 }
 
