@@ -9,12 +9,12 @@
 %======================================================================
 % The many of the following commands were originally in the smu_thesis.sty
 % file. Commands and comments were moved here to make style file more about
-% document style. While custom environments can technically be considered 
+% document style. While custom environments can technically be considered
 % style, the student created environments are included here to simplify
 % the style file. Often these commands were created by students over the
-% years and placed in the style file.  The commands have not been 
-% verified and can be obsolete LaTeX commands. The Commands can be used 
-% or ignored. 
+% years and placed in the style file.  The commands have not been
+% verified and can be obsolete LaTeX commands. The Commands can be used
+% or ignored.
 %======================================================================
 %----------------------------------------------------------------------
 % BEGIN TCM Commands to set formatting for Paragraph section to have line
@@ -32,6 +32,15 @@
 % END of Commands to set formatting for Paragraph section to have line
 %       feed after heading TCM
 %----------------------------------------------------------------------
+
+% eliminate compile warnings for noindent hfill hbox in PDF bookmarks
+\pdfstringdefDisableCommands{
+ \def\hbox{ }% hyperref (temporarily) changes \hbox to a space in this context.
+ \def\hfill{ }% hyperref (temporarily) changes \hfill to a space in this context.
+ \def\noindent{ }% hyperref (temporarily) changes \noindent to a space in this context.
+ \def\hskip{ }% hyperref (temporarily) changes \hskip to a space in this context.
+}
+
 %----------------------------------------------------------------------
 % BEGIN Shortcuts to insert calligraphic letters in Math Mode Only
 %----------------------------------------------------------------------
@@ -67,7 +76,7 @@
 % END Shortcuts to insert calligraphic letters in Math Mode Only
 %----------------------------------------------------------------------
 %----------------------------------------------------------------------
-% BEGIN Shortcuts to insert boldface letters 
+% BEGIN Shortcuts to insert boldface letters
 %----------------------------------------------------------------------
 \newcommand{\bA}{{\bf A}}
 \newcommand{\bB}{{\bf B}}
@@ -96,7 +105,7 @@
 \newcommand{\bY}{{\bf Y}}
 \newcommand{\bZ}{{\bf Z}}
 %----------------------------------------------------------------------
-% END Shortcuts to insert boldface letters 
+% END Shortcuts to insert boldface letters
 %----------------------------------------------------------------------
 %----------------------------------------------------------------------
 % BEGIN Shortcuts to insert overline symbols in Math Mode Only
@@ -226,77 +235,77 @@
 %----- For figures  ---------------------------------------------------
 
 \newcommand{\myfigureold}[3]{ \begin{figure}[tbp]
-  \begin{center}
-   \fbox{
-    \begin{minipage}[t]{5.7in}
+ \begin{center}
+  \fbox{
+   \begin{minipage}[t]{5.7in}
     \rule[-.1cm]{0cm}{0.5cm} % changed by saeed to 0.01cm was 0.5cm
     \centerline{\psfig{#1}}
-    \end{minipage}
-    }
-    \end{center}
-       \caption{#2} \label{#3} \vskip -0.14in \end{figure} } % changed by saeed was -0.14 changed to -0.01in
+   \end{minipage}
+  }
+ \end{center}
+ \caption{#2} \label{#3} \vskip -0.14in \end{figure} } % changed by saeed was -0.14 changed to -0.01in
 
 \newcommand{\mytabfig}[3]{ \begin{figure}[tbp]
-  \begin{center}
-   \fbox{
-    \begin{minipage}[t]{5.7in}
+ \begin{center}
+  \fbox{
+   \begin{minipage}[t]{5.7in}
     \rule[-.1cm]{0cm}{0.5cm} % changed by saeed to 0.01cm was 0.5cm
-#1
-    \end{minipage}
-        }
-        \end{center}
-       \caption{#2} \label{#3} \vskip -0.14in \end{figure} } % changed by saeed was -0.14 changed to -0.01in
+    #1
+   \end{minipage}
+  }
+ \end{center}
+ \caption{#2} \label{#3} \vskip -0.14in \end{figure} } % changed by saeed was -0.14 changed to -0.01in
 
 \newcommand{\myfigure}[3]{ \begin{figure}[tbp]
-    \begin{center}
-    #1
-    \end{center}
-    \caption{#2} \label{#3} \vskip -0.14in \end{figure} } % changed by saeed was -0.14 changed to -0.01in
+ \begin{center}
+  #1
+ \end{center}
+ \caption{#2} \label{#3} \vskip -0.14in \end{figure} } % changed by saeed was -0.14 changed to -0.01in
 
 \newcommand{\mytable}[3]{ \begin{table}[tbp]
-  \begin{center}
+ \begin{center}
   \caption{#2}
-    #1
+  #1
   \label{#3} \vskip -0.01in \end{center} \end{table} }
 
-\newcommand{\myendfig}{\vskip -0.14in \end{figure} } % changed by saeed was -0.14in changed to -0.01in
-\newcommand{\myendtab}{\vskip -0.01in \end{table} }
+ \newcommand{\myendfig}{\vskip -0.14in \end{figure} } % changed by saeed was -0.14in changed to -0.01in
+ \newcommand{\myendtab}{\vskip -0.01in \end{table} }
 
-%----------------- theorem definitions --------------------------------
+ %----------------- theorem definitions --------------------------------
 
-\newtheorem{ex}{Example}[chapter]
-\newtheorem{theor}{Theorem}[chapter]
-\newtheorem{mtd}{Method}[chapter]
-\newtheorem{mydef}{Definition}[chapter]
-%\newtheorem{mylem}{Lemma}[chapter]
-\newtheorem{mylem}[theor]{Lemma}
+ \newtheorem{ex}{Example}[chapter]
+ \newtheorem{theor}{Theorem}[chapter]
+ \newtheorem{mtd}{Method}[chapter]
+ \newtheorem{mydef}{Definition}[chapter]
+ %\newtheorem{mylem}{Lemma}[chapter]
+ \newtheorem{mylem}[theor]{Lemma}
 
-%\newtheorem{algorithm}{Algorithm}[chapter]
-%\newtheorem{corollary}[theorem]{Corollary}
-%\newtheorem{proposition}{Proposition}[section]
-%\newtheorem{remark}{Remark}[section]
+ %\newtheorem{algorithm}{Algorithm}[chapter]
+ %\newtheorem{corollary}[theorem]{Corollary}
+ %\newtheorem{proposition}{Proposition}[section]
+ %\newtheorem{remark}{Remark}[section]
 
-%----------------------------------------------------------------------
-%\font\pf=rpcrr at 11pt    % TCM Comment out if using Overleaf.com
-%\font\spf=rpcrr at 11pt   % TCM Comment out if using Overleaf.com
-%----------------------------------------------------------------------
+ %----------------------------------------------------------------------
+ %\font\pf=rpcrr at 11pt    % TCM Comment out if using Overleaf.com
+ %\font\spf=rpcrr at 11pt   % TCM Comment out if using Overleaf.com
+ %----------------------------------------------------------------------
 
-%-------------------- environment definitions -------------------------
-\newenvironment{example}{\begin{ex} \rm}{\hfill \qed \end{ex}}
-\newenvironment{theorem}{\begin{theor}}{ \end{theor}}
-\newenvironment{method}{\begin{mtd} \rm}{\hfill \qed \end{mtd}}
-\newenvironment{definition}{\begin{mydef} \rm}{\hfill \qed \end{mydef}}
-%\newenvironment{lemma}{\begin{mylem} \rm}{\hfill \qed \end{mylem}}
-\newenvironment{lemma}{\begin{mylem}}{ \end{mylem}}
+ %-------------------- environment definitions -------------------------
+ \newenvironment{example}{\begin{ex} \rm}{\hfill \qed \end{ex}}
+ \newenvironment{theorem}{\begin{theor}}{ \end{theor}}
+ \newenvironment{method}{\begin{mtd} \rm}{\hfill \qed \end{mtd}}
+ \newenvironment{definition}{\begin{mydef} \rm}{\hfill \qed \end{mydef}}
+ %\newenvironment{lemma}{\begin{mylem} \rm}{\hfill \qed \end{mylem}}
+ \newenvironment{lemma}{\begin{mylem}}{ \end{mylem}}
 
-\newenvironment{vers}{\vspace{-0.1cm} \begin{verse}}{\vspace{-0.1cm} \end{verse}}
-\newenvironment{vers2}{\vspace{-0.2cm} \begin{verse}}{\vspace{-0.1cm} \end{verse}}
+ \newenvironment{vers}{\vspace{-0.1cm} \begin{verse}}{\vspace{-0.1cm} \end{verse}}
+ \newenvironment{vers2}{\vspace{-0.2cm} \begin{verse}}{\vspace{-0.1cm} \end{verse}}
 
-\newenvironment{proof}[0]{\vspace{0.3cm}\noindent {\bf Proof:} \rm }{\hfill \lqed}
-\newenvironment{proof-of}[1]{\noindent {\bf Proof of #1:}}{\hfill \lqed}
-%----------------------------------------------------------------------
-% END Misc. Commands defined by students
-%----------------------------------------------------------------------
-%======================================================================
-% END SMU Custom Commands
-%======================================================================
+ \newenvironment{proof}[0]{\vspace{0.3cm}\noindent {\bf Proof:} \rm }{\hfill \lqed}
+ \newenvironment{proof-of}[1]{\noindent {\bf Proof of #1:}}{\hfill \lqed}
+ %----------------------------------------------------------------------
+ % END Misc. Commands defined by students
+ %----------------------------------------------------------------------
+ %======================================================================
+ % END SMU Custom Commands
+ %======================================================================

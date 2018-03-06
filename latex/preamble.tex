@@ -1,80 +1,33 @@
-\usepackage{graphicx} % For images
-\graphicspath{{images/}}
-\usepackage{float}		% For tables and other floats
-\usepackage{verbatim} 	% For comments and other
-\usepackage{amsmath}  	% For math
-\usepackage{amssymb}  	% For more math
-\usepackage{fullpage} 	% Set margins and place page numbers at bottom center
-\usepackage{listings} 	% For source code
-\usepackage{subfig}   	% For subfigures
-\usepackage[usenames,dvipsnames]{xcolor}	% For colors and names for color boxed links
-%\usepackage[usenames,dvipsnames]{color}	% For colors and names
-\usepackage[]{hyperref}           		% For hyperlinks and indexing the PDF
-\hypersetup{
- colorlinks=false,		% Surround the links by color frames (false) or colors the text of the links (true)
- citecolor=blue,		% Color of citation links
- filecolor=black,		% Color of file links
- linkcolor=red,		% Color of internal links (sections, pages, etc.)
- urlcolor=black,		% Color of url hyperlinks
- linkbordercolor=red, 	% Color of links to bibliography
- citebordercolor=blue,	% Color of file links
- urlbordercolor=blue	% Color of external links
+% Alter Todonotes Commands to use Marginnote instead of Marginpar to use todonotes in align environment
+\makeatletter
+\renewcommand{\@todonotes@drawMarginNoteWithLine}{%
+ \begin{tikzpicture}[remember picture, overlay, baseline=-0.75ex]%
+  \node [coordinate] (inText) {};%
+ \end{tikzpicture}%
+ \marginnote[{% Draw note in left margin
+  \@todonotes@drawMarginNote%
+  \@todonotes@drawLineToLeftMargin%
+  }]{% Draw note in right margin
+  \@todonotes@drawMarginNote%
+  \@todonotes@drawLineToRightMargin%
+ }%
 }
-\usepackage{calligra}	% For generating 'script r'
-\DeclareMathAlphabet{\mathcalligra}{T1}{calligra}{m}{n}
-%\DeclareFontShape{T1}{calligra}{m}{n}{<->s*[2.2]callig15}{}
-\usepackage{mathrsfs}	% For nice math calligraphy fonts
-\usepackage{custom}
-\usepackage{HEP}		% High energy physics commands
-%\usepackage{draftmode}		% Draft mode edit;	Remember to remove the linenumbers command
-\usepackage{soul}			% Allows strikethrough of text with \st{text}
-\usepackage{cancel}		% Allows for \cancelto{cancel_to_value}{quantity_being_canceled}
-\usepackage{mathtools}	% Needed for mathclap
-% \usepackage{tabu}
-\usepackage{booktabs}
+\makeatother
 
-%%%%% CIRCUITS %%%%%
-\usepackage{pgfplots}
-\usepackage{tikz}%
-\usepackage{tkz-euclide}
-%\usepackage[siunitx]{circuitikz}
-\usetikzlibrary{decorations.markings}
-\usetikzlibrary{patterns}
-%%%%%%%%%%%%%%%%
-\usepackage{3dplot} %requires 3dplot.sty to be in same directory, or in your LaTeX installation
+% Todonotes Command to use single line spacing (sls) in note
+\newcommand{\slstodo}[2][]
+{\todo[caption={#2}, size=\small, #1]{\renewcommand{\baselinestretch}{0.5}\selectfont#2\par}}
 
-%\usepackage{al?phalph}
-\renewcommand\vec[1]{\ensuremath\boldsymbol{#1}}	% Makes vectors boldface type, replaces arrows.
-\renewcommand{\thefootnote}{\fnsymbol{footnote}}		% Causes footnotes to be indicated symbols, not numbers
-%\numberwithin{equation}{section}					% Labels equations due to their section number
-\hyphenation{ATLAS}							% Defines where words may be hyphenated
+\geometry{letterpaper, margin=1in} % Dedman/Lyle Standard 2016
 
-%All custom made commands are located in custom.sty in ~/Library/texlive/2010/texmf-var/tex/latex/
+\linespread{1.6}
+\setcounter{secnumdepth}{4} % Sets number subsections
+\setcounter{tocdepth}{4} % Set the number of subsections in TOC
 
-% Redefine the itemize symbol to be empty space for problem 3.
-%\renewcommand*\labelitemi{}
+\urlstyle{same} % Set URL style to same font as text verses mono-spaced, i.e., courier
 
-% Box matrix shortcuts
-\newcommand{\bbx}{\begin{bmatrix}}
-\newcommand{\ebx}{\end{bmatrix}}
-\newcommand{\ba}{\begin{array}}
-\newcommand{\ea}{\end{array}}
-\newcommand{\nin}{\noindent}
-
-% Change enumerate bullet point
-\usepackage{enumerate}
-
-\usepackage{afterpage}
-\newcommand\blankpage{%
- \null
- %   \thispagestyle{empty}%
- %   \addtocounter{page}{-1}%
- \newpage}
-
-
-\usepackage{caption}
-\usepackage{empheq}
-
-\usepackage{pdfpages}
-
-\usepackage{listings}
+% Reduce compile warnings for overfull and underfull hboxes & vboxes
+% Adjust to fit your specific needs
+\hbadness=50000
+\vbadness=50000
+\hfuzz=150pt
