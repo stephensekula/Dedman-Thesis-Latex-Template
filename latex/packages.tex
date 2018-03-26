@@ -1,5 +1,4 @@
 % \usepackage{DL_thesis_v2016}
-\usepackage{adjustbox} % Extends the graphicx package to do trimming and other adjustments.
 \usepackage{notoccite} % Avoid references in captions causing numbering issues due to TOC
 \usepackage{algorithm} % Algorithm block See http://algorithms.berlios.de/
 \usepackage{algorithmic} % Algorithm & Peudocode See http://en.wikibooks.org/wiki/LaTeX/Algorithms_and_Pseudocode
@@ -17,8 +16,12 @@
 \usepackage{flafter} % Floats should always appear after their definition
 \usepackage[flushleft]{threeparttable} % This package allows for notes under tables.  Flushleft option flushes the note left margin of table (center is default)
 \usepackage{geometry} % Allows to customize paper size and margins.
-\usepackage{graphicx} % Extends graphics package for figures. Provides op­tional ar­gu­ments to the \in­clude­graph­ics com­mand
+% Load tabularx and xcolor before adjustbox to avoid conflict
+\usepackage{tabularx} % Package which allows paragraphs in Tables
+\usepackage[table]{xcolor} % Allows coloring of tables
+\usepackage{graphicx} % Extends graphics package for figures. Provides optional arguments to the \includegraphics command
 \graphicspath{{images/figures/}}
+\usepackage{adjustbox} % Extends the graphicx package to do trimming and other adjustments.
 \usepackage{epstopdf} % Converts eps images to PDF to use in graphicx package.  Must be loaded after graphicx package
 \usepackage{longtable} % Allows for Automatic page breaks for long tables
 %\usepackage{jneurosci} % The jneurosci bibliography style makes use of some commands - for example, \citeauthoryear.  Must include if using named or acmsmall bib style
@@ -37,8 +40,6 @@
 \usepackage{siunitx} % package required to ensure units are typeset properly with numbers e.g. \SI{10}{\kg\m\per\square\s}
 \sisetup{output-exponent-marker=\ensuremath{\mathrm{E}}} % Option allows for Scientific notation of Numbers.  Format is \num{#.####E##}
 % \usepackage[superscript]{cite} % Makes citations superscript instead of [#]
-\usepackage[table]{xcolor} % Allows coloring of tables
-\usepackage{tabularx} % Package which allows paragraphs in Tables
 % \usepackage{thumbpdf} % Comment out as causes warnings, can easily create thumbs in Adobe if needed.
 
 %===========================================================
