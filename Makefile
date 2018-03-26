@@ -8,7 +8,10 @@ image_source = $(wildcard images/figures/*.pdf) $(wildcard images/figures/*.jpg)
 bib_source = $(wildcard *.bib) $(wildcard bib/*.bib)
 REFERENCES = true
 #REFERENCES = false
-LATEX=xelatex
+
+# LATEX=pdflatex
+# LATEX=xelatex
+LATEX=lualatex
 
 all: document
 
@@ -26,7 +29,9 @@ document: $(driver) $(tex_source) $(image_source) $(bib_source)
 	cp $(basename $(driver)).pdf $(output_file)
 
 clean:
-	\rm -f *.aux *.bbl *.blg *.dvi *.idx *.lof *.log *.lot *.toc *.glg *.gls *.glo *.xdy *.nav *.out *.snm *.vrb *.mp *.synctex.gz *.brf
+	\rm -f *.aux *.bbl *.blg *.dvi *.idx *.lof *.log *.lot *.toc \
+		*.glg *.gls *.glo *.xdy *.nav *.out *.snm *.vrb *.mp \
+		*.synctex.gz *.brf
 
 realclean: clean
 	\rm -f *.pdf
