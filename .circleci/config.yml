@@ -1,0 +1,29 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: matthewfeickert/latex-docker
+    branches:
+      ignore:
+        - /test-.*/
+    steps:
+      - checkout
+      - run:
+          name: Print current datetime
+          command: date -u '+%Y-%m-%d %H:%M:%S'
+      - run:
+          name: Compile Template
+          command: |
+            make final
+            echo ""
+            ls -la
+      - deploy:
+       # For Docker builds disable host key checking. Be aware that by adding
+       # that you are suspectible to man-in-the-middle attacks.
+       # Apply the ssh config to all host servers instead of applying to each
+       # host name. (example host names: lxplus.cern.ch, rubin.physics.smu.edu)
+          name: Push draft to SMU public web areas
+          command: |
+              echo -e "Host *\n\tStrictHostKeyChecking no" >> ~/.ssh/config
+              SSHPASS=$PHYSSERVER_PASS sshpass -e scp user_thesis.pdf mfeickert@rubin.physics.smu.edu:/users/mfeickert/public_html/dedman-thesis-latex-template/template.pdf
+              echo "### File viewable at: https://www.physics.smu.edu/mfeickert/dedman-thesis-latex-template/template.pdf"

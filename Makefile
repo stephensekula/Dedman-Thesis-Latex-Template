@@ -8,17 +8,21 @@ image_source = $(wildcard images/figures/*.pdf) $(wildcard images/figures/*.jpg)
 bib_source = $(wildcard *.bib) $(wildcard bib/*.bib)
 REFERENCES = true
 #REFERENCES = false
-TEX=xelatex
+LATEX=xelatex
 
 all: document
 
 text: $(driver) $(tex_source) $(image_source)
-	$(TEX) $(driver)
-	$(TEX) $(driver)
+	$(LATEX) $(driver)
+	$(LATEX) $(driver)
 
 document: $(driver) $(tex_source) $(image_source) $(bib_source)
 	make text
-	if [ "$(REFERENCES)" = true ]; then bibtex $(basename $(driver)); $(TEX) $(driver); $(TEX) $(driver); fi
+	if [ "$(REFERENCES)" = true ]; then \
+		bibtex $(basename $(driver)); \
+		$(LATEX) $(driver); \
+		$(LATEX) $(driver); \
+	fi
 	cp $(basename $(driver)).pdf $(output_file)
 
 clean:
@@ -28,6 +32,8 @@ realclean: clean
 	\rm -f *.pdf
 
 final:
-	if [ -f *.aux ]; then make clean; fi
+	if [ -f *.aux ]; \
+		then make clean; \
+	fi
 	make document
 	make clean

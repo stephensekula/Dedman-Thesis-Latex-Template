@@ -4,6 +4,9 @@ Fork of the [SMU Dedman College Ph.D. Thesis LaTeX template](https://www.smu.edu
 
 [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
 
+[![CircleCI](https://circleci.com/gh/matthewfeickert/Dedman-Thesis-Latex-Template/tree/master.svg?style=svg)](https://circleci.com/gh/matthewfeickert/Dedman-Thesis-Latex-Template/tree/master)
+A pdf copy of the latest build of the template is [available here](https://www.physics.smu.edu/mfeickert/dedman-thesis-latex-template/template.pdf)
+
 ## Use
 
 This is a template for how your thesis files and directory structure might look. This is **not** an area for you to actually build your thesis, but rather should be used as a Git submodule of the Git repository that contains your thesis.
