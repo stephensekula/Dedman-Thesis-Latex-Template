@@ -59,13 +59,13 @@ The template should compile out of the box. For Unix like operating systems a te
 ### Linux
 
 ```bash
-make [text,document,final,clean,realclean]
+make [run_latexmk,final,clean,realclean]
 ```
 
 ### MacOS
 
 ```bash
-make [text,document,final,clean,realclean]
+make [run_latexmk,final,clean,realclean]
 ```
 
 ### Windows

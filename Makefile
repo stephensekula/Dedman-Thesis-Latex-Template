@@ -1,37 +1,34 @@
-# file = $(USER)_thesis
-file = user_thesis
-driver = $(file).tex
+# FILENAME = $(USER)_thesis
+FILENAME = user_thesis
 date=$(shell date +%Y-%m-%d)
 output_file = draft_$(date).pdf
-tex_source = $(wildcard *.tex) $(wildcard src/*.tex)
-image_source = $(wildcard images/figures/*.pdf) $(wildcard images/figures/*.jpg) $(wildcard images/figures/*.png)
-bib_source = $(wildcard *.bib) $(wildcard bib/*.bib)
-REFERENCES = true
-#REFERENCES = false
 
 # LATEX=pdflatex
 # LATEX=xelatex
 LATEX=lualatex
+BIBTEX = bibtex
+# BIBTEX = biber
 
-all: document
+default: run_latexmk
+	make copy_draft
 
-text: $(driver) $(tex_source) $(image_source)
-	$(LATEX) $(driver)
-	$(LATEX) $(driver)
+run_latexmk:
+	clear
+	latexmk -pdf $(FILENAME)
 
-document: $(driver) $(tex_source) $(image_source) $(bib_source)
-	make text
-	if [ "$(REFERENCES)" = true ]; then \
-		bibtex $(basename $(driver)); \
-		$(LATEX) $(driver); \
-		$(LATEX) $(driver); \
-	fi
-	cp $(basename $(driver)).pdf $(output_file)
+%.pdf: %.tex *.tex *.bib
+	$(LATEX) $<
+	-$(BIBTEX)  $(basename $<)
+	$(LATEX) $<
+	$(LATEX) $<
+
+copy_draft:
+	rsync $(FILENAME).pdf $(output_file)
 
 clean:
 	\rm -f *.aux *.bbl *.blg *.dvi *.idx *.lof *.log *.lot *.toc \
 		*.glg *.gls *.glo *.xdy *.nav *.out *.snm *.vrb *.mp \
-		*.synctex.gz *.brf
+		*.synctex.gz *.brf *.fls *.fdb_latexmk
 
 realclean: clean
 	\rm -f *.pdf
@@ -40,5 +37,5 @@ final:
 	if [ -f *.aux ]; \
 		then make clean; \
 	fi
-	make document
+	latexmk -pdf $(FILENAME)
 	make clean
