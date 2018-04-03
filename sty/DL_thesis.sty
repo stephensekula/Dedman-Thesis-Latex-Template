@@ -1,70 +1,7 @@
-%===================================================%
-%  The document style definition file 'thesis.sty'  %
-%  Copyright by Jin Liu, May, 1993                  %
-%---------------------------------------------------%
-%  modified by Yu Chih (Julie) Liu, 1997            %
-%---------------------------------------------------%
-%  The document style 'dissertation' is modified    %
-%  from LaTeX style 'report'.                       %
-%===================================================%
-%  The first part of this file is from 'report.sty' %
-%---------------------------------------------------%
-%  Modified by T McLoud to use LaTex2e report[12pt] %
-%==========================================================================================%
-%  Modified by Ted C Munger (TCM), 2015, 2016                                              %
-%  1 - Renamed file to DL_thesis_v2016.sty for specific SMU Dedman & Lyle Engineering      %
-%      School Standards as of 2016.                                                        %
-%  2 - Added vspace to allow for three line titles in abstract section.  This vspace       %
-%      eliminates bad box warnings when one has three line title and aligns text properly. %
-%  3 - Removed the "Dr." prefix from the Advisor field to be consistant with other         %
-%      "Members" of the commitee to be consistant and remove the "Dr. Dr." incident        %
-%      if one adds the prefix in the field value for Advisor.                              %
-%  4 - Removed preceeding space before bf in section and em in subsubsection definition    %
-%      which makes headers misaligned.                                                     %
-%  5 - Removed () around degrees per Dedman 2016 standards                                 %
-%  6 - Removed italics for dedication per Dedman 2016 standards                            %
-%  7 - Renamed Bibliography Section to Bibliography vs. References                         %
-%  8 - Unbolded Bibiography Chapter Title by adding \normalfont                            %
-%  9 - Removed extra space in second title page per Dedman 2016 standards                  %
-% 10 - Tightened title line spacing on Abstract page per Dedman 2016 standards             %
-% 11 - Removed extra space between advisor and degree dates per Dedman 2016 standards      %
-% 12 - Added comments for legibility and to assist in future edits.                        %
-% 13 - Commented out page and margin specifications for easier changeablity by using the   %
-%      geometry package.  Page specifications are now controlled from the command in the   %
-%      template file's preamble.                                                           %
-% 14 - Added Copyright page in front pages per Dedman 2016 Standards.                      %
-% 15 - Removed custom commands from style file and placed in new customcommands.tex file   %
-%      for make style more concise.                                                        %
-% 16 - Added BEGIN and END comments for ease of editing                                    %
-%==========================================================================================%
-
-% report.sty 24-May-89 (Original Creation)
-
-\typeout{===================================================================}
-\typeout{  Document Style `thesis'  (C) 1994, Jin Liu                       }
-\typeout{-------------------------------------------------------------------}
-\typeout{  For the questions concerning the format and usage of this LaTeX  }
-\typeout{  document style, please contact Jin Liu at "jin@seas.smu.edu",    }
-\typeout{  Electrical Engineering Department, S.M.U., Dallas, Texas 75275.  }
-\typeout{-------------------------------------------------------------------}
-\typeout{  Modified by Yu Chih (Julie) Liu, 1997                            }
-\typeout{-------------------------------------------------------------------}
-\typeout{  Modified by Saeed Abu-Nimeh , 04/07/2008                         }
-\typeout{  fixed problems due to adding hyperref package                    }
-\typeout{  (sabunime [at] engr [dot] smu [dot] edu)                         }
-\typeout{  Modified by Ted C. Munger (TCM) for simplification of structure, }
-\typeout{    comments, bug fixes, and Dedman standards, 2015, 2016          }
-\typeout{===================================================================}
-
-%============================================================================
-%============================================================================
-
 %----------------------------------------------------
 %  The first part of this file is from 'rep12.sty'  |
 %----------------------------------------------------
 % rep12.sty 19-Jan-88
-
-% \def\baselinestretch{1.5}            % TCM Commented out as it does not seem to have any affect on document
 
 %==============================================================
 % BEGIN Chapter Heading Customization
@@ -560,20 +497,20 @@
            \def\ThesisDate#1{\def\dsdate{#1}}
 
            \def\Advisor#1{\def\myadvisor{#1}}
-           \def\AdvisorTitle#1{\def\myadvisortitle{#1}}               % TCM Added per Dedman 2016 Standards
+           \def\AdvisorTitle#1{\def\myadvisortitle{#1}}
            % \def\AdvisorA#1{\def\myadvisorA{#1}}
            % \def\AdvisorB#1{\def\myadvisorB{#1}}
 
            \def\CommitteeMemberA#1{\numCmember=1 \def\memberA{#1}}
-           \def\CommitteeMemberTitleA#1{\def\membertitleA{#1}}  % TCM Added per Dedman 2016 Standards
+           \def\CommitteeMemberTitleA#1{\def\membertitleA{#1}}
            \def\CommitteeMemberB#1{\numCmember=2 \def\memberB{#1}}
-           \def\CommitteeMemberTitleB#1{\def\membertitleB{#1}}  % TCM Added per Dedman 2016 Standards
+           \def\CommitteeMemberTitleB#1{\def\membertitleB{#1}}
            \def\CommitteeMemberC#1{\numCmember=3 \def\memberC{#1}}
-           \def\CommitteeMemberTitleC#1{\def\membertitleC{#1}}  % TCM Added per Dedman 2016 Standards
+           \def\CommitteeMemberTitleC#1{\def\membertitleC{#1}}
            \def\CommitteeMemberD#1{\numCmember=4 \def\memberD{#1}}
-           \def\CommitteeMemberTitleD#1{\def\membertitleD{#1}}  % TCM Added per Dedman 2016 Standards
+           \def\CommitteeMemberTitleD#1{\def\membertitleD{#1}}
            \def\CommitteeMemberE#1{\numCmember=5 \def\memberE{#1}}
-           \def\CommitteeMemberTitleE#1{\def\membertitleE{#1}}  % TCM
+           \def\CommitteeMemberTitleE#1{\def\membertitleE{#1}}
 
 
            \def\Dedicate#1{\def\dedication{#1}}
@@ -647,7 +584,7 @@
                    \rule[-0.1in]{3.0in}{1pt} \\
                    %                 \myadvisor \vspace{0.1in}  % by saeed if 6 members change to 0.1 inch
                    \myadvisor \vspace{-0.1in} \\ % TCM-Removed preceeding "Dr." to be consistant with other "members" format, changed vspace to -0.1in and added \\ to accommedate titles per Dedman 2016 Standards
-                   \myadvisortitle \vspace{0.1in} \\ % TCM Added per Dedman 2016 Standards
+                   \myadvisortitle \vspace{0.1in} \\
                    \ifnum\numCmember>0 \rule[-0.1in]{3.0in}{1pt} \\
                     %                   \memberA \vspace{0.1in}  % by saeed if 6 members change to 0.1 inch
                     \memberA \vspace{-0.1in} \\ % TCM-changed vspace to -0.1in to accommedate titles per Dedman 2016 Standards, added \\, and moved \fi to line below
