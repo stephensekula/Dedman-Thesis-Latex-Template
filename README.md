@@ -54,18 +54,18 @@ bash Dedman-Thesis-Latex-Template/update_template.sh
 
 ## Compilation
 
-The template should compile out of the box. For Unix like operating systems a template `Makefile` is provided.
+The template should compile "out of the box". For Unix like operating systems a template [`Makefile`](https://github.com/matthewfeickert/Dedman-Thesis-Latex-Template/blob/master/Makefile) is provided.
 
 ### Linux
 
 ```bash
-make [run_latexmk,final,clean,realclean]
+make [figures, text, document, final, clean, clean_figures, realclean]
 ```
 
 ### MacOS
 
 ```bash
-make [run_latexmk,final,clean,realclean]
+make [figures, text, document, final, clean, clean_figures, realclean]
 ```
 
 ### Windows

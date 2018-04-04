@@ -1,26 +1,37 @@
 # FILENAME = $(USER)_thesis
 FILENAME = user_thesis
-date=$(shell date +%Y-%m-%d)
+
+date = $(shell date +%Y-%m-%d)
 output_file = draft_$(date).pdf
 
-# LATEX=pdflatex
-# LATEX=xelatex
-LATEX=lualatex
+figure_src = $(wildcard images/figures/*.tex images/figures/*/*.tex)
+figure_list = $(figure_src:.tex=.pdf)
+
+# LATEX = pdflatex
+# LATEX = xelatex
+LATEX = lualatex
+
 BIBTEX = bibtex
 # BIBTEX = biber
 
-default: run_latexmk
+default: document
 	make copy_draft
 
-run_latexmk:
-	clear
-	latexmk -pdf $(FILENAME)
+figures: $(figure_list)
 
-%.pdf: %.tex *.tex *.bib
-	$(LATEX) $<
-	-$(BIBTEX)  $(basename $<)
-	$(LATEX) $<
-	$(LATEX) $<
+# Target assumes figure source is in same directory as expected figure path
+images/%.pdf: images/%.tex
+	latexmk -$(LATEX) -interaction=nonstopmode -halt-on-error $(basename $@)
+	mv $(notdir $(basename $@)).pdf $(basename $@).pdf
+	rm $(notdir $(basename $@)).*
+
+text:
+	latexmk -$(LATEX) -logfilewarnings -halt-on-error $(FILENAME)
+
+document:
+	clear
+	make figures
+	make text
 
 copy_draft:
 	rsync $(FILENAME).pdf $(output_file)
@@ -30,12 +41,17 @@ clean:
 		*.glg *.gls *.glo *.xdy *.nav *.out *.snm *.vrb *.mp \
 		*.synctex.gz *.brf *.fls *.fdb_latexmk
 
+clean_figures:
+	rm -f $(figure_list)
+
 realclean: clean
-	\rm -f *.pdf
+	\rm -f *.ps *.pdf
+	make clean_figures
 
 final:
 	if [ -f *.aux ]; \
 		then make clean; \
 	fi
-	latexmk -pdf $(FILENAME)
+	make figures
+	make text
 	make clean

@@ -1,0 +1,18 @@
+\RequirePackage{luatex85} %https://tex.stackexchange.com/a/315027/152544
+\documentclass[preview,crop,tikz]{standalone}
+
+\usetikzlibrary{positioning}
+\usetikzlibrary{arrows}
+
+\begin{document}
+\begin{tikzpicture}[>=triangle 45,font=\sffamily]
+ \node (X) at (0,0) {x};
+ \node (Y) [below left=2cm and 1cm of X]  {y};% 2cm below, 1cm to the left (optional)
+ \node (Z) [below right=2cm and 1cm of X] {z};
+ \node (U) [below left=2cm and 1cm of Z]  {u};
+ \draw [semithick,->] (X) -- (Y);
+ \draw [semithick,->] (X) -- (Z);
+ \draw [semithick,->] (Y) -- (U) node [midway,below,sloped] {*};
+ \draw [semithick,->] (Z) -- (U) node [midway,below,sloped] {*};
+\end{tikzpicture}
+\end{document}
