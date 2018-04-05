@@ -14,8 +14,16 @@ LATEX = lualatex
 BIBTEX = bibtex
 # BIBTEX = biber
 
-default: document
-	make copy_draft
+default: document copy_draft
+
+all: abstract default
+
+abstract: abstract.pdf
+
+abstract.pdf: latex/standalone_abstract.tex
+	latexmk -$(LATEX) -logfilewarnings -halt-on-error $<
+	mv standalone_abstract.pdf abstract.pdf
+	rm standalone_abstract.*
 
 figures: $(figure_list)
 
@@ -28,30 +36,30 @@ images/%.pdf: images/%.tex
 text:
 	latexmk -$(LATEX) -logfilewarnings -halt-on-error $(FILENAME)
 
-document:
-	clear
-	make figures
-	make text
+document: clear_screen figures text
 
 copy_draft:
 	rsync $(FILENAME).pdf $(output_file)
 
+clear_screen:
+	clear
+
 clean:
-	\rm -f *.aux *.bbl *.blg *.dvi *.idx *.lof *.log *.lot *.toc \
+	rm -f *.aux *.bbl *.blg *.dvi *.idx *.lof *.log *.lot *.toc \
 		*.glg *.gls *.glo *.xdy *.nav *.out *.snm *.vrb *.mp \
 		*.synctex.gz *.brf *.fls *.fdb_latexmk
 
 clean_figures:
 	rm -f $(figure_list)
 
-realclean: clean
-	\rm -f *.ps *.pdf
-	make clean_figures
+realclean: clean clean_figures
+	rm -f *.ps *.pdf
 
 final:
 	if [ -f *.aux ]; \
 		then make clean; \
 	fi
 	make figures
+	make abstract
 	make text
 	make clean

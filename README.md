@@ -36,8 +36,8 @@ After checking that it complies, you'll want to rename a few things and organize
 - `bib/example.bib`: Rename to a descriptive name of the contents of the BibTeX file
    - **Suggestion:** Have multiple BibTeX files that correspond to different topics
 - `latex/FrontPages.tex`: Go through here and change all relevant data
-- `latex/abstract.tex`: Replace with your abstract
-- `latex/acknowledgements.tex`: Replace with your acknowledgements
+- `src/abstract.tex`: Replace with your abstract
+- `src/acknowledgements.tex`: Replace with your acknowledgements
 - `src/appendix_A.tex`: Rename to a descriptive name of the contents of the file
 
 > Note: There is probably some smarter way to incorporate changes directly into a thesis repo using Git submodules or using selective `git cherry-pick`. However, the maintainer hasn't spent time figuring that out yet.
@@ -59,13 +59,13 @@ The template should compile "out of the box". For Unix like operating systems a 
 ### Linux
 
 ```bash
-make [figures, text, document, final, clean, clean_figures, realclean]
+make [abstract, figures, text, document, all, final, clean, clean_figures, realclean]
 ```
 
 ### MacOS
 
 ```bash
-make [figures, text, document, final, clean, clean_figures, realclean]
+make [abstract, figures, text, document, all, final, clean, clean_figures, realclean]
 ```
 
 ### Windows
