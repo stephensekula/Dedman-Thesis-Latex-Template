@@ -4,7 +4,7 @@ function install {
     # In case using an older version of Git
     git submodule update --init --recursive
     git submodule update --recursive
-    rsync -r --update --exclude=.git* --exclude=*.sh --exclude=README.md --exclude=LICENSE Dedman-Thesis-Latex-Template/* .
+    rsync -r --update --exclude=.git* --exclude=*.sh --exclude=*.md --exclude=LICENSE Dedman-Thesis-Latex-Template/* .
 }
 
 function update {
