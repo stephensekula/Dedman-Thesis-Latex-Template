@@ -8,7 +8,7 @@ function install {
 }
 
 function update {
-    git submodule update --recursive
+    git submodule update --recursive --remote
     # Update only if the submodule's have been updated more recently then user's
     rsync -r --update Dedman-Thesis-Latex-Template/sty .
     rsync -r --update Dedman-Thesis-Latex-Template/latex/packages.tex ./latex/packages.tex
