@@ -14,6 +14,7 @@ function update {
     rsync -r --update Dedman-Thesis-Latex-Template/latex/packages.tex ./latex/packages.tex
     rsync -r --update Dedman-Thesis-Latex-Template/latex/custom_commands.tex ./latex/custom_commands.tex
     rsync -r --update Dedman-Thesis-Latex-Template/latex/preamble.tex ./latex/preamble.tex
+    rsync -r --update Dedman-Thesis-Latex-Template/latex/standalone_abstract.tex ./latex/standalone_abstract.tex
 }
 
 function main {
