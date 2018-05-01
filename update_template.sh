@@ -7,13 +7,18 @@ function install {
 
     # Install files for the user to edit
     rsync -r --update Dedman-Thesis-Latex-Template/user_thesis.tex .
-    rsync -r --update Dedman-Thesis-Latex-Template/latex/user_commands.tex ./latex/user_commands.tex
+    if [ ! -d "latex" ]; then
+        mkdir latex
+    fi
+    rsync -r --update Dedman-Thesis-Latex-Template/latex/user_commands.tex ./latex/
+    rsync -r --update Dedman-Thesis-Latex-Template/latex/FrontPages.tex ./latex/
+    rsync -r --update Dedman-Thesis-Latex-Template/src .
     rsync -r --update Dedman-Thesis-Latex-Template/images .
     rsync -r --update Dedman-Thesis-Latex-Template/bib .
     rsync -r --update Dedman-Thesis-Latex-Template/Makefile .
 
     # Use the template base files
-    sed -i 's/sty\//Dedman-Thesis-Latex-Template\/sty/g' user_thesis.tex
+    sed -i 's/sty\//Dedman-Thesis-Latex-Template\/sty\//g' user_thesis.tex
     sed -i 's/latex\/packages/Dedman-Thesis-Latex-Template\/latex\/packages/g' user_thesis.tex
     sed -i 's/latex\/preamble/Dedman-Thesis-Latex-Template\/latex\/preamble/g' user_thesis.tex
     sed -i 's/latex\/custom_commands/Dedman-Thesis-Latex-Template\/latex\/custom_commands/g' user_thesis.tex
