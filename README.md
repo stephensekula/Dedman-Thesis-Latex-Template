@@ -19,13 +19,13 @@ To use the template, add the template as a Git submodule after you've setup your
 git submodule add git@github.com:matthewfeickert/Dedman-Thesis-Latex-Template.git
 ```
 
+> Note: The above assumes that you've setup an `ssh` key with GitHub
+
 Then **from your thesis repository** run the installer
 
 ```bash
 bash Dedman-Thesis-Latex-Template/update_template.sh install
 ```
-
-> Note: The above assumes that you've setup an `ssh` key with GitHub
 
 You should now have the template setup in your thesis repository and it should compile.
 
@@ -40,13 +40,11 @@ After checking that it complies, you'll want to rename a few things and organize
 - `src/acknowledgements.tex`: Replace with your acknowledgements
 - `src/appendix_A.tex`: Rename to a descriptive name of the contents of the file
 
-> Note: There is probably some smarter way to incorporate changes directly into a thesis repo using Git submodules or using selective `git cherry-pick`. However, the maintainer hasn't spent time figuring that out yet.
-
 Now that you've added the submodule remember to commit the generated `.gitmodules` file and the submodule.
 
 ### Update
 
-To update the submodule with the remote and then update your base LaTeX files run the updater.
+To update the submodule with the remote (updating your base LaTeX files) run the updater.
 
 ```bash
 bash Dedman-Thesis-Latex-Template/update_template.sh
