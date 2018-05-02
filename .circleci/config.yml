@@ -22,13 +22,11 @@ jobs:
           command: |
             cd ..
             git init .
-            # Problably a better way to do the lines below than mv
-            mv project Dedman-Thesis-Latex-Template
+            cp -r project Dedman-Thesis-Latex-Template
             bash Dedman-Thesis-Latex-Template/update_template.sh install
             make final
             echo ""
             ls -la
-            mv Dedman-Thesis-Latex-Template project
       - deploy:
        # For Docker builds disable host key checking. Be aware that by adding
        # that you are suspectible to man-in-the-middle attacks.
