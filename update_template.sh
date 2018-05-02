@@ -31,6 +31,13 @@ function update {
     git submodule update --recursive --remote
 }
 
+function remove {
+    if [[ -f Makefile ]]; then
+        make realclean
+    fi
+    rm -rf Makefile user_thesis.tex src latex images bib
+}
+
 function main {
 
     if [[ "$1" == "install" ]]; then
@@ -43,6 +50,8 @@ function main {
         else
             echo "Updated base files. Please commit changes to Dedman-Thesis-Latex-Template"
         fi
+    elif [[ "$1" == "remove" ]]; then
+        remove
     else
         printf "Do you want to sync your base LaTeX files with the template? [Y/N]: "
         read -r response
