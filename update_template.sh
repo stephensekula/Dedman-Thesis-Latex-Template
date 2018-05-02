@@ -20,11 +20,13 @@ function install {
     rsync -r --update Dedman-Thesis-Latex-Template/Makefile .
 
     # Use the template base files
-    sed -i 's/sty\//Dedman-Thesis-Latex-Template\/sty\//g' user_thesis.tex
-    sed -i 's/latex\/packages/Dedman-Thesis-Latex-Template\/latex\/packages/g' user_thesis.tex
-    sed -i 's/latex\/packages/Dedman-Thesis-Latex-Template\/latex\/packages/g' latex/standalone_abstract.tex
-    sed -i 's/latex\/preamble/Dedman-Thesis-Latex-Template\/latex\/preamble/g' user_thesis.tex
-    sed -i 's/latex\/custom_commands/Dedman-Thesis-Latex-Template\/latex\/custom_commands/g' user_thesis.tex
+    # -i.bak is used for compatability across GNU and BSD/macOS sed
+    sed -i.bak 's/sty\//Dedman-Thesis-Latex-Template\/sty\//g' user_thesis.tex
+    sed -i.bak 's/latex\/packages/Dedman-Thesis-Latex-Template\/latex\/packages/g' user_thesis.tex
+    sed -i.bak 's/latex\/packages/Dedman-Thesis-Latex-Template\/latex\/packages/g' latex/standalone_abstract.tex
+    sed -i.bak 's/latex\/preamble/Dedman-Thesis-Latex-Template\/latex\/preamble/g' user_thesis.tex
+    sed -i.bak 's/latex\/custom_commands/Dedman-Thesis-Latex-Template\/latex\/custom_commands/g' user_thesis.tex
+    rm -rf *.bak
 }
 
 function update {
