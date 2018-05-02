@@ -11,6 +11,7 @@ function install {
         mkdir latex
     fi
     rsync -r --update Dedman-Thesis-Latex-Template/latex/user_commands.tex ./latex/
+    rsync -r --update Dedman-Thesis-Latex-Template/latex/metadata.tex ./latex/
     rsync -r --update Dedman-Thesis-Latex-Template/latex/FrontPages.tex ./latex/
     rsync -r --update Dedman-Thesis-Latex-Template/latex/standalone_abstract.tex ./latex/
     rsync -r --update Dedman-Thesis-Latex-Template/src .
