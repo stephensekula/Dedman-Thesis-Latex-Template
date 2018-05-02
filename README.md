@@ -19,7 +19,7 @@ To use the template, add the template as a Git submodule after you've setup your
 git submodule add git@github.com:matthewfeickert/Dedman-Thesis-Latex-Template.git
 ```
 
-> Note: The above assumes that you've setup an `ssh` key with GitHub
+> Note: The above assumes that you've [setup an `ssh` key with GitHub](https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/)
 
 Then **from your thesis repository** run the installer
 
