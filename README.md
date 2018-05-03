@@ -35,6 +35,7 @@ After checking that it complies, you'll want to rename a few things and organize
 - `Makefile`: Change `user_thesis` to the name of whatever you renamed `user_thesis.tex` to
 - `bib/example.bib`: Rename to a descriptive name of the contents of the BibTeX file
    - **Suggestion:** Have multiple BibTeX files that correspond to different topics
+- `latex/metadata.tex`: Go through here and change all relevant data
 - `latex/FrontPages.tex`: Go through here and change all relevant data
 - `src/abstract.tex`: Replace with your abstract
 - `src/acknowledgements.tex`: Replace with your acknowledgements
