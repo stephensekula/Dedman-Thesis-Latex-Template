@@ -37,13 +37,23 @@ function main {
         install
     elif [[ "$1" == "update" ]]; then
         update
-        echo "Updated base files. Please commit changes to .gitmodules"
+        git diff --quiet Dedman-Thesis-Latex-Template
+        if [[ $? -eq 0 ]]; then
+            echo "The base files are up to date."
+        else
+            echo "Updated base files. Please commit changes to Dedman-Thesis-Latex-Template"
+        fi
     else
         printf "Do you want to sync your base LaTeX files with the template? [Y/N]: "
         read -r response
         if [[ "${response,,}" == "y" ]]; then
             update
-            echo "Updated base files. Please commit changes to .gitmodules"
+            git diff --quiet Dedman-Thesis-Latex-Template
+            if [[ $? -eq 0 ]]; then
+                echo "The base files are up to date."
+            else
+                echo "Updated base files. Please commit changes to Dedman-Thesis-Latex-Template"
+            fi
         fi
     fi
 }
