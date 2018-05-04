@@ -26,7 +26,7 @@ function install {
     sed -i.bak 's/latex\/packages/Dedman-Thesis-Latex-Template\/latex\/packages/g' latex/standalone_abstract.tex
     sed -i.bak 's/latex\/preamble/Dedman-Thesis-Latex-Template\/latex\/preamble/g' user_thesis.tex
     sed -i.bak 's/latex\/custom_commands/Dedman-Thesis-Latex-Template\/latex\/custom_commands/g' user_thesis.tex
-    rm -rf *.bak
+    find . -name \*.bak -type f -delete
 }
 
 function update {
