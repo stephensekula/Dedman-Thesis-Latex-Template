@@ -20,15 +20,24 @@ function install {
     rsync -r --update Dedman-Thesis-Latex-Template/Makefile .
 
     # Use the template base files
-    sed -i 's/sty\//Dedman-Thesis-Latex-Template\/sty\//g' user_thesis.tex
-    sed -i 's/latex\/packages/Dedman-Thesis-Latex-Template\/latex\/packages/g' user_thesis.tex
-    sed -i 's/latex\/packages/Dedman-Thesis-Latex-Template\/latex\/packages/g' latex/standalone_abstract.tex
-    sed -i 's/latex\/preamble/Dedman-Thesis-Latex-Template\/latex\/preamble/g' user_thesis.tex
-    sed -i 's/latex\/custom_commands/Dedman-Thesis-Latex-Template\/latex\/custom_commands/g' user_thesis.tex
+    # -i.bak is used for compatability across GNU and BSD/macOS sed
+    sed -i.bak 's/sty\//Dedman-Thesis-Latex-Template\/sty\//g' user_thesis.tex
+    sed -i.bak 's/latex\/packages/Dedman-Thesis-Latex-Template\/latex\/packages/g' user_thesis.tex
+    sed -i.bak 's/latex\/packages/Dedman-Thesis-Latex-Template\/latex\/packages/g' latex/standalone_abstract.tex
+    sed -i.bak 's/latex\/preamble/Dedman-Thesis-Latex-Template\/latex\/preamble/g' user_thesis.tex
+    sed -i.bak 's/latex\/custom_commands/Dedman-Thesis-Latex-Template\/latex\/custom_commands/g' user_thesis.tex
+    rm -rf *.bak
 }
 
 function update {
     git submodule update --recursive --remote
+}
+
+function remove {
+    if [[ -f Makefile ]]; then
+        make realclean
+    fi
+    rm -rf Makefile user_thesis.tex src latex images bib
 }
 
 function main {
@@ -43,6 +52,8 @@ function main {
         else
             echo "Updated base files. Please commit changes to Dedman-Thesis-Latex-Template"
         fi
+    elif [[ "$1" == "remove" ]]; then
+        remove
     else
         printf "Do you want to sync your base LaTeX files with the template? [Y/N]: "
         read -r response
