@@ -6,18 +6,18 @@ function install {
     git submodule update --recursive
 
     # Install files for the user to edit
-    rsync -r --update Dedman-Thesis-Latex-Template/user_thesis.tex .
+    cp Dedman-Thesis-Latex-Template/user_thesis.tex .
     if [ ! -d "latex" ]; then
         mkdir latex
     fi
-    rsync -r --update Dedman-Thesis-Latex-Template/latex/user_commands.tex ./latex/
-    rsync -r --update Dedman-Thesis-Latex-Template/latex/metadata.tex ./latex/
-    rsync -r --update Dedman-Thesis-Latex-Template/latex/FrontPages.tex ./latex/
-    rsync -r --update Dedman-Thesis-Latex-Template/latex/standalone_abstract.tex ./latex/
-    rsync -r --update Dedman-Thesis-Latex-Template/src .
-    rsync -r --update Dedman-Thesis-Latex-Template/images .
-    rsync -r --update Dedman-Thesis-Latex-Template/bib .
-    rsync -r --update Dedman-Thesis-Latex-Template/Makefile .
+    cp Dedman-Thesis-Latex-Template/latex/user_commands.tex ./latex/
+    cp Dedman-Thesis-Latex-Template/latex/metadata.tex ./latex/
+    cp Dedman-Thesis-Latex-Template/latex/FrontPages.tex ./latex/
+    cp Dedman-Thesis-Latex-Template/latex/standalone_abstract.tex ./latex/
+    cp -r Dedman-Thesis-Latex-Template/src .
+    cp -r Dedman-Thesis-Latex-Template/images .
+    cp -r Dedman-Thesis-Latex-Template/bib .
+    cp Dedman-Thesis-Latex-Template/Makefile .
 
     # Use the template base files
     # -i.bak is used for compatability across GNU and BSD/macOS sed
