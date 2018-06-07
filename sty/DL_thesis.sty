@@ -516,13 +516,12 @@
            \def\Dedicate#1{\def\dedication{#1}}
            \def\ThesisType#1{\def\thesistype{#1  }}
 
+           \pagenumbering{roman}
            %--------------------------------------------------------------------
            % BEGIN Title Page
            %--------------------------------------------------------------------
            \def\Titlepage{
-            \thispagestyle{empty}  %added by saeed -- hyperref package fix
-            \pagenumbering{alph} % added by saeed
-            \setcounter{page}{0} %added by saeed
+            \thispagestyle{empty}
             \raggedbottom
             {\baselineskip 0.35in
              %    \vbox{\vspace{0.64in}}
@@ -568,10 +567,7 @@
                 %--------------------------------------------------------------------
                 \def\Approvalpage{
                  \thispagestyle{empty}  %added by saeed
-                 \pagenumbering{alph} % added by saeed
                  \setcounter{page}{1}
-                 %\pagenumbering{alph}  %%commented out by saeed
-                 %\setcounter{page}{0}  %%commented out by saeed
                  \raggedbottom
                  \vbox{\vspace{0.3in}}   %% 0.64 original julie %% changed by saeed to 0.3
                  \udtitle
@@ -624,8 +620,6 @@
                 % BEGIN Abstract Page
                 %--------------------------------------------------------------------
                 \newenvironment{Abstract}{\newpage
-                 \pagenumbering{roman}   %% added by saeed
-                 \setcounter{page}{4}    %% added by saeed % change to 4 in thesis, set to 3 for proposal
                  %\addcontentsline{toc}{chapter}{\protect \noindent
                  %{ABSTRACT}} %added by saeed -- include abstract in toc %% commented out by saeed after adding
                  \noindent
@@ -691,8 +685,7 @@
                             % BEGIN Copyright page per Dedman 2016 Standards TCM
                             %--------------------------------------------------------------------
                             \newenvironment{Copyright}{\newpage
-                             \pagenumbering{roman}
-                             \setcounter{page}{3}
+                            \thispagestyle{empty}
                              \vbox{\vskip 0.5in}   % Sets top margin with line below
                              \begin{center} Copyright (\the\year{}) \end{center}
                              \begin{center} \vskip -0.125in \myfirstname \mylastname\Suffix \end{center}
@@ -707,8 +700,6 @@
                             %--------------------------------------------------------------------
 
                             \newenvironment{Acknowledgment}{\newpage
-                             \pagenumbering{roman}   %% added by saeed
-                             \setcounter{page}{3}    %% added by saeed
                              \parskip 0.00in
                              %%
                              %% Next line used to be \vbox{\vskip 0.63in} MARIO, 06/96
