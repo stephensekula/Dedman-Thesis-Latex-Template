@@ -465,10 +465,65 @@
 
 \parskip .15in  % Defines paragraph spacing
 
-%--------------------------------------------------------------------
-% BEGIN Define the Front Pagess, variables, and title formats
-%--------------------------------------------------------------------
-%
+% Define the Front Pages, variables, and title formats
+
+% \settable provided by Andreas Strauman
+% https://tex.stackexchange.com/a/435611/152544
+\makeatletter
+\let\ea = \expandafter
+\newcommand{\settable}[2][\@nil]{
+
+\ea\def\csname #2\ea\endcsname##1{
+\ea\def\csname @#2\endcsname{##1}
+\ea\def\csname @#2@noerror\endcsname{##1}
+\ea\def\csname isset@#2\endcsname{1}
+}
+\ea\def\csname ifset@#2\endcsname##1##2{
+\ifcsname isset@#2\endcsname%
+ ##1
+\else
+ ##2
+\fi
+}
+
+\ea\def\csname default@#2\endcsname{#1}%
+\ea\def\csname @#2@noerror\endcsname{#1}%
+
+\ea\ifx\csname default@#2\endcsname\@nnil
+ \ea\def\csname default@#2\endcsname{
+  \textbackslash #2%
+  {\ea\@latex@warning{\ #2 not given}}
+ }
+\fi
+
+\ea\def\csname @#2\endcsname{
+ \csname default@#2\endcsname
+}
+}
+
+\settable{AuthorFirstName}
+\settable{AuthorLastName}
+\settable{ThesisTitle}
+\settable{GraduateDepartment}
+
+\settable{BachelorDegreeType}
+\settable{BachelorDegreeMajor}
+\settable{BachelorDegreeUniversity}
+
+\settable{MasterDegreeType}
+\settable{MasterDegreeMajor}
+\settable{MasterDegreeUniversity}
+
+\settable{ThesisDefenseDateYear}
+\settable{ThesisDefenseDateMonth}
+\settable{ThesisDefenseDateDay}
+
+\settable{GraduationDateYear}
+\settable{GraduationDateMonth}
+\settable{GraduationDateDay}
+
+\settable{SMUCollege}
+
 \newcount\numdegree
 \newcount\numCmember
 
@@ -496,12 +551,10 @@
 \def\DegreeDate#1{\def\ddate{#1}}
 \def\ThesisDate#1{\def\dsdate{#1}}
 
-\def\Advisor#1{\def\myadvisor{#1}}
+\newcommand{\Advisor}[1]{\def\myadvisor{#1}}
 \def\AdvisorTitle#1{\def\myadvisortitle{#1}}
-% \def\AdvisorA#1{\def\myadvisorA{#1}}
-% \def\AdvisorB#1{\def\myadvisorB{#1}}
 
-\def\CommitteeMemberA#1{\numCmember=1 \def\memberA{#1}}
+\newcommand{\CommitteeMemberA}[1]{\numCmember=1 \def\memberA{#1}}
 \def\CommitteeMemberTitleA#1{\def\membertitleA{#1}}
 \def\CommitteeMemberB#1{\numCmember=2 \def\memberB{#1}}
 \def\CommitteeMemberTitleB#1{\def\membertitleB{#1}}
@@ -739,7 +792,7 @@
  \newcount\numfigure
  \newcount\numtable
  \newcount\chaptertest
- \def\indexfile{\jobname.idx}
+ \newcommand{\indexfile}{\jobname.idx}
  \immediate\openin7 \jobname.idx
  \ifeof7 \message{No file \indexfile}
  \else \immediate\closein7 \input{\indexfile} \fi
@@ -782,10 +835,7 @@
  \appendix
  \addtocontents{toc}{\protect\noindent APPENDIX \hfill
   \protect\vskip 0.05in} } %end StartAppendix
-%--------------------------------------------------------------------
-% END Define the Front Pages, variables, and title formats
-%--------------------------------------------------------------------
-%
+
 %----------------------------------------------------------------------
 %  The following definitions related to the baselineskip are for the  |
 %  smaller spacing in float, list, tabular and tabbing environments   |
