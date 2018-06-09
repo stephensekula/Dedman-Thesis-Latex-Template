@@ -235,77 +235,77 @@
 %----- For figures  ---------------------------------------------------
 
 \newcommand{\myfigureold}[3]{ \begin{figure}[tbp]
- \begin{center}
-  \fbox{
-   \begin{minipage}[t]{5.7in}
-    \rule[-.1cm]{0cm}{0.5cm} % changed by saeed to 0.01cm was 0.5cm
-    \centerline{\psfig{#1}}
-   \end{minipage}
-  }
- \end{center}
- \caption{#2} \label{#3} \vskip -0.14in \end{figure} } % changed by saeed was -0.14 changed to -0.01in
+  \begin{center}
+   \fbox{
+    \begin{minipage}[t]{5.7in}
+     \rule[-.1cm]{0cm}{0.5cm} % changed by saeed to 0.01cm was 0.5cm
+     \centerline{\psfig{#1}}
+    \end{minipage}
+   }
+  \end{center}
+  \caption{#2} \label{#3} \vskip -0.14in \end{figure} } % changed by saeed was -0.14 changed to -0.01in
 
 \newcommand{\mytabfig}[3]{ \begin{figure}[tbp]
- \begin{center}
-  \fbox{
-   \begin{minipage}[t]{5.7in}
-    \rule[-.1cm]{0cm}{0.5cm} % changed by saeed to 0.01cm was 0.5cm
-    #1
-   \end{minipage}
-  }
- \end{center}
- \caption{#2} \label{#3} \vskip -0.14in \end{figure} } % changed by saeed was -0.14 changed to -0.01in
+  \begin{center}
+   \fbox{
+    \begin{minipage}[t]{5.7in}
+     \rule[-.1cm]{0cm}{0.5cm} % changed by saeed to 0.01cm was 0.5cm
+     #1
+    \end{minipage}
+   }
+  \end{center}
+  \caption{#2} \label{#3} \vskip -0.14in \end{figure} } % changed by saeed was -0.14 changed to -0.01in
 
 \newcommand{\myfigure}[3]{ \begin{figure}[tbp]
- \begin{center}
-  #1
- \end{center}
- \caption{#2} \label{#3} \vskip -0.14in \end{figure} } % changed by saeed was -0.14 changed to -0.01in
+  \begin{center}
+   #1
+  \end{center}
+  \caption{#2} \label{#3} \vskip -0.14in \end{figure} } % changed by saeed was -0.14 changed to -0.01in
 
 \newcommand{\mytable}[3]{ \begin{table}[tbp]
- \begin{center}
-  \caption{#2}
-  #1
-  \label{#3} \vskip -0.01in \end{center} \end{table} }
+  \begin{center}
+   \caption{#2}
+   #1
+   \label{#3} \vskip -0.01in \end{center} \end{table} }
 
- \newcommand{\myendfig}{\vskip -0.14in \end{figure} } % changed by saeed was -0.14in changed to -0.01in
- \newcommand{\myendtab}{\vskip -0.01in \end{table} }
+\newcommand{\myendfig}{\vskip -0.14in \end{figure} } % changed by saeed was -0.14in changed to -0.01in
+\newcommand{\myendtab}{\vskip -0.01in \end{table} }
 
- %----------------- theorem definitions --------------------------------
+%----------------- theorem definitions --------------------------------
 
- \newtheorem{ex}{Example}[chapter]
- \newtheorem{theor}{Theorem}[chapter]
- \newtheorem{mtd}{Method}[chapter]
- \newtheorem{mydef}{Definition}[chapter]
- %\newtheorem{mylem}{Lemma}[chapter]
- \newtheorem{mylem}[theor]{Lemma}
+\newtheorem{ex}{Example}[chapter]
+\newtheorem{theor}{Theorem}[chapter]
+\newtheorem{mtd}{Method}[chapter]
+\newtheorem{mydef}{Definition}[chapter]
+%\newtheorem{mylem}{Lemma}[chapter]
+\newtheorem{mylem}[theor]{Lemma}
 
- %\newtheorem{algorithm}{Algorithm}[chapter]
- %\newtheorem{corollary}[theorem]{Corollary}
- %\newtheorem{proposition}{Proposition}[section]
- %\newtheorem{remark}{Remark}[section]
+%\newtheorem{algorithm}{Algorithm}[chapter]
+%\newtheorem{corollary}[theorem]{Corollary}
+%\newtheorem{proposition}{Proposition}[section]
+%\newtheorem{remark}{Remark}[section]
 
- %----------------------------------------------------------------------
- %\font\pf=rpcrr at 11pt    % TCM Comment out if using Overleaf.com
- %\font\spf=rpcrr at 11pt   % TCM Comment out if using Overleaf.com
- %----------------------------------------------------------------------
+%----------------------------------------------------------------------
+%\font\pf=rpcrr at 11pt    % TCM Comment out if using Overleaf.com
+%\font\spf=rpcrr at 11pt   % TCM Comment out if using Overleaf.com
+%----------------------------------------------------------------------
 
- %-------------------- environment definitions -------------------------
- \newenvironment{example}{\begin{ex} \rm}{\hfill \qed \end{ex}}
- \newenvironment{theorem}{\begin{theor}}{ \end{theor}}
- \newenvironment{method}{\begin{mtd} \rm}{\hfill \qed \end{mtd}}
- \newenvironment{definition}{\begin{mydef} \rm}{\hfill \qed \end{mydef}}
- %\newenvironment{lemma}{\begin{mylem} \rm}{\hfill \qed \end{mylem}}
- \newenvironment{lemma}{\begin{mylem}}{ \end{mylem}}
+%-------------------- environment definitions -------------------------
+\newenvironment{example}{\begin{ex} \rm}{\hfill \qed \end{ex}}
+\newenvironment{theorem}{\begin{theor}}{ \end{theor}}
+\newenvironment{method}{\begin{mtd} \rm}{\hfill \qed \end{mtd}}
+\newenvironment{definition}{\begin{mydef} \rm}{\hfill \qed \end{mydef}}
+%\newenvironment{lemma}{\begin{mylem} \rm}{\hfill \qed \end{mylem}}
+\newenvironment{lemma}{\begin{mylem}}{ \end{mylem}}
 
- \newenvironment{vers}{\vspace{-0.1cm} \begin{verse}}{\vspace{-0.1cm} \end{verse}}
- \newenvironment{vers2}{\vspace{-0.2cm} \begin{verse}}{\vspace{-0.1cm} \end{verse}}
+\newenvironment{vers}{\vspace{-0.1cm} \begin{verse}}{\vspace{-0.1cm} \end{verse}}
+\newenvironment{vers2}{\vspace{-0.2cm} \begin{verse}}{\vspace{-0.1cm} \end{verse}}
 
- \newenvironment{proof}[0]{\vspace{0.3cm}\noindent {\bf Proof:} \rm }{\hfill \lqed}
- \newenvironment{proof-of}[1]{\noindent {\bf Proof of #1:}}{\hfill \lqed}
- %----------------------------------------------------------------------
- % END Misc. Commands defined by students
- %----------------------------------------------------------------------
- %======================================================================
- % END SMU Custom Commands
- %======================================================================
+\newenvironment{proof}[0]{\vspace{0.3cm}\noindent {\bf Proof:} \rm }{\hfill \lqed}
+\newenvironment{proof-of}[1]{\noindent {\bf Proof of #1:}}{\hfill \lqed}
+%----------------------------------------------------------------------
+% END Misc. Commands defined by students
+%----------------------------------------------------------------------
+%======================================================================
+% END SMU Custom Commands
+%======================================================================
