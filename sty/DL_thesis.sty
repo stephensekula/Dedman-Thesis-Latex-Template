@@ -501,60 +501,61 @@
 }
 }
 
-\settable{AuthorFirstName}
-\settable{AuthorLastName}
-\settable{ThesisTitle}
-\settable{GraduateDepartment}
+\settable[SET AuthorFirstName]{AuthorFirstName}
+\settable[SET AuthorLastName]{AuthorLastName}
+\settable[]{AuthorNameSuffix} % Need to fix suffix
+% \settable{AuthorNameSuffix}
+\settable[SET GraduateDepartment]{GraduateDepartment}
 
-\settable{BachelorDegreeType}
-\settable{BachelorDegreeMajor}
-\settable{BachelorDegreeUniversity}
+\settable[SET BachelorDegreeType]{BachelorDegreeType}
+\settable[SET BachelorDegreeMajor]{BachelorDegreeMajor}
+\settable[SET BachelorDegreeUniversity]{BachelorDegreeUniversity}
 
-\settable{MasterDegreeType}
-\settable{MasterDegreeMajor}
-\settable{MasterDegreeUniversity}
+\settable[]{MasterDegreeType}
+\settable[]{MasterDegreeMajor}
+\settable[]{MasterDegreeUniversity}
 
-\settable{ThesisDefenseDateYear}
-\settable{ThesisDefenseDateMonth}
-\settable{ThesisDefenseDateDay}
+\settable[SET ThesisDefenseDateYear]{ThesisDefenseDateYear}
+\settable[SET ThesisDefenseDateMonth]{ThesisDefenseDateMonth}
+\settable[SET ThesisDefenseDateDay]{ThesisDefenseDateDay}
 
-\settable{GraduationDateYear}
-\settable{GraduationDateMonth}
-\settable{GraduationDateDay}
+\settable[SET GraduationDateYear]{GraduationDateYear}
+\settable[SET GraduationDateMonth]{GraduationDateMonth}
+\settable[SET GraduationDateDay]{GraduationDateDay}
 
-\settable{SMUCollege}
+\settable[Southern Methodist University]{University}
+\settable[SET SMUCollege]{SMUCollege}
 
 \newcount\numdegree
 \newcount\numCmember
 
 \def\Null{ }
 
-\def\Name#1#2#3{\def\mylastname{ #1} \def\myfirstname{ #2} \def\Suffix{#3}}
-
-\def\Title#1#2#3{\def\dtitleA{#1}\def\dtitleB{#2}\def\dtitleC{#3}
- \def\udtitle{\begin{center}
+\newcommand{\ThesisTitle}[3]{%
+ \newcommand{\dtitleA}{#1}%
+ \newcommand{\dtitleB}{#2}%
+ \newcommand{\dtitleC}{#3}%
+ \newcommand{\udtitle}{%
+  \begin{center}
    \if\dtitleA\Null \else\uppercase{#1} \\ \fi
    \if\dtitleB\Null \else\uppercase{#2} \\ \fi
    \if\dtitleC\Null \else\uppercase{#3} \fi
-  \end{center}}}
+  \end{center}%
+ }%
+}
 
-\def\DegreeA#1{\numdegree=1 \def\mydegreeA{#1}}
-\def\DegreeB#1{\numdegree=2 \def\mydegreeB{#1}}
-\def\DegreeC#1{\numdegree=3 \def\mydegreeC{#1}}
-\def\DegreeD#1{\numdegree=4 \def\mydegreeD{#1}}
-\def\DegreeE#1{\numdegree=5 \def\mydegreeE{#1}}
+\newcommand{\FirstDegree}[1]{\numdegree=1 \newcommand{\DegreeA}{#1}}
+\newcommand{\SecondDegree}[1]{\numdegree=2 \newcommand{\DegreeB}{#1}}
+\newcommand{\ThirdDegree}[1]{\numdegree=3 \newcommand{\DegreeC}{#1}}
+\newcommand{\FourthDegree}[1]{\numdegree=4 \newcommand{\DegreeD}{#1}}
 
-\def\DegreeSought#1{\def\mydegree{#1}}
-\def\Major#1{\def\mymajor{#1}}
-\def\University#1{\def\myuniversity{#1}}
-\def\School#1{\def\myschool{#1}}
-\def\DegreeDate#1{\def\ddate{#1}}
-\def\ThesisDate#1{\def\dsdate{#1}}
+\settable[Doctor of Philosophy]{DegreeSought}
+\settable[SET GraduateDepartment]{GraduateDepartment}
 
-\newcommand{\Advisor}[1]{\def\myadvisor{#1}}
-\def\AdvisorTitle#1{\def\myadvisortitle{#1}}
+\settable[SET AdvisorFullName]{AdvisorFullName}
+\settable[SET AdvisorTitle]{AdvisorTitle}
 
-\newcommand{\CommitteeMemberA}[1]{\numCmember=1 \def\memberA{#1}}
+\newcommand{\CommitteeMemberA}[1]{\numCmember=1 \newcommand{\memberA}{#1}}
 \def\CommitteeMemberTitleA#1{\def\membertitleA{#1}}
 \def\CommitteeMemberB#1{\numCmember=2 \def\memberB{#1}}
 \def\CommitteeMemberTitleB#1{\def\membertitleB{#1}}
@@ -566,8 +567,8 @@
 \def\CommitteeMemberTitleE#1{\def\membertitleE{#1}}
 
 
-\def\Dedicate#1{\def\dedication{#1}}
-\def\ThesisType#1{\def\thesistype{#1  }}
+\settable[SET Dedication]{Dedication}
+\settable[Dissertation]{ThesisType}
 
 \pagenumbering{roman}
 %--------------------------------------------------------------------
@@ -581,32 +582,30 @@
   \vbox{\vspace{0.1in}} %% Julie % changed by saeed was 0.482 changed to 0.1
   \udtitle
   \begin{center}
-   A \thesistype Presented to the Graduate Faculty of the
+   A \@ThesisType~Presented to the Graduate Faculty of the
    \\
-   \myschool \\
-   \myuniversity \\
+   \@SMUCollege \\
+   \@University \\
    in \\
    Partial Fulfillment of the Requirements \\
    for the degree of \\
-   \mydegree \\
+   \@DegreeSought \\
    with a \\
-   Major in \mymajor \\
-   by \\ % \  \\   % TCM Removed extra spacing per Dedman 2016 standards
-   %        \vskip 0.039in     %% add by Julie   % TCM Commented out per Dedman 2016 standards
-   \myfirstname \mylastname \Suffix
+   Major in \@GraduateDepartment \\
+   by \\
+   \@AuthorFirstName~\@AuthorLastName~\@AuthorNameSuffix
   \end{center}}
  \vskip -0.30in   %% Here it was -0.40in, MARIO 06/96
 
  \vbox{\baselineskip0.20in
   \begin{center} \
-   \ifnum\numdegree>0 \\ \mydegreeA \fi % TCM Removed () around \mydegreeX per Dedman Stds
-   \ifnum\numdegree>1 \\ \mydegreeB \fi % TCM Removed () around \mydegreeX per Dedman Stds
-   \ifnum\numdegree>2 \\ \mydegreeC \fi % TCM Removed () around \mydegreeX per Dedman Stds
-   \ifnum\numdegree>3 \\ \mydegreeD \fi % TCM Removed () around \mydegreeX per Dedman Stds
-   \ifnum\numdegree=5 \\ \mydegreeE \fi % TCM Removed () around \mydegreeX per Dedman Stds
+   \ifnum\numdegree>0 \\ \DegreeA \fi
+   \ifnum\numdegree>1 \\ \DegreeB \fi
+   \ifnum\numdegree>2 \\ \DegreeC \fi
+   \ifnum\numdegree>3 \\ \DegreeD \fi
    \\ \ \\ \  \\
    \vskip 0.118in     %% add by Julie
-   \ddate
+   \@GraduationDateMonth~\@GraduationDateDay, \@GraduationDateYear
   \end{center}}
 
  \newpage
@@ -631,9 +630,8 @@
     %\vspace{0.1in} by saeed needed for 6 members
     \vspace{0.2in}
     \rule[-0.1in]{3.0in}{1pt} \\
-    %                 \myadvisor \vspace{0.1in}  % by saeed if 6 members change to 0.1 inch
-    \myadvisor \vspace{-0.1in} \\ % TCM-Removed preceeding "Dr." to be consistant with other "members" format, changed vspace to -0.1in and added \\ to accommedate titles per Dedman 2016 Standards
-    \myadvisortitle \vspace{0.1in} \\
+    \@AdvisorFullName \vspace{-0.1in} \\
+    \@AdvisorTitle \vspace{0.1in} \\
     \ifnum\numCmember>0 \rule[-0.1in]{3.0in}{1pt} \\
      %                   \memberA \vspace{0.1in}  % by saeed if 6 members change to 0.1 inch
      \memberA \vspace{-0.1in} \\ % TCM-changed vspace to -0.1in to accommedate titles per Dedman 2016 Standards, added \\, and moved \fi to line below
@@ -677,18 +675,17 @@
  %{ABSTRACT}} %added by saeed -- include abstract in toc %% commented out by saeed after adding
  \noindent
  {\vbox{\baselineskip0.20in
-   \hbox{\mylastname\Suffix, \myfirstname}
+   \hbox{\@AuthorLastName~\@AuthorNameSuffix, \@AuthorFirstName}
    \ifnum\numdegree>1 \hbox{\ } \fi
    \ifnum\numdegree>2 \hbox{\ } \fi
    \ifnum\numdegree>3 \hbox{\ } \fi
    \ifnum\numdegree=5 \hbox{\ } \fi}
   \hfill
   \vbox{\baselineskip0.20in
-   \ifnum\numdegree>0 \hbox{\mydegreeA} \fi
-   \ifnum\numdegree>1 \hbox{\mydegreeB} \fi
-   \ifnum\numdegree>2 \hbox{\mydegreeC} \fi
-   \ifnum\numdegree>3 \hbox{\mydegreeD} \fi
-   \ifnum\numdegree=5 \hbox{\mydegreeE} \fi   }} \\
+   \ifnum\numdegree>0 \hbox{\DegreeA} \fi
+   \ifnum\numdegree>1 \hbox{\DegreeB} \fi
+   \ifnum\numdegree>2 \hbox{\DegreeC} \fi
+   \ifnum\numdegree>3 \hbox{\DegreeD} \fi   }} \\
  \vskip 0.04in   %% add by julie
  \noindent
  %%\if\dtitleA\Null \else $\underline{\hbox{\dtitleA { } \dtitleB}}$
@@ -710,21 +707,16 @@
  \noindent         %% TCM
  % \vspace{-0.05in}    %% mark by Julie
  \vspace{-0.009in}    %%  by Julie
- %              \vbox{\vskip0.120in \indent Advisor: \   Professor \myadvisor   % TCM Commented out Professor Prefix to use Dr.
- \vbox{\vskip0.120in \indent Advisor: \   \myadvisor  % TCM use above line if want Professor Prefix
+ \vbox{\vskip0.120in \indent Advisor: \   \@AdvisorFullName  % TCM use above line if want Professor Prefix
   \par\vskip 0.02in}
- % \vbox{\vskip0.10in \indent Advisor: \ Assistant Professor
- %%        \vbox{\vskip 4.5ex \indent Advisor: \ Assistant Professor
- %%  \myadvisorA \\
- %%  \indent Co-advisor: \ Associate Professor \myadvisorB \par\vskip 0.02in}
 
  \vspace{-0.04in}  %x% Julie
  %       \vskip 0.20in    %% TCM Removed space per Dedman 2016 standard
  \noindent
  \vbox{\baselineskip 0.28in
-  \hbox{\mydegree \ degree conferred \ddate}     %% commented out by saeed --proposal
+  \hbox{\@DegreeSought~degree conferred \@GraduationDateMonth~\@GraduationDateDay, \@GraduationDateYear}
 
-  \hbox{\thesistype completed \dsdate}   %%added by saeed --proposal
+  \hbox{\@ThesisType~completed \@ThesisDefenseDateMonth~\@ThesisDefenseDateDay, \@ThesisDefenseDateYear}
   \vskip -0.10in}
  \parskip 0.00in
 
@@ -741,7 +733,7 @@
  \thispagestyle{empty}
  \vbox{\vskip 0.5in}   % Sets top margin with line below
  \begin{center} Copyright (\the\year{}) \end{center}
- \begin{center} \vskip -0.125in \myfirstname \mylastname\Suffix \end{center}
+ \begin{center} \vskip -0.125in \@AuthorFirstName~\@AuthorLastName~\@AuthorNameSuffix \end{center}
  \begin{center} \vskip -0.125in All Rights Reserved \end{center} \par
  \vskip 0.0in
 }
@@ -812,10 +804,9 @@
  \numfigure=0
  \numtable=0
  \parskip 0.00in
- \if\dedication\Null \else
+ \if\@Dedication\Null \else
   \newpage  \pagenumbering{alph}\setcounter{page}{3} \thispagestyle{empty} %% added by saeed
-  % \begin{center} \vbox{\vskip 1.0in} \em{{\dedication}} \end{center}  % TCM Removed italics for dedication per Dedman 2016 standards
-  \begin{center} \vbox{\vskip 0.803in} {\dedication} \end{center} %% Julie - TCM Removed italics for dedication per Dedman 2016 standards
+  \begin{center} \vbox{\vskip 0.803in} {\@Dedication} \end{center} %% Julie - TCM Removed italics for dedication per Dedman 2016 standards
  \fi
 
  \addtocontents{toc}{\protect\noindent
@@ -863,13 +854,6 @@
 \numdegree=0
 \numCmember=0
 
-%T \def\dedication{ }
-%T \def\acknowledgments{ }
-%T \def\thesistype{your thesis type (dissertation or thesis)}
-%T \def\mylastname{your last name}
-%T \def\myfirstname{your first and middle name}
-%T \def\Suffix{ }
-%
 %----------------------
 %  Other definitions  |
 %----------------------
