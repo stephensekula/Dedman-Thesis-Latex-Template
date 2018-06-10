@@ -1,0 +1,29 @@
+% This file sets up the initial pages of the thesis/dissertation/praxis
+
+% Create the front pages of the thesis
+
+\ApprovalTitlePages%
+
+\Copyright%
+
+% If no dedication, move Acknowledgment to where dedication is and add to
+% Table of contents
+
+% \addcontentsline{toc}{chapter}{\protect \noindent {ACKNOWLEDGMENTS}}
+\begin{Acknowledgment}
+ \input{src/acknowledgements}
+\end{Acknowledgment}
+
+\begin{Abstract}
+ \input{src/abstract}
+\end{Abstract}
+
+\PreliminaryPages%
+
+% List of Symbols Page?
+% Uncomment to insert a list of symbols from symbols.tex (or elsewhere)
+%\begin{listofsymbols}
+%\input{symbols}
+%\end{listofsymbols}
+
+\Dedication{\input{src/dedication.tex}}

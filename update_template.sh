@@ -12,7 +12,6 @@ function install {
     fi
     cp Dedman-Thesis-Latex-Template/latex/user_commands.tex ./latex/
     cp Dedman-Thesis-Latex-Template/latex/metadata.tex ./latex/
-    cp Dedman-Thesis-Latex-Template/latex/FrontPages.tex ./latex/
     cp Dedman-Thesis-Latex-Template/latex/standalone_abstract.tex ./latex/
     cp -r Dedman-Thesis-Latex-Template/src .
     cp -r Dedman-Thesis-Latex-Template/images .
@@ -26,6 +25,7 @@ function install {
     sed -i.bak 's/latex\/packages/Dedman-Thesis-Latex-Template\/latex\/packages/g' latex/standalone_abstract.tex
     sed -i.bak 's/latex\/preamble/Dedman-Thesis-Latex-Template\/latex\/preamble/g' user_thesis.tex
     sed -i.bak 's/latex\/custom_commands/Dedman-Thesis-Latex-Template\/latex\/custom_commands/g' user_thesis.tex
+    sed -i.bak 's/latex\/front_pages/Dedman-Thesis-Latex-Template\/latex\/front_pages/g' user_thesis.tex
     find . -name \*.bak -type f -delete
 }
 

@@ -36,9 +36,10 @@ After checking that it complies, you'll want to rename a few things and organize
 - `bib/example.bib`: Rename to a descriptive name of the contents of the BibTeX file
    - **Suggestion:** Have multiple BibTeX files that correspond to different topics
 - `latex/metadata.tex`: Go through here and change all relevant data
-- `latex/FrontPages.tex`: Go through here and change all relevant data
+- `src/user_config.tex`: Replace with all of your personal data
 - `src/abstract.tex`: Replace with your abstract
 - `src/acknowledgements.tex`: Replace with your acknowledgements
+- `src/dedication.tex`: Replace with your thesis dedication
 - `src/appendix_A.tex`: Rename to a descriptive name of the contents of the file
 
 Now that you've added the submodule remember to commit the generated `.gitmodules` file and the submodule.
