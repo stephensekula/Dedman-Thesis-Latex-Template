@@ -507,14 +507,6 @@
 % \settable{AuthorNameSuffix}
 \settable[SET GraduateDepartment]{GraduateDepartment}
 
-\settable[SET BachelorDegreeType]{BachelorDegreeType}
-\settable[SET BachelorDegreeMajor]{BachelorDegreeMajor}
-\settable[SET BachelorDegreeUniversity]{BachelorDegreeUniversity}
-
-\settable[]{MasterDegreeType}
-\settable[]{MasterDegreeMajor}
-\settable[]{MasterDegreeUniversity}
-
 \settable[SET ThesisDefenseDateYear]{ThesisDefenseDateYear}
 \settable[SET ThesisDefenseDateMonth]{ThesisDefenseDateMonth}
 \settable[SET ThesisDefenseDateDay]{ThesisDefenseDateDay}
@@ -544,10 +536,30 @@
  }%
 }
 
-\newcommand{\FirstDegree}[1]{\numdegree=1 \newcommand{\DegreeA}{#1}}
-\newcommand{\SecondDegree}[1]{\numdegree=2 \newcommand{\DegreeB}{#1}}
-\newcommand{\ThirdDegree}[1]{\numdegree=3 \newcommand{\DegreeC}{#1}}
-\newcommand{\FourthDegree}[1]{\numdegree=4 \newcommand{\DegreeD}{#1}}
+\newcommand{\FirstDegree}{\numdegree=1%
+ \settable[SET FirstDegreeType]{FirstDegreeType}%
+ \settable[SET FirstDegreeMajor]{FirstDegreeMajor}%
+ \settable[SET FirstDegreeUniversity]{FirstDegreeUniversity}%
+ \newcommand{\DegreeA}{\@FirstDegreeType, \@FirstDegreeMajor, \@FirstDegreeUniversity}%
+}
+\newcommand{\SecondDegree}{\numdegree=2%
+ \settable[SET SecondDegreeType]{SecondDegreeType}%
+ \settable[SET SecondDegreeMajor]{SecondDegreeMajor}%
+ \settable[SET SecondDegreeUniversity]{SecondDegreeUniversity}%
+ \newcommand{\DegreeB}{\@SecondDegreeType, \@SecondDegreeMajor, \@SecondDegreeUniversity}%
+}
+\newcommand{\ThirdDegree}{\numdegree=3%
+ \settable[SET ThirdDegreeType]{ThirdDegreeType}%
+ \settable[SET ThirdDegreeMajor]{ThirdDegreeMajor}%
+ \settable[SET ThirdDegreeUniversity]{ThirdDegreeUniversity}%
+ \newcommand{\DegreeC}{\@ThirdDegreeType, \@ThirdDegreeMajor, \@ThirdDegreeUniversity}%
+}
+\newcommand{\FourthDegree}{\numdegree=4%
+ \settable[SET FourthDegreeType]{FourthDegreeType}%
+ \settable[SET FourthDegreeMajor]{FourthDegreeMajor}%
+ \settable[SET FourthDegreeUniversity]{FourthDegreeUniversity}%
+ \newcommand{\DegreeD}{\@FourthDegreeType, \@FourthDegreeMajor, \@FourthDegreeUniversity}%
+}
 
 \settable[Doctor of Philosophy]{DegreeSought}
 \settable[SET GraduateDepartment]{GraduateDepartment}
