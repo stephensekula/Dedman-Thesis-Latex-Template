@@ -1,3 +1,14 @@
+% Add \pdfstrcmp into LuaLaTeX
+% https://github.com/michal-h21/make4ht/issues/4#issuecomment-161023874
+\usepackage{ifluatex}
+\ifluatex
+ \usepackage{pdftexcmds}
+ \makeatletter
+ \let\pdfstrcmp\pdf@strcmp
+ \makeatother
+\fi
+\makeatletter
+
 %----------------------------------------------------
 %  The first part of this file is from 'rep12.sty'  |
 %----------------------------------------------------
@@ -472,6 +483,7 @@
 \makeatletter
 \let\ea = \expandafter
 \newcommand{\settable}[2][\@nil]{
+%%% example call \settable[\actionIfNotSet]{test}
 
 \ea\def\csname #2\ea\endcsname##1{
 \ea\def\csname @#2\endcsname{##1}
@@ -487,7 +499,12 @@
 }
 
 \ea\def\csname default@#2\endcsname{#1}%
-\ea\def\csname @#2@noerror\endcsname{#1}%
+\ifx#1\@nil\relax
+ % If no default value given, then set @noerror to empty.
+ \ea\def\csname @#2@noerror\endcsname{}%
+\else
+ \ea\def\csname @#2@noerror\endcsname{#1}%
+\fi
 
 \ea\ifx\csname default@#2\endcsname\@nnil
  \ea\def\csname default@#2\endcsname{
@@ -503,8 +520,7 @@
 
 \settable[SET AuthorFirstName]{AuthorFirstName}
 \settable[SET AuthorLastName]{AuthorLastName}
-\settable[]{AuthorNameSuffix} % Need to fix suffix
-% \settable{AuthorNameSuffix}
+\settable{AuthorNameSuffix}
 \settable[SET GraduateDepartment]{GraduateDepartment}
 
 \settable[SET ThesisDefenseDateYear]{ThesisDefenseDateYear}
@@ -605,7 +621,7 @@
    with a \\
    Major in \@GraduateDepartment \\
    by \\
-   \@AuthorFirstName~\@AuthorLastName~\@AuthorNameSuffix
+   \@AuthorFirstName~\@AuthorLastName~\@AuthorNameSuffix@noerror
   \end{center}}
  \vskip -0.30in   %% Here it was -0.40in, MARIO 06/96
 
@@ -687,7 +703,11 @@
  %{ABSTRACT}} %added by saeed -- include abstract in toc %% commented out by saeed after adding
  \noindent
  {\vbox{\baselineskip0.20in
-   \hbox{\@AuthorLastName~\@AuthorNameSuffix, \@AuthorFirstName}
+   \ifnum\pdfstrcmp{\@AuthorNameSuffix@noerror}{}=0%
+    \hbox{\@AuthorLastName, \@AuthorFirstName}%
+   \else%
+    \hbox{\@AuthorLastName~\@AuthorNameSuffix, \@AuthorFirstName}%
+   \fi%
    \ifnum\numdegree>1 \hbox{\ } \fi
    \ifnum\numdegree>2 \hbox{\ } \fi
    \ifnum\numdegree>3 \hbox{\ } \fi
@@ -745,7 +765,7 @@
  \thispagestyle{empty}
  \vbox{\vskip 0.5in}   % Sets top margin with line below
  \begin{center} Copyright (\the\year{}) \end{center}
- \begin{center} \vskip -0.125in \@AuthorFirstName~\@AuthorLastName~\@AuthorNameSuffix \end{center}
+ \begin{center} \vskip -0.125in \@AuthorFirstName~\@AuthorLastName~\@AuthorNameSuffix@noerror \end{center}
  \begin{center} \vskip -0.125in All Rights Reserved \end{center} \par
  \vskip 0.0in
 }
