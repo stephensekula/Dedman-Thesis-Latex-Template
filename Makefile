@@ -56,10 +56,39 @@ realclean: clean clean_figures
 	rm -f *.ps *.pdf
 
 final:
-	if [ -f *.aux ]; \
-		then make clean; \
+	if [ -f *.aux ]; then \
+		$(MAKE) clean; \
 	fi
-	make figures
-	make abstract
-	make text
-	make clean
+	$(MAKE) figures
+	$(MAKE) abstract
+	$(MAKE) text
+	$(MAKE) clean
+
+arXiv: realclean document
+	mkdir submit_to_arXiv
+	cp *.tex submit_to_arXiv
+	cp *.aux submit_to_arXiv/ms.aux
+	cp *.bbl submit_to_arXiv/ms.bbl
+	cp Makefile submit_to_arXiv
+	cp -r src latex bib images submit_to_arXiv
+	if [ -d Dedman-Thesis-Latex-Template ]; then \
+		cp -r Dedman-Thesis-Latex-Template submit_to_arXiv; \
+	elif [ -d sty ]; then # If testing in the template \
+		cp -r sty submit_to_arXiv; \
+	fi
+	mv submit_to_arXiv/*_thesis.tex submit_to_arXiv/ms.tex
+	# Change the FILENAME to be ms ignoreing commented lines
+	sed -i '/^ *#/d;s/#.*//;0,/FILENAME/s/.*/FILENAME = ms/' submit_to_arXiv/Makefile
+	if [ -d Dedman-Thesis-Latex-Template ]; then \
+		sed -i '/hyperref/,+d' submit_to_arXiv/Dedman-Thesis-Latex-Template/latex/packages.tex; # Remove hyperref for arXiv \
+		sed -i '/hyperref/,+d' submit_to_arXiv/Dedman-Thesis-Latex-Template/latex/custom_commands.tex; # Remove hyperref for arXiv \
+	elif [ -d sty ]; then \
+		sed -i '/hyperref/,+d' submit_to_arXiv/latex/packages.tex; # Remove hyperref for arXiv \
+		sed -i '/hyperref/,+d' submit_to_arXiv/latex/custom_commands.tex; # Remove hyperref for arXiv \
+	fi
+	tar -zcvf submit_to_arXiv.tar.gz submit_to_arXiv/
+	rm -rf submit_to_arXiv
+	$(MAKE) realclean
+
+clean_arXiv:
+	rm submit_to_arXiv.tar.gz
