@@ -67,7 +67,6 @@ final:
 arXiv: realclean document
 	mkdir submit_to_arXiv
 	cp *.tex submit_to_arXiv
-	cp *.aux submit_to_arXiv/ms.aux
 	cp *.bbl submit_to_arXiv/ms.bbl
 	cp Makefile submit_to_arXiv
 	cp -r src latex bib images submit_to_arXiv
@@ -86,6 +85,10 @@ arXiv: realclean document
 		sed -i '/hyperref/,+d' submit_to_arXiv/latex/packages.tex; # Remove hyperref for arXiv \
 		sed -i '/hyperref/,+d' submit_to_arXiv/latex/custom_commands.tex; # Remove hyperref for arXiv \
 	fi
+	# Having .tex and .pdf files of the same name will cause arXiv to delete the .pdf
+	find submit_to_arXiv/images/ -name "*.tex" -type f -delete
+	# arXiv requires .bib files to be compiled to .bbl files and will remove any .bib files
+	find submit_to_arXiv/ -name "*.bib" -type f -delete
 	tar -zcvf submit_to_arXiv.tar.gz submit_to_arXiv/
 	rm -rf submit_to_arXiv
 	$(MAKE) realclean
