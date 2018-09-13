@@ -9,6 +9,9 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Setup Environment Variables
+          command: echo "export TERM=xterm" >> $BASH_ENV
+      - run:
           name: Print current datetime
           command: date -u '+%Y-%m-%d %H:%M:%S'
       - run:
@@ -27,6 +30,13 @@ jobs:
             make final
             echo ""
             ls -la
+      - run:
+          name: Make arXiv submission tar.gz
+          command: |
+            cd ..
+            make arXiv
+            echo ""
+            tar -tf submit_to_arXiv.tar.gz
       - deploy:
        # For Docker builds disable host key checking. Be aware that by adding
        # that you are suspectible to man-in-the-middle attacks.
