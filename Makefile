@@ -87,11 +87,11 @@ arXiv: realclean document
 	sed -i.bak '/^ *#/d;s/#.*//;0,/FILENAME/s/.*/FILENAME = ms/' submit_to_arXiv/Makefile
 	# Remove hyperref for arXiv
 	if [ -d Dedman-Thesis-Latex-Template ]; then \
-		sed -i.bak '/hyperref/,+d' submit_to_arXiv/Dedman-Thesis-Latex-Template/latex/packages.tex; \
-		sed -i.bak '/hyperref/,+d' submit_to_arXiv/Dedman-Thesis-Latex-Template/latex/custom_commands.tex; \
+		sed -i.bak '/hyperref/d' submit_to_arXiv/Dedman-Thesis-Latex-Template/latex/packages.tex; \
+		sed -i.bak '/hyperref/d' submit_to_arXiv/Dedman-Thesis-Latex-Template/latex/custom_commands.tex; \
 	elif [ -d sty ]; then \
-		sed -i.bak '/hyperref/,+d' submit_to_arXiv/latex/packages.tex; \
-		sed -i.bak '/hyperref/,+d' submit_to_arXiv/latex/custom_commands.tex; \
+		sed -i.bak '/hyperref/d' submit_to_arXiv/latex/packages.tex; \
+		sed -i.bak '/hyperref/d' submit_to_arXiv/latex/custom_commands.tex; \
 	fi
 	find submit_to_arXiv/ -name "*.bak" -type f -delete
 	# Having .tex and .pdf files of the same name will cause arXiv to delete the .pdf
