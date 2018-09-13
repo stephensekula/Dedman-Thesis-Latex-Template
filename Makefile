@@ -78,18 +78,18 @@ arXiv: realclean document
 		rm submit_to_arXiv/Dedman-Thesis-Latex-Template/latex/user_commands.tex; \
 		rm submit_to_arXiv/Dedman-Thesis-Latex-Template/latex/metadata.tex; \
 		rm submit_to_arXiv/Dedman-Thesis-Latex-Template/latex/standalone_abstract.tex; \
-	elif [ -d sty ]; then # If testing in the template \
+	elif [ -d sty ]; then \
 		cp -r sty submit_to_arXiv; \
 	fi
 	mv submit_to_arXiv/*_thesis.tex submit_to_arXiv/ms.tex
-	# Change the FILENAME to be ms ignoreing commented lines
-	sed -i '/^ *#/d;s/#.*//;0,/FILENAME/s/.*/FILENAME = ms/' submit_to_arXiv/Makefile
+	# Change the FILENAME to ms while ignoring commented lines
+	# Remove hyperref for arXiv
 	if [ -d Dedman-Thesis-Latex-Template ]; then \
-		sed -i '/hyperref/,+d' submit_to_arXiv/Dedman-Thesis-Latex-Template/latex/packages.tex; # Remove hyperref for arXiv \
-		sed -i '/hyperref/,+d' submit_to_arXiv/Dedman-Thesis-Latex-Template/latex/custom_commands.tex; # Remove hyperref for arXiv \
+		sed -i '/hyperref/,+d' submit_to_arXiv/Dedman-Thesis-Latex-Template/latex/packages.tex; \
+		sed -i '/hyperref/,+d' submit_to_arXiv/Dedman-Thesis-Latex-Template/latex/custom_commands.tex; \
 	elif [ -d sty ]; then \
-		sed -i '/hyperref/,+d' submit_to_arXiv/latex/packages.tex; # Remove hyperref for arXiv \
-		sed -i '/hyperref/,+d' submit_to_arXiv/latex/custom_commands.tex; # Remove hyperref for arXiv \
+		sed -i '/hyperref/,+d' submit_to_arXiv/latex/packages.tex; \
+		sed -i '/hyperref/,+d' submit_to_arXiv/latex/custom_commands.tex; \
 	fi
 	# Having .tex and .pdf files of the same name will cause arXiv to delete the .pdf
 	find submit_to_arXiv/images/ -name "*.tex" -type f -delete
