@@ -71,7 +71,13 @@ arXiv: realclean document
 	cp Makefile submit_to_arXiv
 	cp -r src latex bib images submit_to_arXiv
 	if [ -d Dedman-Thesis-Latex-Template ]; then \
-		cp -r Dedman-Thesis-Latex-Template submit_to_arXiv; \
+		mkdir submit_to_arXiv/Dedman-Thesis-Latex-Template; \
+		cp Dedman-Thesis-Latex-Template/LICENSE submit_to_arXiv/Dedman-Thesis-Latex-Template/LICENSE; \
+		cp -r Dedman-Thesis-Latex-Template/sty submit_to_arXiv/Dedman-Thesis-Latex-Template/sty; \
+		cp -r Dedman-Thesis-Latex-Template/latex submit_to_arXiv/Dedman-Thesis-Latex-Template/latex; \
+		rm submit_to_arXiv/Dedman-Thesis-Latex-Template/latex/user_commands.tex; \
+		rm submit_to_arXiv/Dedman-Thesis-Latex-Template/latex/metadata.tex; \
+		rm submit_to_arXiv/Dedman-Thesis-Latex-Template/latex/standalone_abstract.tex; \
 	elif [ -d sty ]; then # If testing in the template \
 		cp -r sty submit_to_arXiv; \
 	fi
@@ -94,4 +100,6 @@ arXiv: realclean document
 	$(MAKE) realclean
 
 clean_arXiv:
-	rm submit_to_arXiv.tar.gz
+	if [ -f submit_to_arXiv.tar.gz ]; then \
+		rm submit_to_arXiv.tar.gz; \
+	fi
