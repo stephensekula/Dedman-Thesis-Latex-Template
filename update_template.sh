@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 function install {
     # In case using an older version of Git
@@ -57,7 +57,9 @@ function main {
     else
         printf "Do you want to sync your base LaTeX files with the template? [Y/N]: "
         read -r response
-        if [[ "${response,,}" == "y" ]]; then
+        # MacOS can't use Bash 4.0+, so use old lowercase method
+        response="$(echo ${response} | tr [:upper:] [:lower:])"
+        if [[ "${response}" == "y" ]]; then
             update
             git diff --quiet Dedman-Thesis-Latex-Template
             if [[ $? -eq 0 ]]; then
