@@ -11,6 +11,7 @@ function install {
         mkdir latex
     fi
     cp Dedman-Thesis-Latex-Template/latex/user_commands.tex ./latex/
+    cp Dedman-Thesis-Latex-Template/latex/user_packages.tex ./latex/
     cp Dedman-Thesis-Latex-Template/latex/metadata.tex ./latex/
     cp Dedman-Thesis-Latex-Template/latex/standalone_abstract.tex ./latex/
     cp -r Dedman-Thesis-Latex-Template/src .
