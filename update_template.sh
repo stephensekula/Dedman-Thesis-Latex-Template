@@ -34,7 +34,6 @@ function install {
     install_check "latex/user_packages.tex"
     install_check "latex/metadata.tex"
     cp Dedman-Thesis-Latex-Template/latex/standalone_abstract.tex ./latex/
-    install_check "latex/metadata.tex"
     if [[ ! -d "src"  ]]; then
         cp -r Dedman-Thesis-Latex-Template/src .
     else
