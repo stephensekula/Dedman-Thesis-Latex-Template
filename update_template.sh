@@ -1,5 +1,17 @@
 #!/usr/bin/env bash
 
+function validate_install {
+    if [[ -d "latex" ]] || [[ -d "src" ]] || [[ -d "sty" ]]; then
+        printf "\nWARNING: Template directory files already exist.\n"
+        printf "Exiting installation.\n\n"
+        printf "If you want to overwrite these files with an install pass:\n"
+        printf "install overwrite\n\n"
+        return 1
+    else
+        return 0
+    fi
+}
+
 function install_check () {
     if [[ -f "$1" ]]; then
         printf "\nWARNING!: ${1} already exists.\n\n"
@@ -74,7 +86,13 @@ function remove {
 function main {
 
     if [[ "$1" == "install" ]]; then
-        install
+        if [[ $# -eq 2 && "$2" == "overwrite" ]]; then
+            install
+        elif validate_install; then
+            install
+        else
+            exit 1
+        fi
     elif [[ "$1" == "update" ]]; then
         update
         git diff --quiet Dedman-Thesis-Latex-Template
@@ -102,4 +120,4 @@ function main {
     fi
 }
 
-main $1
+main "$@"
