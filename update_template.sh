@@ -1,5 +1,37 @@
 #!/usr/bin/env bash
 
+function validate_install {
+    if [[ -d "latex" ]] || [[ -d "src" ]] || [[ -d "sty" ]]; then
+        printf "\nWARNING: Template directory files already exist.\n"
+        printf "Exiting installation.\n\n"
+        printf "If you want to overwrite these files with an install pass:\n"
+        printf "install overwrite\n\n"
+        return 1
+    else
+        return 0
+    fi
+}
+
+function install_check () {
+    if [[ -f "$1" ]]; then
+        printf "\nWARNING!: ${1} already exists.\n\n"
+        printf "Do you want to overwrite ${1} with the template base version? [Y/N]: "
+        read -r response
+        response="$(echo ${response} | tr [:upper:] [:lower:])"
+        if [[ "${response}" == "y" ]]; then
+            cp Dedman-Thesis-Latex-Template/"${1}" ./"${1%/*}"
+            return 0
+        else
+            printf "\nYour version of ${1} has been left untouched.\n"
+            printf "Please verify that the template still works with your own files, "
+            printf "as it is meant to be installed from scratch.\n"
+            return 1
+        fi
+    else
+        cp Dedman-Thesis-Latex-Template/"${1}" ./"${1%/*}"
+    fi
+}
+
 function install {
     # In case using an older version of Git
     git submodule update --init --recursive
@@ -10,14 +42,24 @@ function install {
     if [ ! -d "latex" ]; then
         mkdir latex
     fi
-    cp Dedman-Thesis-Latex-Template/latex/user_commands.tex ./latex/
-    cp Dedman-Thesis-Latex-Template/latex/user_packages.tex ./latex/
-    cp Dedman-Thesis-Latex-Template/latex/metadata.tex ./latex/
+    install_check "latex/user_commands.tex"
+    install_check "latex/user_packages.tex"
+    install_check "latex/metadata.tex"
     cp Dedman-Thesis-Latex-Template/latex/standalone_abstract.tex ./latex/
-    cp -r Dedman-Thesis-Latex-Template/src .
+    if [[ ! -d "src"  ]]; then
+        cp -r Dedman-Thesis-Latex-Template/src .
+    else
+        install_check "src/abstract.tex"
+        install_check "src/acknowledgements.tex"
+        install_check "src/appendix_A.tex"
+        install_check "src/dedication.tex"
+        install_check "src/introduction.tex"
+        install_check "src/preface.tex"
+        install_check "src/user_config.tex"
+    fi
     cp -r Dedman-Thesis-Latex-Template/images .
     cp -r Dedman-Thesis-Latex-Template/bib .
-    cp Dedman-Thesis-Latex-Template/Makefile .
+    install_check "Makefile"
 
     # Use the template base files
     # -i.bak is used for compatability across GNU and BSD/macOS sed
@@ -44,7 +86,13 @@ function remove {
 function main {
 
     if [[ "$1" == "install" ]]; then
-        install
+        if [[ $# -eq 2 && "$2" == "overwrite" ]]; then
+            install
+        elif validate_install; then
+            install
+        else
+            exit 1
+        fi
     elif [[ "$1" == "update" ]]; then
         update
         git diff --quiet Dedman-Thesis-Latex-Template
@@ -72,4 +120,4 @@ function main {
     fi
 }
 
-main $1
+main "$@"
