@@ -15,6 +15,13 @@ jobs:
           name: Print current datetime
           command: date -u '+%Y-%m-%d %H:%M:%S'
       - run:
+          name: Inject Lorem Ipsum
+          command: |
+            echo "\usepackage{lipsum}" >> latex/packages.tex
+            echo "\lipsum[1-5]" >> src/acknowledgements.tex
+            echo "\lipsum[6-7]" >> src/abstract.tex
+            echo "\lipsum[8-11]" >> src/introduction.tex 
+      - run:
           name: Compile Template in Place
           command: |
             make final
