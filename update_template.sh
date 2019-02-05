@@ -42,6 +42,7 @@ function install {
     if [ ! -d "latex" ]; then
         mkdir latex
     fi
+    install_check ".latexmkrc"
     install_check "latex/user_commands.tex"
     install_check "latex/user_packages.tex"
     install_check "latex/metadata.tex"
@@ -53,6 +54,7 @@ function install {
         install_check "src/acknowledgements.tex"
         install_check "src/appendix_A.tex"
         install_check "src/dedication.tex"
+        install_check "src/glossary.tex"
         install_check "src/introduction.tex"
         install_check "src/preface.tex"
         install_check "src/user_config.tex"
