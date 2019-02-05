@@ -43,6 +43,10 @@ function install {
         mkdir latex
     fi
     install_check ".latexmkrc"
+    if [[ $? -eq 0 ]]; then
+        # Keep .latexmkrc under template control
+        ln -s -f Dedman-Thesis-Latex-Template/.latexmkrc .latexmkrc
+    fi
     install_check "latex/user_commands.tex"
     install_check "latex/user_packages.tex"
     install_check "latex/metadata.tex"
