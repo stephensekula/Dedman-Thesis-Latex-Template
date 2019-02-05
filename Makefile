@@ -46,8 +46,9 @@ clear_screen:
 
 clean:
 	rm -f *.aux *.bbl *.blg *.dvi *.idx *.lof *.log *.lot *.toc \
-		*.glg *.gls *.glo *.xdy *.nav *.out *.snm *.vrb *.mp \
-		*.synctex.gz *.brf *.fls *.fdb_latexmk
+		*.xdy *.nav *.out *.snm *.vrb *.mp \
+		*.synctex.gz *.brf *.fls *.fdb_latexmk \
+		*.glg *.gls *.glo *.ist *.alg *.acr *.acn
 
 clean_figures:
 	rm -f $(figure_list)

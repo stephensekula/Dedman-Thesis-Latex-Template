@@ -11,6 +11,9 @@
 \input{src/user_config.tex}
 \input{latex/metadata.tex}
 
+\makeglossaries
+\input{src/glossary.tex}
+
 % \thesisdraft % uncomment if want draft printing
 
 \begin{document}
@@ -26,6 +29,12 @@
  \StartAppendix%
 
  \input{src/appendix_A.tex}
+
+% Glossary
+% Check with specific department on the style to use
+\clearpage
+\glossarystyle{list}
+\printglossaries
 
  % Bibliography goes below
  % Check with specific department on the appropriate
