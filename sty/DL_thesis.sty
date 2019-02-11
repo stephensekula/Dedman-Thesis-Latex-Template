@@ -46,8 +46,6 @@
   \@afterindentfalse \secdef\@chapter\@schapter}
 
 \def\@chapter[#1]#2{\ifnum \c@secnumdepth >\m@ne
- \advance \numfigure by \c@figure
- \advance \numtable by \c@table
  \refstepcounter{chapter}
  \typeout{\@chapapp\space\thechapter.}
  \addcontentsline{toc}{chapter}{\protect
@@ -178,25 +176,22 @@
 %--------------------------------------------------------------------------
 %
 
-%==============================================================
+%======================================
 % BEGIN TOC, LOF, and LOT Customization
-%==============================================================
-%--------------------------------------------------------------
-% BEGIN TOC Customization
-%--------------------------------------------------------------
-\renewcommand\contentsname{TABLE OF CONTENTS} 					% Renames Table of Contents to all caps
-\def\@pnumwidth{1.55em}  % TCM Controls the distance between titles and page numbers in TOC
-\def\@tocrmarg {4.00em}  % TCM Controls the right margin of TOC
-\def\@dotsep{1.5}        % TCM Controls separation of dots in leaders
+%======================================
+
+% TOC
+\renewcommand\contentsname{TABLE OF CONTENTS} % Renames Table of Contents to all caps
+\def\@pnumwidth{1.55em} % TCM Controls the distance between titles and page numbers in TOC
+\def\@tocrmarg {4.00em} % TCM Controls the right margin of TOC
+\def\@dotsep{1.5} % TCM Controls separation of dots in leaders
 \setcounter{tocdepth}{3} % TCM Controls depth of TOC
 
-\def\tableofcontents{\@restonecolfalse\if@twocolumn\@restonecoltrue\onecolumn  % TCM Code reduces line spacing in TOC
+\def\tableofcontents{\@restonecolfalse\if@twocolumn\@restonecoltrue\onecolumn
  \fi\chapter*{TABLE OF CONTENTS\@mkboth{CONTENTS}{CONTENTS}}
- \vskip -0.4in %T Different from report.cls
- \@starttoc{toc}\if@restonecol\twocolumn\fi}
-%--------------------------------------------------------------
-% END TOC Customization
-%--------------------------------------------------------------
+ \vskip -0.4in
+ \@starttoc{toc}\if@restonecol\twocolumn\fi
+}
 
 %--------------------------------------------------------------
 % BEGIN LOF Customization
@@ -813,8 +808,6 @@
 % BEGIN Symbols Page
 %--------------------------------------------------------------------
 \def\ApprovalTitlePages{
- \newcount\numfigure
- \newcount\numtable
  \newcount\chaptertest
  \newcommand{\indexfile}{\jobname.idx}
  \immediate\openin7 \jobname.idx
@@ -825,39 +818,30 @@
 }
 
 \def\PreliminaryPages{
- %T \ifnum\numfigure>0 \listoffigures \fi
- %T \ifnum\numtable>0 \listoftables \fi}
- \tableofcontents % order is wrong. toc must be first then list of figures then list of tables
- \listoffigures %T If lof not displayed, remove ifnum
+ \tableofcontents
+ \listoffigures
  \listoftables
-} %T If lot not displayed, remove ifnum
+}
 
 \newenvironment{thesis}{
- \numfigure=0
- \numtable=0
  \parskip 0.00in
  \if\@Dedication\Null \else
   \newpage  \pagenumbering{alph}\setcounter{page}{3} \thispagestyle{empty} %% added by saeed
-  \begin{center} \vbox{\vskip 0.803in} {\@Dedication} \end{center} %% Julie - TCM Removed italics for dedication per Dedman 2016 standards
+  \begin{center}
+   \vbox{\vskip 0.803in} {\@Dedication}
+  \end{center}
  \fi
 
- \addtocontents{toc}{\protect\noindent
-  CHAPTER \hfill \protect\vskip 0.05in}
+ \addtocontents{toc}{\protect\noindent CHAPTER \hfill \protect\vskip 0.05in}
  \newpage
- \pagenumbering{arabic}}{
- \advance \numfigure by \c@figure
- \advance \numtable by \c@table
- \immediate\openout7=\indexfile
- \immediate\write7{\numfigure=\the\numfigure}
- \immediate\write7{\numtable=\the\numtable}
- \immediate\closeout7
- \typeout{Total number of figures: \the\numfigure}
- \typeout{Total number of tables: \the\numtable}}
+ \pagenumbering{arabic}
+}
 
-\newcommand\StartAppendix {
+\newcommand\StartAppendix{
  \appendix
  \addtocontents{toc}{\protect\noindent APPENDIX \hfill
-  \protect\vskip 0.05in} } %end StartAppendix
+  \protect\vskip 0.05in}
+}
 
 %----------------------------------------------------------------------
 %  The following definitions related to the baselineskip are for the  |
