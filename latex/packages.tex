@@ -53,8 +53,6 @@
 \usepackage{wrapfig} % Wrap figures
 \usepackage{xspace} % Allows dynamic space in global text variables. This can allow you to just use \newCommandName rather than \newCommandName{}.
 \usepackage[bookmarks=true,backref=page, hyperfigures=true, pdfpagelabels=false]{hyperref}
-\usepackage{bookmark} % Eliminates Warning Bookmark level greater than one.  Must be loaded after Hyperref
-
+\usepackage{bookmark} % Eliminates Warning Bookmark level greater than one. Must be loaded after hyperref
 \usepackage[utf8]{inputenc}
-% place AFTER hyperref for hyperlinked glossary
-\usepackage[acronym]{glossaries}
+\usepackage[toc,acronym]{glossaries} % place AFTER hyperref for hyperlinked glossary
