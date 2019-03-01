@@ -7,6 +7,10 @@ Fork of the [SMU Dedman College Ph.D. Thesis LaTeX template](https://www.smu.edu
 [![CircleCI](https://circleci.com/gh/matthewfeickert/Dedman-Thesis-Latex-Template/tree/master.svg?style=svg)](https://circleci.com/gh/matthewfeickert/Dedman-Thesis-Latex-Template/tree/master)
 A pdf copy of the latest build of the template is [available here](https://www.physics.smu.edu/mfeickert/dedman-thesis-latex-template/template.pdf)
 
+## Graduation Deadlines and Checklist
+
+If you're using this template then you are probably in the process of writing your Ph.D. thesis and applying to graduate. SMU's Dedman College of Humanities and Sciences has several mandatory checkpoint reviews of your thesis along the way between applying for graduation and submitting your final thesis. **Take note of these** and consult the [Graduation Deadlines and Checklist page](https://www.smu.edu/graduate/CurrentStudents/Graduation/GraduationTimeline) for the deadlines associated with your target graduation date.
+
 ## Use
 
 This is a template for how your thesis files and directory structure might look. This is **not** an area for you to actually build your thesis, but rather should be used as a Git submodule of the Git repository that contains your thesis.
