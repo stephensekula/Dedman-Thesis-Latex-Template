@@ -78,7 +78,7 @@ As [Make is GNU software](https://www.gnu.org/software/make/) it is not limited 
 
 ### Docker
 
-A Docker image with Tex Live 2017 in it exists: [LaTeX-Docker](https://hub.docker.com/r/matthewfeickert/latex-docker/)
+A Docker image with the latest version of Tex Live in it exists: [LaTeX-Docker](https://hub.docker.com/r/matthewfeickert/latex-docker/)
 
 
 ## Authors
