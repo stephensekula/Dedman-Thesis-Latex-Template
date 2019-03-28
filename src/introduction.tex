@@ -29,3 +29,14 @@ As can be seen in Figure~\ref{fig:subfigure_example}, the subfigures are indepen
  \caption{An example of a figure that consists of two subfigures.}
  \label{fig:subfigure_example}
 \end{figure}
+
+\section{Dealing with Widows and Orphans}
+
+To reduce the difficulty of dealing with widowed text (the last line of a paragraph at the start of a page) and orphaned text (the first line of paragraph at the end of a page) the \href{https://ctan.org/pkg/nowidow?lang=en}{\texttt{nowidow}} package is used.
+However, that doesn't solve the issue of orphaned section titles.
+The user must manually do this, but the following \href{https://texfaq.org/FAQ-widows}{simple advice from \TeX{} FAQ} is recommended:
+
+\begin{quote}
+ Once you've exhausted the automatic measures, and have a final draft you want to ``polish'', you should proceed to manual measures.
+ To get rid of an orphan is simple: precede the paragraph with \texttt{\textbackslash clearpage} and the paragraph can’t start in the wrong place.
+\end{quote}
