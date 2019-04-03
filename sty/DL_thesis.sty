@@ -9,82 +9,51 @@
 \fi
 \makeatletter
 
-%----------------------------------------------------
-%  The first part of this file is from 'rep12.sty'  |
-%----------------------------------------------------
-% rep12.sty 19-Jan-88
+% Originally based on rep12.sty 19-Jan-88
 
-%==============================================================
-% BEGIN Chapter Heading Customization
-%==============================================================
-
-\def\@makechapterhead#1{{\parindent 0pt
-   \begin{center}
-    %  \ifnum \c@secnumdepth >\m@ne \bf \@chapapp{} \thechapter \\ % TCM use this line to bold Chapter and Chapter Name
-    \ifnum \c@secnumdepth >\m@ne  \@chapapp{} \thechapter \\ % TCM use this line to NOT bold Chapter and Chapter Name
-     \vskip 2pt \fi    % TCM Increase space between chapter and chapter name
-    %     \bf          %% Julie Use to boldface chapter name only
-    #1
-   \end{center}
-   \nobreak } }
-
-%-------------------------------------------------------------
-% BEGIN TOC, LOF, LOT Chapter Headings Customization
-%-------------------------------------------------------------
-\def\@makeschapterhead#1{{\parindent 0pt
-   \begin{center}
-    %     \bf          %% Julie Use to boldface TOC, LOF, LOT chapter names
-    #1
-   \end{center}
-   \nobreak } }
-%-------------------------------------------------------------
-% END TOC, LOF, LOT Chapter Headings Customization
-%-------------------------------------------------------------
-
-
-\def\chapter{\clearpage \thispagestyle{plain} \global\@topnum\z@
-  \@afterindentfalse \secdef\@chapter\@schapter}
-
-\def\@chapter[#1]#2{\ifnum \c@secnumdepth >\m@ne
- \refstepcounter{chapter}
- \typeout{\@chapapp\space\thechapter.}
- \addcontentsline{toc}{chapter}{\protect
-  % \numberline{\hfill \thechapter. \hbox{\hskip 0.8em}\ignorespaces}#1}\else % TCM This code adds a ''0.8em'' in the PDF navigation tree for chapters but no error in the document.  Changed to line below. Not exactly equivalent code, but removes the ''0.8em'' in the PDF tree with no apparent side effects.
-  \numberline{\hfill \thechapter. \hbox{\hspace{0.1in}}\ignorespaces}#1}\else
- \addcontentsline{toc}{chapter}{#1}\fi
-% \vbox{\vskip 0.745in} %% Julie space betw. top of page and 'CHAPTER' if use plain
-% \vbox{\vskip 0.66in} %% Julie space betw. top of page and 'CHAPTER' if use Bold
-\vbox{\vskip 0.50in} %% saeed space betw. top of page and 'CHAPTER'
-\chaptermark{#1}
-
-%************************NEW CHAPTER DEFINITION*****************
-\if@twocolumn
- \@topnewpage[\@makechapterhead{#2}]
-\else \@makechapterhead{#2}
- \@afterheading\fi
-% \vskip -0.27in  %% Julie add space betw. Plain chapter name and 1st sentence
-\vskip -0.24in  %% Julie add space betw. Bold chapter name and 1st sentence
-\chaptertest=0
-\indent
-\everypar={\advance \chaptertest by 1}
+% Heading for \chapter command
+\renewcommand{\@makechapterhead}[1]{
+ % Space equivalent to using \newgeometry{top=2in}
+ \vspace*{0.5in}% Space at top of text page
+ {\parindent 0pt
+  \begin{center}
+   % Chapter number
+   \ifnum \c@secnumdepth >\m@ne% IF secnumdepth > -1 THEN
+    \begin{doublespace}
+     \textsc{\@chapapp{} \thechapter}\\
+    \end{doublespace}
+   \fi
+   % Chapter title
+   \textsc{#1}
+  \end{center}
+  \nobreak
+ }
 }
 
-\def\@schapter#1{\if@twocolumn \@topnewpage[\@makeschapterhead{#1}]
+% Heading for \chapter* command
+\renewcommand{\@makeschapterhead}[1]{
+ % Space equivalent to using \newgeometry{top=2in}
+ \vspace*{0.4in}% Space at top of text page
+ {\parindent 0pt
+  \begin{center}
+   \textsc{#1}
+  \end{center}
+  \nobreak
+ }
+}
+
+\def\@schapter#1{%
+ \if@twocolumn \@topnewpage[\@makeschapterhead{#1}]
  \else \@makeschapterhead{#1}
   \@afterheading\fi
  \indent
 }
 
 %==============================================================
-% END Chapter Heading Customization
-%==============================================================
-
-%==============================================================
 % BEGIN Section and subsection Customization
 %==============================================================
 
-%\def\section#1{\ifnum\chaptertest>1 \vskip 0.25in \else \vskip 0.01in \fi
-\def\section#1{\ifnum\chaptertest>1 \vskip 0.25in \else \vskip 0.25in \fi
+\def\section#1{%
   \ifnum \c@secnumdepth >\m@ne
    \refstepcounter{section}
    \addcontentsline{toc}{section}{\protect
@@ -98,8 +67,7 @@
   \indent
  }
 
-%\def\sectiondl#1#2{\ifnum\chaptertest>1 \vskip 0.25in \else \vskip 0.01in \fi
-\def\sectiondl#1#2{\ifnum\chaptertest>1 \vskip 0.25in \else \vskip 0.25in \fi
+\def\sectiondl#1#2{%
  \ifnum \c@secnumdepth >\m@ne
   \refstepcounter{section}
   \addcontentsline{toc}{section}{\protect
@@ -811,7 +779,6 @@
 % BEGIN Symbols Page
 %--------------------------------------------------------------------
 \def\ApprovalTitlePages{
- \newcount\chaptertest
  \newcommand{\indexfile}{\jobname.idx}
  \immediate\openin7 \jobname.idx
  \ifeof7 \message{No file \indexfile}
