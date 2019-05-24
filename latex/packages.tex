@@ -56,6 +56,7 @@
 \usepackage[bookmarks=true,backref=page, hyperfigures=true, pdfpagelabels=false]{hyperref}
 \usepackage{bookmark} % Eliminates Warning Bookmark level greater than one. Must be loaded after hyperref
 \usepackage{cleveref}% https://ctan.org/pkg/cleveref % Must be loaded after hyperref
+\creflabelformat{equation}{#2\textup{#1}#3}% Equation references don't have parentheses
 \usepackage[utf8]{inputenc}
 \usepackage[toc,acronym]{glossaries} % place AFTER hyperref for hyperlinked glossary
 
