@@ -63,7 +63,7 @@ function install {
         install_check "src/preface.tex"
         install_check "src/user_config.tex"
     fi
-    cp -r Dedman-Thesis-Latex-Template/images .
+    cp -r Dedman-Thesis-Latex-Template/figures .
     cp -r Dedman-Thesis-Latex-Template/bib .
     install_check "Makefile"
 
@@ -86,7 +86,7 @@ function remove {
     if [[ -f Makefile ]]; then
         make realclean
     fi
-    rm -rf Makefile user_thesis.tex src latex images bib
+    rm -rf Makefile user_thesis.tex src latex figures bib
 }
 
 function main {

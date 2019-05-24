@@ -4,7 +4,7 @@ FILENAME = user_thesis
 date = $(shell date +%Y-%m-%d)
 output_file = draft_$(date).pdf
 
-figure_src = $(wildcard images/figures/*.tex images/figures/*/*.tex)
+figure_src = $(wildcard figures/*.tex figures/*/*.tex)
 figure_list = $(figure_src:.tex=.pdf)
 
 # LATEX = pdflatex
@@ -28,7 +28,7 @@ abstract.pdf: latex/standalone_abstract.tex
 figures: $(figure_list)
 
 # Target assumes figure source is in same directory as expected figure path
-images/%.pdf: images/%.tex
+figures/%.pdf: figures/%.tex
 	latexmk -$(LATEX) -interaction=nonstopmode -halt-on-error $(basename $@)
 	mv $(notdir $(basename $@)).pdf $(basename $@).pdf
 	rm $(notdir $(basename $@)).*
@@ -70,7 +70,7 @@ arXiv: realclean document
 	cp *.tex submit_to_arXiv
 	cp *.bbl submit_to_arXiv/ms.bbl
 	cp Makefile submit_to_arXiv
-	cp -r src latex bib images submit_to_arXiv
+	cp -r src latex bib figures submit_to_arXiv
 	if [ -d Dedman-Thesis-Latex-Template ]; then \
 		mkdir submit_to_arXiv/Dedman-Thesis-Latex-Template; \
 		cp Dedman-Thesis-Latex-Template/LICENSE submit_to_arXiv/Dedman-Thesis-Latex-Template/LICENSE; \
@@ -96,7 +96,7 @@ arXiv: realclean document
 	fi
 	find submit_to_arXiv/ -name "*.bak" -type f -delete
 	# Having .tex and .pdf files of the same name will cause arXiv to delete the .pdf
-	find submit_to_arXiv/images/ -name "*.tex" -type f -delete
+	find submit_to_arXiv/figures/ -name "*.tex" -type f -delete
 	# arXiv requires .bib files to be compiled to .bbl files and will remove any .bib files
 	find submit_to_arXiv/ -name "*.bib" -type f -delete
 	tar -zcvf submit_to_arXiv.tar.gz submit_to_arXiv/
