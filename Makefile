@@ -53,6 +53,9 @@ clean:
 clean_figures:
 	rm -f $(figure_list)
 
+clean_drafts:
+	rm -f draft_*.pdf
+
 realclean: clean clean_figures
 	rm -f *.ps *.pdf
 
