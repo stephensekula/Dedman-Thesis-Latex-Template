@@ -63,13 +63,13 @@ The template should compile "out of the box". For Unix like operating systems a 
 ### Linux
 
 ```bash
-make [abstract, figures, text, document, all, final, clean, clean_figures, realclean]
+make [abstract, figures, text, document, all, final, clean, clean_figures, clean_drafts, realclean]
 ```
 
 ### MacOS
 
 ```bash
-make [abstract, figures, text, document, all, final, clean, clean_figures, realclean]
+make [abstract, figures, text, document, all, final, clean, clean_figures, clean_drafts, realclean]
 ```
 
 ### Windows
