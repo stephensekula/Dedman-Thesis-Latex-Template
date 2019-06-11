@@ -5,8 +5,9 @@ This is the first chapter of the \gls{thesis}.~\cite{Aaboud:2016mmw,Bruning:7820
 \begin{figure}[htpb]
  \centering
  \includegraphics{introduction/example.pdf}
- \caption{This is a placeholder figure to act as an example.
-  Here we cite a new reference in the caption to demonstrate that given the package configuration our order of references will not be distributed by the table of contents.~\cite{Higgs:1964ia}}\label{fig:test_figure}
+ \caption[Example placeholder figure with a citation~\cite{Higgs:1964ia} and shorter List of Figures caption.]{%
+  This is a placeholder figure to act as an example.
+  Here we cite a new reference in the caption to demonstrate that given the package configuration our order of references will not be distributed by the table of contents~\cite{Higgs:1964ia}.}\label{fig:test_figure}
 \end{figure}
 
 As can be seen in \Cref{fig:subfigure_example}, the subfigures are independent of each other such that \Cref{fig:subfigure_1} and \Cref{fig:subfigure_2} can be accessed separately.
@@ -16,14 +17,16 @@ As can be seen in \Cref{fig:subfigure_example}, the subfigures are independent o
  \begin{subfigure}[t]{0.5\textwidth}
   \centering
   \includegraphics[width=0.3\textwidth]{introduction/example.pdf}
-  \caption{This is the first figure of two, in this example, and it its own independent subfigure.}
+  \caption[Short List of Figures captions work with subfigures too.]{%
+   This is the first figure of two, in this example, and its own independent subfigure.}
   \label{fig:subfigure_1}
  \end{subfigure}%
  ~
  \begin{subfigure}[t]{0.5\textwidth}
   \centering
   \includegraphics[width=0.3\textwidth]{introduction/example.pdf}
-  \caption{As the \texttt{t} alignment option was chosen for the subfigures, they are still properly aligned vertically even though this caption is longer.}
+  \caption[Which makes the List of Figures readable and actually helpful.]{%
+   As the \texttt{t} alignment option was chosen for the subfigures, they are still properly aligned vertically even though this caption is longer.}
   \label{fig:subfigure_2}
  \end{subfigure}
  \caption{An example of a figure that consists of two subfigures.}
