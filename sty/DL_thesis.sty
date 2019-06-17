@@ -467,7 +467,7 @@
 % END Page and Page Margins
 %-------------------------------------------------------------
 
-\parskip .15in  % Defines paragraph spacing
+\setlength{\parskip}{1em}% Defines paragraph spacing
 
 % Define the Front Pages, variables, and title formats
 
@@ -750,7 +750,6 @@
 
   \hbox{\@ThesisType~completed \@ThesisDefenseDateMonth~\@ThesisDefenseDateDay, \@ThesisDefenseDateYear}
   \vskip -0.10in}
- \parskip 0.00in
 
  \vbox{\vskip 0.25in}   %% add by Julie
  \indent
@@ -777,7 +776,6 @@
 %--------------------------------------------------------------------
 
 \newenvironment{Acknowledgment}{\newpage
- \parskip 0.00in
  %%
  %% Next line used to be \vbox{\vskip 0.63in} MARIO, 06/96
  %%
@@ -823,7 +821,6 @@
 }
 
 \newenvironment{thesis}{
- \parskip 0.00in
  \if\@Dedication\Null \else
   \newpage  \pagenumbering{alph}\setcounter{page}{3} \thispagestyle{empty} %% added by saeed
   \begin{center}
