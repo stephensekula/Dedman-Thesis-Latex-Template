@@ -9,82 +9,51 @@
 \fi
 \makeatletter
 
-%----------------------------------------------------
-%  The first part of this file is from 'rep12.sty'  |
-%----------------------------------------------------
-% rep12.sty 19-Jan-88
+% Originally based on rep12.sty 19-Jan-88
 
-%==============================================================
-% BEGIN Chapter Heading Customization
-%==============================================================
-
-\def\@makechapterhead#1{{\parindent 0pt
-   \begin{center}
-    %  \ifnum \c@secnumdepth >\m@ne \bf \@chapapp{} \thechapter \\ % TCM use this line to bold Chapter and Chapter Name
-    \ifnum \c@secnumdepth >\m@ne  \@chapapp{} \thechapter \\ % TCM use this line to NOT bold Chapter and Chapter Name
-     \vskip 2pt \fi    % TCM Increase space between chapter and chapter name
-    %     \bf          %% Julie Use to boldface chapter name only
-    #1
-   \end{center}
-   \nobreak } }
-
-%-------------------------------------------------------------
-% BEGIN TOC, LOF, LOT Chapter Headings Customization
-%-------------------------------------------------------------
-\def\@makeschapterhead#1{{\parindent 0pt
-   \begin{center}
-    %     \bf          %% Julie Use to boldface TOC, LOF, LOT chapter names
-    #1
-   \end{center}
-   \nobreak } }
-%-------------------------------------------------------------
-% END TOC, LOF, LOT Chapter Headings Customization
-%-------------------------------------------------------------
-
-
-\def\chapter{\clearpage \thispagestyle{plain} \global\@topnum\z@
-  \@afterindentfalse \secdef\@chapter\@schapter}
-
-\def\@chapter[#1]#2{\ifnum \c@secnumdepth >\m@ne
- \refstepcounter{chapter}
- \typeout{\@chapapp\space\thechapter.}
- \addcontentsline{toc}{chapter}{\protect
-  % \numberline{\hfill \thechapter. \hbox{\hskip 0.8em}\ignorespaces}#1}\else % TCM This code adds a ''0.8em'' in the PDF navigation tree for chapters but no error in the document.  Changed to line below. Not exactly equivalent code, but removes the ''0.8em'' in the PDF tree with no apparent side effects.
-  \numberline{\hfill \thechapter. \hbox{\hspace{0.1in}}\ignorespaces}#1}\else
- \addcontentsline{toc}{chapter}{#1}\fi
-% \vbox{\vskip 0.745in} %% Julie space betw. top of page and 'CHAPTER' if use plain
-% \vbox{\vskip 0.66in} %% Julie space betw. top of page and 'CHAPTER' if use Bold
-\vbox{\vskip 0.50in} %% saeed space betw. top of page and 'CHAPTER'
-\chaptermark{#1}
-
-%************************NEW CHAPTER DEFINITION*****************
-\if@twocolumn
- \@topnewpage[\@makechapterhead{#2}]
-\else \@makechapterhead{#2}
- \@afterheading\fi
-% \vskip -0.27in  %% Julie add space betw. Plain chapter name and 1st sentence
-\vskip -0.24in  %% Julie add space betw. Bold chapter name and 1st sentence
-\chaptertest=0
-\indent
-\everypar={\advance \chaptertest by 1}
+% Heading for \chapter command
+\renewcommand{\@makechapterhead}[1]{
+ % Space equivalent to using \newgeometry{top=2in}
+ \vspace*{0.28in}% Space at top of text page
+ {\parindent 0pt
+  \begin{center}
+   % Chapter number
+   \ifnum \c@secnumdepth >\m@ne% IF secnumdepth > -1 THEN
+   \begin{doublespace}
+    \textsc{\@chapapp{} \thechapter}\\
+   \end{doublespace}
+   \fi
+   % Chapter title
+   {#1}
+  \end{center}
+  \nobreak
+ }
 }
 
-\def\@schapter#1{\if@twocolumn \@topnewpage[\@makeschapterhead{#1}]
+% Heading for \chapter* command
+\renewcommand{\@makeschapterhead}[1]{
+ % Space equivalent to using \newgeometry{top=2in}
+ \vspace*{0.31in}% Space at top of text page
+ {\parindent 0pt
+  \begin{center}
+   \textsc{#1}
+  \end{center}
+  \nobreak
+ }
+}
+
+\def\@schapter#1{%
+ \if@twocolumn \@topnewpage[\@makeschapterhead{#1}]
  \else \@makeschapterhead{#1}
   \@afterheading\fi
  \indent
 }
 
 %==============================================================
-% END Chapter Heading Customization
-%==============================================================
-
-%==============================================================
 % BEGIN Section and subsection Customization
 %==============================================================
 
-%\def\section#1{\ifnum\chaptertest>1 \vskip 0.25in \else \vskip 0.01in \fi
-\def\section#1{\ifnum\chaptertest>1 \vskip 0.25in \else \vskip 0.25in \fi
+\def\section#1{%
   \ifnum \c@secnumdepth >\m@ne
    \refstepcounter{section}
    \addcontentsline{toc}{section}{\protect
@@ -98,8 +67,7 @@
   \indent
  }
 
-%\def\sectiondl#1#2{\ifnum\chaptertest>1 \vskip 0.25in \else \vskip 0.01in \fi
-\def\sectiondl#1#2{\ifnum\chaptertest>1 \vskip 0.25in \else \vskip 0.25in \fi
+\def\sectiondl#1#2{%
  \ifnum \c@secnumdepth >\m@ne
   \refstepcounter{section}
   \addcontentsline{toc}{section}{\protect
@@ -176,6 +144,13 @@
 %--------------------------------------------------------------------------
 %
 
+% TODO: See if in the future the afterpage package can be used to set the margins better
+% \newenvironment{twoinchfirstpage}{%
+%  \newpage%
+%  \thispagestyle{empty}%
+%  \newgeometry{margin=1in,top=2in}%
+% }{\afterpage{\clearpage\newgeometry{margin=1in}}}
+
 %======================================
 % BEGIN TOC, LOF, and LOT Customization
 %======================================
@@ -183,14 +158,17 @@
 % TOC
 \renewcommand\contentsname{TABLE OF CONTENTS} % Renames Table of Contents to all caps
 \def\@pnumwidth{1.55em} % TCM Controls the distance between titles and page numbers in TOC
-\def\@tocrmarg {4.00em} % TCM Controls the right margin of TOC
+% \def\@tocrmarg {4.00em} % TCM Controls the right margin of TOC
 \def\@dotsep{1.5} % TCM Controls separation of dots in leaders
 \setcounter{tocdepth}{3} % TCM Controls depth of TOC
 
-\def\tableofcontents{\@restonecolfalse\if@twocolumn\@restonecoltrue\onecolumn
- \fi\chapter*{TABLE OF CONTENTS\@mkboth{CONTENTS}{CONTENTS}}
- \vskip -0.4in
- \@starttoc{toc}\if@restonecol\twocolumn\fi
+\def\tableofcontents{%
+ \@restonecolfalse%
+ \if@twocolumn\@restonecoltrue\onecolumn\fi%
+ % FIXME: This is a dirty hack with \vskip to get the margin correct
+ \chapter*{\vskip -1.5in TABLE OF CONTENTS\@mkboth{CONTENTS}{CONTENTS}}
+ \@starttoc{toc}%
+ \if@restonecol\twocolumn\fi%
 }
 
 %--------------------------------------------------------------
@@ -228,20 +206,28 @@
 %--------------------------------------------------------------
 % BEGIN LOF Customization
 %--------------------------------------------------------------
-\def\listoffigures{\@restonecolfalse\if@twocolumn\@restonecoltrue\onecolumn
-  %%
-  %% the 0.25in below was 0.625in before -- MARIO 06/96
-  %%
- \fi \newpage \vbox{\vskip 0.25in \chapter*{LIST OF FIGURES\@mkboth %% uncommented by saeed and added comment below
-   %  \fi \newpage \vbox{\vskip 0.515in \chapter*{LIST OF FIGURES\@mkboth  %% Julie
-   {LIST OF FIGURES}{List of Figures}}}
- \vskip -0.3in
+\def\listoffigures{%
+ \newpage%
+ \thispagestyle{empty}%
+ \newgeometry{margin=1in}%
+ \chapter*{LIST OF FIGURES\@mkboth{LIST OF FIGURES}{List of Figures}}
  \noindent
  Figure \hfill Page
 
  \addcontentsline{toc}{chapter}{\protect \noindent {LIST OF FIGURES}}
 
- \@starttoc{lof}\if@restonecol \twocolumn\fi}
+ \@starttoc{lof}\if@restonecol \twocolumn\fi%
+}
+
+\providecommand{\Dedication}[1]{%
+ \newpage%
+ \thispagestyle{empty}%
+ \newgeometry{margin=1in,top=2in}%
+ \begin{center}
+  {#1}
+ \end{center}
+ \noindent
+}
 
 \def\l@figure{\baselineskip 0.20in              % added for smaller spacing
  \@dottedlofline{1}{0.2em}{3.0em}} % in lists of figures
@@ -255,14 +241,9 @@
 \def\l@table{\baselineskip 0.20in              % added for smaller spacing
  \@dottedlofline{1}{0.2em}{3.0em}} % in lists of tables
 
-\def\listoftables{\@restonecolfalse\if@twocolumn\@restonecoltrue\onecolumn
-  %%
-  %% See above
-  %%
- \fi \newpage \vbox{\vskip 0.25in \chapter*{LIST OF TABLES\@mkboth %% uncommented by saeed and added comment below
-   %  \fi \newpage \vbox{\vskip 0.515in \chapter*{LIST OF TABLES\@mkboth %% Julie
-   {LIST OF TABLES}{LIST OF TABLES}}}
- \vskip -0.3in
+\def\listoftables{%
+ \clearpage
+ \chapter*{LIST OF TABLES\@mkboth{LIST OF TABLES}{LIST OF TABLES}}
  \noindent
  Table \hfill Page
 
@@ -274,27 +255,18 @@
 %--------------------------------------------------------------
 % END LOT Customization
 %--------------------------------------------------------------
-%------------------------------------------------------------------
+
 % BEGIN Bibliography
-%------------------------------------------------------------------
+
 %% BEGIN thebibliography
 \def\thebibliography#1{
  \newpage
-
- \vbox{ \vskip 0.545in   %% julie change for reference
-  % \chapter*{REFERENCES\@mkboth
-  \chapter*{\normalfont BIBLIOGRAPHY\@mkboth  % TCM REMOVED BOLD & CHANGED TO BIBLIOGRAPHY
-   %% {BIBLIOGRAPHY}{BIBLIOGRAPHY} \vskip -0.7in }
-   {BIBLIOGRAPHY}{BIBLIOGRAPHY} \vskip -0.5in }  %% tdp increase %space after
-  %%     BIBLIOGRAPHY heading
-  \refstepcounter{chapter}
-  % \typeout{REFERENCES.}
-  \typeout{BIBLIOGRAPHY.}                     % TCM Changed to Bibliography
-  % \addcontentsline{toc}{chapter}{REFERENCES}
-  \addcontentsline{toc}{chapter}{BIBLIOGRAPHY}% TCM Changed to Bibliography
-  % \chaptermark{REFERENCES}
-  \chaptermark{BIBLIOGRAPHY}                  % TCM Changed to Bibliography
- }  %% end of vbox
+ \chapter*{\normalfont BIBLIOGRAPHY\@mkboth{BIBLIOGRAPHY}{BIBLIOGRAPHY}}
+ %%     BIBLIOGRAPHY heading
+ \refstepcounter{chapter}%
+ \typeout{BIBLIOGRAPHY.}%
+ \addcontentsline{toc}{chapter}{BIBLIOGRAPHY}%
+ \chaptermark{BIBLIOGRAPHY}%
 
  \baselineskip 0.10in
  \renewcommand\lbaselinestretch{0.20in} %% tdp-fx single space %references
@@ -312,132 +284,6 @@
 % \let\endthebibliography=\endlist
 %
 % END Bibliography
-%
-%------------------------------------------------------------------
-% BEGIN  Special caption style for table environment
-%------------------------------------------------------------------
-%
-\def\tcaption{\refstepcounter\@captype \@dblarg{\@tcaption\@captype}}
-\long\def\@tcaption#1[#2]#3{\par\addcontentsline{\csname
-  ext@#1\endcsname}{#1} {\protect\numberline{\hfill \csname
-   the#1\endcsname. \hbox{\hskip 0.5em}\ignorespaces}{\ignorespaces #2}}\begingroup
- \@parboxrestore
- \normalsize
- \@maketcaption{\csname fnum@#1\endcsname} {\ignorespaces #3}\par
- \endgroup}
-\long\def\@maketcaption#1#2{
-\vskip 10pt \baselineskip 0.23in
-\setbox\@tempboxa\hbox{#1.-{\hskip 1pt}-#2}
-\ifdim \wd\@tempboxa >\hsize #1.-{\hskip 1pt}-#2\par \else \hbox
- to\hsize{\hfil\box\@tempboxa\hfil}
- % \fi}
-\fi \vskip 0.5cm}   %% Julie add   space betw. caption anf table
-
-\long\def\@makecaption#1#2{
- \vskip 10pt \baselineskip 0.23in
- \setbox\@tempboxa\hbox{#1.\ \ #2}
- \ifdim \wd\@tempboxa >\hsize #1.\ \  #2\par \else \hbox
-  to\hsize{\hfil\box\@tempboxa\hfil}
-  % \fi}
- \fi \vskip 0.5cm}   %% Julie add   space betw. caption anf table
-
-\long\def\@caption#1[#2]#3{\par\addcontentsline{\csname
-  ext@#1\endcsname}{#1}{\protect\numberline{\hfill \csname
-   the#1\endcsname.\hbox{\hskip 0.5em}\ignorespaces}{\ignorespaces #2}}\begingroup
- \@parboxrestore
- \normalsize
- \@makecaption{\csname fnum@#1\endcsname}{\ignorespaces #3}\par
- \endgroup}
-
-\def\end@float{\vbox{\vskip 0.15in}
- \par\vskip\z@\egroup %% \par\vskip\z@ added 15 Dec 87
- \ifnum\@floatpenalty <\z@
-  \@cons\@currlist\@currbox
-  \ifdim \ht\@currbox >\textheight
-   \ht\@currbox\textheight \fi
-  \ifnum\@floatpenalty < -\@Mii
-   \penalty -\@Miv
-   \@tempdima\prevdepth    %% saving and restoring \prevdepth added
-   \vbox{}                 %% 26 May 87 to prevent extra vertical
-   \prevdepth \@tempdima   %% space when used in vertical mode
-   \penalty\@floatpenalty
-  \else \vadjust{\penalty -\@Miv \vbox{}\penalty\@floatpenalty}\@esphack
-  \fi\fi}
-
-\def\@xfloat#1[#2]{\ifhmode \@bsphack\@floatpenalty -\@Mii\else
-  \@floatpenalty-\@Miii\fi\def\@captype{#1}\ifinner
-  \@parmoderr\@floatpenalty\z@
- \else\@next\@currbox\@freelist{\@tempcnta\csname ftype@#1\endcsname
-   \multiply\@tempcnta\@xxxii\advance\@tempcnta\sixt@@n
-   \@tfor \@tempa :=#2\do
-   {\if\@tempa h\advance\@tempcnta \@ne\fi
-    \if\@tempa t\advance\@tempcnta \tw@\fi
-    \if\@tempa b\advance\@tempcnta 4\relax\fi
-    \if\@tempa p\advance\@tempcnta 8\relax\fi
-   }\global\count\@currbox\@tempcnta}\@fltovf\fi
- \global\setbox\@currbox\vbox\bgroup
- %    \boxmaxdepth\z@     % commented out 15 Dec 87
- \hsize\columnwidth \@parboxrestore \baselineskip \fbaselinestretch}
-
-\def\@startline{\vskip \tabbaselinestretch
- \global\@curtabmar\@nxttabmar\relax
- \global\@curtab\@curtabmar\global\setbox\@curline\hbox % missing \global
- {}\@startfield\strut}                                  % added 17 Jun 86
-
-\def\list#1#2{\ifnum \@listdepth >5\relax \@toodeep
- \else \global\advance\@listdepth\@ne \fi
- \rightmargin \z@ \listparindent\z@ \itemindent\z@
- \csname @list\romannumeral\the\@listdepth\endcsname
- \def\@itemlabel{#1}\let\makelabel\@mklab \@nmbrlistfalse #2\relax
- \@trivlist \baselineskip \lbaselinestretch
- \parskip\parsep \parindent\listparindent
- \advance\linewidth -\rightmargin \advance\linewidth -\leftmargin
- \advance\@totalleftmargin \leftmargin
- \parshape \@ne \@totalleftmargin \linewidth
- \ignorespaces}
-
-\def\@tabular{\leavevmode \hbox \bgroup $\let\@acol\@tabacol
- \let\@classz\@tabclassz
- \let\@classiv\@tabclassiv \def\arraystretch{\tbaselinestretch}
- \let\\\@tabularcr\@tabarray}
-%------------------------------------------------------------------
-% END  Special caption style for table environment
-%------------------------------------------------------------------
-%-------------------------------------------------------------
-%-------------------------------------------------------------
-% BEGIN Equation and Eqnarray Customization
-%-------------------------------------------------------------
-%----------------------------------------------------------------
-%  Add more space around "equation" and "eqnarray" environment  |
-%----------------------------------------------------------------
-%
-\@addtoreset{equation}{chapter}
-\def\theequation{\thechapter.\arabic{equation}}
-
-\def\eqnarray{\vskip 0.01in \stepcounter{equation}
- \let\@currentlabel=\theequation \global\@eqnswtrue
- \global\@eqcnt\z@\tabskip\@centering\let\\=\@eqncr
- $$\halign to \displaywidth\bgroup\@eqnsel\hskip\@centering
- $\displaystyle\tabskip\z@{##}$&\global\@eqcnt\@ne
- \hskip 2\arraycolsep \hfil${##}$\hfil
- &\global\@eqcnt\tw@ \hskip 2\arraycolsep
- $\displaystyle\tabskip\z@{##}$\hfil
- \tabskip\@centering&\llap{##}\tabskip\z@\cr}
-
-\def\endeqnarray{\@@eqncr\egroup
- \global\advance\c@equation\m@ne$$
- \vskip 0.20in \noindent \global\@ignoretrue}
-
-\def\equation{\vskip 0.01in $$ % $$ BRACE MATCHING HACK
- \refstepcounter{equation}}
-
-\def\endequation{\eqno \@eqnnum % $$ BRACE MATCHING HACK
- $$ \vskip 0.10in \noindent \global\@ignoretrue}   %% 0.10in MARIO, 06/96
-%-------------------------------------------------------------
-% END Equation and Eqnarray Customization
-%-------------------------------------------------------------
-
-%\ps@plain \pagenumbering{arabic} \onecolumn \if@twoside\else\raggedbottom\fi
 
 %----------------------------------------------------------%
 %   The fourth part of this file is to define the special  %
@@ -588,7 +434,6 @@
 \def\CommitteeMemberTitleE#1{\def\membertitleE{#1}}
 
 
-\settable[SET Dedication]{Dedication}
 \settable[Dissertation]{ThesisType}
 
 \pagenumbering{roman}
@@ -597,10 +442,8 @@
 %--------------------------------------------------------------------
 \def\Titlepage{
  \thispagestyle{empty}
- \raggedbottom
- {\baselineskip 0.35in
-  %    \vbox{\vspace{0.64in}}
-  \vbox{\vspace{0.1in}} %% Julie % changed by saeed was 0.482 changed to 0.1
+ \newgeometry{margin=1in,top=2in}
+ \raggedbottom{
   \udtitle
   \begin{center}
    A \@ThesisType~Presented to the Graduate Faculty of the
@@ -639,9 +482,9 @@
 % Approval Page
 \def\Approvalpage{
  \thispagestyle{empty}
+ \newgeometry{margin=1in,top=2in}
  \setcounter{page}{1}
  \raggedbottom
- \vbox{\vspace{0.3in}}
  \udtitle
  \vspace{1.0in}
  \begin{flushright}
@@ -753,7 +596,7 @@
 
  \vbox{\vskip 0.25in}   %% add by Julie
  \indent
-}{   }
+}{\clearpage}
 %--------------------------------------------------------------------
 % END Abstract Page
 %--------------------------------------------------------------------
@@ -762,10 +605,15 @@
 %--------------------------------------------------------------------
 \newenvironment{Copyright}{\newpage
  \thispagestyle{empty}
- \vbox{\vskip 0.5in}   % Sets top margin with line below
- \begin{center} Copyright (\the\year{}) \end{center}
- \begin{center} \vskip -0.125in \@AuthorFirstName~\@AuthorLastName~\@AuthorNameSuffix@noerror \end{center}
- \begin{center} \vskip -0.125in All Rights Reserved \end{center} \par
+ \newgeometry{margin=1in,top=2in}
+ \begin{center}
+  Copyright (\the\year{})
+ \end{center}
+ \begin{center}
+  \vskip -0.125in \@AuthorFirstName~\@AuthorLastName~\@AuthorNameSuffix@noerror \end{center}
+ \begin{center}
+  \vskip -0.125in All Rights Reserved
+ \end{center} \par
  \vskip 0.0in
 }
 %--------------------------------------------------------------------
@@ -775,18 +623,13 @@
 % BEGIN Acknowledgment Page
 %--------------------------------------------------------------------
 
-\newenvironment{Acknowledgment}{\newpage
- %%
- %% Next line used to be \vbox{\vskip 0.63in} MARIO, 06/96
- %%
- \vbox{\vskip 0.5in} % TCM Changed to 0.5in per Dedman 2016 Standard
- %       \vbox{\vskip 0.63in} % TCM Changed to 0.5in per Dedman 2016 Standard
- %\addcontentsline{toc}{chapter}{\protect \noindent
- %{ACKNOWLEDGMENTS}} %added by saeed -- include ack in toc %% commented out by saeed after adding
- %T \addcontentsline{toc}{chapter}{\protect \noindent {ACKNOWLEDGMENTS}}
- %       \begin{center} \bf ACKNOWLEDGMENTS \end{center} \par    % TCM Removed Bold per Dedmand 2016 Standard
- \begin{center} ACKNOWLEDGMENTS \end{center} \par    % TCM Removed Bold per Dedmand 2016 Standard
- \vskip 0.0in % changed by saeed to 0.0 was 0.15
+% Acknowledgment Page
+\newenvironment{Acknowledgment}{
+ \newpage
+ \newgeometry{margin=1in,top=2in}
+ \begin{center}
+  ACKNOWLEDGMENTS
+ \end{center} \par
  \indent
 }{  }
 %--------------------------------------------------------------------
@@ -811,7 +654,6 @@
 % BEGIN Symbols Page
 %--------------------------------------------------------------------
 \def\ApprovalTitlePages{
- \newcount\chaptertest
  \newcommand{\indexfile}{\jobname.idx}
  \immediate\openin7 \jobname.idx
  \ifeof7 \message{No file \indexfile}
@@ -821,13 +663,6 @@
 }
 
 \newenvironment{thesis}{
- \if\@Dedication\Null \else
-  \newpage  \pagenumbering{alph}\setcounter{page}{3} \thispagestyle{empty} %% added by saeed
-  \begin{center}
-   \vbox{\vskip 0.803in} {\@Dedication}
-  \end{center}
- \fi
-
  \addtocontents{toc}{\protect\noindent CHAPTER \hfill \protect\vskip 0.05in}
  \newpage
  \pagenumbering{arabic}

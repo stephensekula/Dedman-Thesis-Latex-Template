@@ -5,7 +5,7 @@
 %======================================================================
 
 % Mathematics related
-\newcommand{\abs}[1]{\ensuremath\left|{#1}\right|}% The absolute value of the enclosed
+\providecommand{\abs}[1]{\ensuremath\left|{#1}\right|}% The absolute value of the enclosed
 
 %======================================================================
 % BEGIN SMU Custom Commands
@@ -312,7 +312,7 @@
 %======================================================================
 % END SMU Custom Commands
 %======================================================================
-\newcommand{\printercalibration}{%
+\providecommand{\printercalibration}{%
  \begin{tikzpicture}[remember picture,overlay]
   % 1 inch printer calibration
   \draw[line width=4pt,red,arrows=->] (current page.north west) ++(1in,0)
