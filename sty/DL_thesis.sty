@@ -258,27 +258,18 @@
 %--------------------------------------------------------------
 % END LOT Customization
 %--------------------------------------------------------------
-%------------------------------------------------------------------
+
 % BEGIN Bibliography
-%------------------------------------------------------------------
+
 %% BEGIN thebibliography
 \def\thebibliography#1{
  \newpage
-
- \vbox{ \vskip 0.545in   %% julie change for reference
-  % \chapter*{REFERENCES\@mkboth
-  \chapter*{\normalfont BIBLIOGRAPHY\@mkboth  % TCM REMOVED BOLD & CHANGED TO BIBLIOGRAPHY
-   %% {BIBLIOGRAPHY}{BIBLIOGRAPHY} \vskip -0.7in }
-   {BIBLIOGRAPHY}{BIBLIOGRAPHY} \vskip -0.5in }  %% tdp increase %space after
-  %%     BIBLIOGRAPHY heading
-  \refstepcounter{chapter}
-  % \typeout{REFERENCES.}
-  \typeout{BIBLIOGRAPHY.}                     % TCM Changed to Bibliography
-  % \addcontentsline{toc}{chapter}{REFERENCES}
-  \addcontentsline{toc}{chapter}{BIBLIOGRAPHY}% TCM Changed to Bibliography
-  % \chaptermark{REFERENCES}
-  \chaptermark{BIBLIOGRAPHY}                  % TCM Changed to Bibliography
- }  %% end of vbox
+ \chapter*{\normalfont BIBLIOGRAPHY\@mkboth{BIBLIOGRAPHY}{BIBLIOGRAPHY}}
+ %%     BIBLIOGRAPHY heading
+ \refstepcounter{chapter}%
+ \typeout{BIBLIOGRAPHY.}%
+ \addcontentsline{toc}{chapter}{BIBLIOGRAPHY}%
+ \chaptermark{BIBLIOGRAPHY}%
 
  \baselineskip 0.10in
  \renewcommand\lbaselinestretch{0.20in} %% tdp-fx single space %references
@@ -572,7 +563,6 @@
 \def\CommitteeMemberTitleE#1{\def\membertitleE{#1}}
 
 
-\settable[SET Dedication]{Dedication}
 \settable[Dissertation]{ThesisType}
 
 \pagenumbering{roman}
@@ -581,10 +571,8 @@
 %--------------------------------------------------------------------
 \def\Titlepage{
  \thispagestyle{empty}
- \raggedbottom
- {\baselineskip 0.35in
-  %    \vbox{\vspace{0.64in}}
-  \vbox{\vspace{0.1in}} %% Julie % changed by saeed was 0.482 changed to 0.1
+ \newgeometry{margin=1in,top=2in}
+ \raggedbottom{
   \udtitle
   \begin{center}
    A \@ThesisType~Presented to the Graduate Faculty of the
@@ -623,9 +611,9 @@
 % Approval Page
 \def\Approvalpage{
  \thispagestyle{empty}
+ \newgeometry{margin=1in,top=2in}
  \setcounter{page}{1}
  \raggedbottom
- \vbox{\vspace{0.3in}}
  \udtitle
  \vspace{1.0in}
  \begin{flushright}
@@ -737,7 +725,7 @@
 
  \vbox{\vskip 0.25in}   %% add by Julie
  \indent
-}{   }
+}{\clearpage}
 %--------------------------------------------------------------------
 % END Abstract Page
 %--------------------------------------------------------------------
@@ -746,10 +734,15 @@
 %--------------------------------------------------------------------
 \newenvironment{Copyright}{\newpage
  \thispagestyle{empty}
- \vbox{\vskip 0.5in}   % Sets top margin with line below
- \begin{center} Copyright (\the\year{}) \end{center}
- \begin{center} \vskip -0.125in \@AuthorFirstName~\@AuthorLastName~\@AuthorNameSuffix@noerror \end{center}
- \begin{center} \vskip -0.125in All Rights Reserved \end{center} \par
+ \newgeometry{margin=1in,top=2in}
+ \begin{center}
+  Copyright (\the\year{})
+ \end{center}
+ \begin{center}
+  \vskip -0.125in \@AuthorFirstName~\@AuthorLastName~\@AuthorNameSuffix@noerror \end{center}
+ \begin{center}
+  \vskip -0.125in All Rights Reserved
+ \end{center} \par
  \vskip 0.0in
 }
 %--------------------------------------------------------------------
@@ -759,18 +752,13 @@
 % BEGIN Acknowledgment Page
 %--------------------------------------------------------------------
 
-\newenvironment{Acknowledgment}{\newpage
- %%
- %% Next line used to be \vbox{\vskip 0.63in} MARIO, 06/96
- %%
- \vbox{\vskip 0.5in} % TCM Changed to 0.5in per Dedman 2016 Standard
- %       \vbox{\vskip 0.63in} % TCM Changed to 0.5in per Dedman 2016 Standard
- %\addcontentsline{toc}{chapter}{\protect \noindent
- %{ACKNOWLEDGMENTS}} %added by saeed -- include ack in toc %% commented out by saeed after adding
- %T \addcontentsline{toc}{chapter}{\protect \noindent {ACKNOWLEDGMENTS}}
- %       \begin{center} \bf ACKNOWLEDGMENTS \end{center} \par    % TCM Removed Bold per Dedmand 2016 Standard
- \begin{center} ACKNOWLEDGMENTS \end{center} \par    % TCM Removed Bold per Dedmand 2016 Standard
- \vskip 0.0in % changed by saeed to 0.0 was 0.15
+% Acknowledgment Page
+\newenvironment{Acknowledgment}{
+ \newpage
+ \newgeometry{margin=1in,top=2in}
+ \begin{center}
+  ACKNOWLEDGMENTS
+ \end{center} \par
  \indent
 }{  }
 %--------------------------------------------------------------------
@@ -804,12 +792,13 @@
 }
 
 \newenvironment{thesis}{
- \if\@Dedication\Null \else
-  \newpage  \pagenumbering{alph}\setcounter{page}{3} \thispagestyle{empty} %% added by saeed
-  \begin{center}
-   \vbox{\vskip 0.803in} {\@Dedication}
-  \end{center}
- \fi
+ % \if\@Dedication\Null \else
+ %  \newpage  \pagenumbering{alph}\setcounter{page}{3} \thispagestyle{empty} %% added by saeed
+ %  \begin{center}
+ %   % \vbox{\vskip 0.803in} {\@Dedication}
+ %   \@Dedication
+ %  \end{center}
+ % \fi
 
  \addtocontents{toc}{\protect\noindent CHAPTER \hfill \protect\vskip 0.05in}
  \newpage
