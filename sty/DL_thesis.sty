@@ -538,55 +538,43 @@
  \newpage
 }
 
-%--------------------------------------------------------------------
-% BEGIN Abstract Page
-%--------------------------------------------------------------------
+% Abstract Page
 \newenvironment{Abstract}{\newpage
- %\addcontentsline{toc}{chapter}{\protect \noindent
- %{ABSTRACT}} %added by saeed -- include abstract in toc %% commented out by saeed after adding
  \noindent
- {\vbox{\baselineskip0.20in
+ \begin{minipage}[t]{0.3\textwidth}
+  \begin{flushleft}
    \ifnum\pdfstrcmp{\@AuthorNameSuffix@noerror}{}=0%
-    \hbox{\@AuthorLastName, \@AuthorFirstName}%
+   \@AuthorLastName, \@AuthorFirstName%
    \else%
-    \hbox{\@AuthorLastName~\@AuthorNameSuffix, \@AuthorFirstName}%
+   \@AuthorLastName~\@AuthorNameSuffix, \@AuthorFirstName%
    \fi%
-   \ifnum\numdegree>1 \hbox{\ } \fi
-   \ifnum\numdegree>2 \hbox{\ } \fi
-   \ifnum\numdegree>3 \hbox{\ } \fi
-   \ifnum\numdegree=5 \hbox{\ } \fi}
-  \hfill
-  \vbox{\baselineskip0.20in
-   \ifnum\numdegree>0 \hbox{\DegreeA} \fi
-   \ifnum\numdegree>1 \hbox{\DegreeB} \fi
-   \ifnum\numdegree>2 \hbox{\DegreeC} \fi
-   \ifnum\numdegree>3 \hbox{\DegreeD} \fi   }} \\
+  \end{flushleft}%
+ \end{minipage}%
+ \begin{minipage}[t]{0.7\textwidth}
+  \baselineskip0.20in
+  \begin{flushright}
+   \ifnum\numdegree>0 \DegreeA{} \fi%
+   \ifnum\numdegree>1 \\\DegreeB{} \fi%
+   \ifnum\numdegree>2 \\\DegreeC{} \fi%
+   \ifnum\numdegree>3 \\\DegreeD{} \fi%
+  \end{flushright}
+ \end{minipage}\\
  \vskip 0.04in   %% add by julie
  \noindent
- %%\if\dtitleA\Null \else $\underline{\hbox{\dtitleA { } \dtitleB}}$
- %%\fi %%modified by saeed - title in one line
- %%\vskip -0.20in    %% Julie
- %%\noindent
- %\if\dtitleB\Null \else $\underline{\hbox{\dtitleB} _{\ }}$ \fi %% commented out by saeed -- no need for two lines
- %\vskip -0.20in    %% Julie
- %\noindent
- %\if\dtitleC\Null \else $\underline{\hbox{\dtitleC}} _{\ }$ \fi %% commented out by saeed -- no need for two lines
  \if\dtitleA\Null \else $\underline{\hbox{\dtitleA} _{\ }}$ \fi
- \vskip -0.23in    %% Julie % TCM Changed from -0.20in per Dedman Standard
+ \vskip -0.23in
  \noindent
  \if\dtitleB\Null \else $\underline{\hbox{\dtitleB} _{\ }}$ \fi
- \vskip -0.23in    %% Julie % TCM Changed from -0.20in per Dedman Standard
+ \vskip -0.23in
  \noindent
  \if\dtitleC\Null \else $\underline{\hbox{\dtitleC}} _{\ }$ \fi
- \vskip -0.20in    %% TCM
- \noindent         %% TCM
- % \vspace{-0.05in}    %% mark by Julie
- \vspace{-0.009in}    %%  by Julie
+ \vskip -0.20in
+ \noindent
+ \vspace{-0.009in}
  \vbox{\vskip0.120in \indent Advisor: \   \@AdvisorFullName  % TCM use above line if want Professor Prefix
   \par\vskip 0.02in}
 
  \vspace{-0.04in}  %x% Julie
- %       \vskip 0.20in    %% TCM Removed space per Dedman 2016 standard
  \noindent
  \vbox{\baselineskip 0.28in
   \hbox{\@DegreeSought~degree conferred \@GraduationDateMonth~\@GraduationDateDay, \@GraduationDateYear}
@@ -597,9 +585,7 @@
  \vbox{\vskip 0.25in}   %% add by Julie
  \indent
 }{\clearpage}
-%--------------------------------------------------------------------
-% END Abstract Page
-%--------------------------------------------------------------------
+
 %--------------------------------------------------------------------
 % BEGIN Copyright page per Dedman 2016 Standards TCM
 %--------------------------------------------------------------------
