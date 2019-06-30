@@ -14,6 +14,8 @@
  \input{src/acknowledgements}
 \end{Acknowledgment}
 
+% Force 1 inch margin as hack for table of contents
+\newgeometry{margin=1in}
 \begin{Abstract}
  \input{src/abstract}
 \end{Abstract}
@@ -31,3 +33,5 @@
 %\end{listofsymbols}
 
 \Dedication{\input{src/dedication.tex}}
+% Restore 1 inch margin after Dedication
+\newgeometry{margin=1in}%
