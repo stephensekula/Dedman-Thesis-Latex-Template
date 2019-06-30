@@ -19,12 +19,12 @@
   \begin{center}
    % Chapter number
    \ifnum \c@secnumdepth >\m@ne% IF secnumdepth > -1 THEN
-    \begin{doublespace}
-     \textsc{\@chapapp{} \thechapter}\\
-    \end{doublespace}
+   \begin{doublespace}
+    \textsc{\@chapapp{} \thechapter}\\
+   \end{doublespace}
    \fi
    % Chapter title
-   \textsc{#1}
+   {#1}
   \end{center}
   \nobreak
  }
@@ -33,7 +33,7 @@
 % Heading for \chapter* command
 \renewcommand{\@makeschapterhead}[1]{
  % Space equivalent to using \newgeometry{top=2in}
- \vspace*{0.26in}% Space at top of text page
+ \vspace*{0.31in}% Space at top of text page
  {\parindent 0pt
   \begin{center}
    \textsc{#1}
