@@ -144,6 +144,13 @@
 %--------------------------------------------------------------------------
 %
 
+% TODO: See if in the future the afterpage package can be used to set the margins better
+% \newenvironment{twoinchfirstpage}{%
+%  \newpage%
+%  \thispagestyle{empty}%
+%  \newgeometry{margin=1in,top=2in}%
+% }{\afterpage{\clearpage\newgeometry{margin=1in}}}
+
 %======================================
 % BEGIN TOC, LOF, and LOT Customization
 %======================================
@@ -151,14 +158,17 @@
 % TOC
 \renewcommand\contentsname{TABLE OF CONTENTS} % Renames Table of Contents to all caps
 \def\@pnumwidth{1.55em} % TCM Controls the distance between titles and page numbers in TOC
-\def\@tocrmarg {4.00em} % TCM Controls the right margin of TOC
+% \def\@tocrmarg {4.00em} % TCM Controls the right margin of TOC
 \def\@dotsep{1.5} % TCM Controls separation of dots in leaders
 \setcounter{tocdepth}{3} % TCM Controls depth of TOC
 
-\def\tableofcontents{\@restonecolfalse\if@twocolumn\@restonecoltrue\onecolumn
- \fi\chapter*{TABLE OF CONTENTS\@mkboth{CONTENTS}{CONTENTS}}
- \vskip -0.4in
- \@starttoc{toc}\if@restonecol\twocolumn\fi
+\def\tableofcontents{%
+ \@restonecolfalse%
+ \if@twocolumn\@restonecoltrue\onecolumn\fi%
+ % FIXME: This is a dirty hack with \vskip to get the margin correct
+ \chapter*{\vskip -1.5in TABLE OF CONTENTS\@mkboth{CONTENTS}{CONTENTS}}
+ \@starttoc{toc}%
+ \if@restonecol\twocolumn\fi%
 }
 
 %--------------------------------------------------------------
@@ -196,20 +206,30 @@
 %--------------------------------------------------------------
 % BEGIN LOF Customization
 %--------------------------------------------------------------
-\def\listoffigures{\@restonecolfalse\if@twocolumn\@restonecoltrue\onecolumn
-  %%
-  %% the 0.25in below was 0.625in before -- MARIO 06/96
-  %%
- \fi \newpage \vbox{\vskip 0.25in \chapter*{LIST OF FIGURES\@mkboth %% uncommented by saeed and added comment below
-   %  \fi \newpage \vbox{\vskip 0.515in \chapter*{LIST OF FIGURES\@mkboth  %% Julie
-   {LIST OF FIGURES}{List of Figures}}}
- \vskip -0.3in
+\def\listoffigures{%
+ \newpage%
+ \thispagestyle{empty}%
+ \newgeometry{margin=1in}%
+ \chapter*{LIST OF FIGURES\@mkboth{LIST OF FIGURES}{List of Figures}}
+ \printercalibration%
  \noindent
  Figure \hfill Page
 
  \addcontentsline{toc}{chapter}{\protect \noindent {LIST OF FIGURES}}
 
- \@starttoc{lof}\if@restonecol \twocolumn\fi}
+ \@starttoc{lof}\if@restonecol \twocolumn\fi%
+}
+
+\providecommand{\Dedication}[1]{%
+ \newpage%
+ \thispagestyle{empty}%
+ \newgeometry{margin=1in,top=2in}%
+ \begin{center}
+  {#1}
+ \end{center}
+ \printercalibration%
+ \noindent
+}
 
 \def\l@figure{\baselineskip 0.20in              % added for smaller spacing
  \@dottedlofline{1}{0.2em}{3.0em}} % in lists of figures
@@ -223,14 +243,10 @@
 \def\l@table{\baselineskip 0.20in              % added for smaller spacing
  \@dottedlofline{1}{0.2em}{3.0em}} % in lists of tables
 
-\def\listoftables{\@restonecolfalse\if@twocolumn\@restonecoltrue\onecolumn
-  %%
-  %% See above
-  %%
- \fi \newpage \vbox{\vskip 0.25in \chapter*{LIST OF TABLES\@mkboth %% uncommented by saeed and added comment below
-   %  \fi \newpage \vbox{\vskip 0.515in \chapter*{LIST OF TABLES\@mkboth %% Julie
-   {LIST OF TABLES}{LIST OF TABLES}}}
- \vskip -0.3in
+\def\listoftables{%
+ \clearpage
+ \chapter*{LIST OF TABLES\@mkboth{LIST OF TABLES}{LIST OF TABLES}}
+ \printercalibration%
  \noindent
  Table \hfill Page
 
