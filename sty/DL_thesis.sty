@@ -14,7 +14,7 @@
 % Heading for \chapter command
 \renewcommand{\@makechapterhead}[1]{
  % Space equivalent to using \newgeometry{top=2in}
- \vspace*{0.325in}% Space at top of text page
+ \vspace*{0.32in}% Space at top of text page
  {\parindent 0pt
   \begin{center}
    % Chapter number
@@ -211,7 +211,6 @@
  \thispagestyle{empty}%
  \newgeometry{margin=1in}%
  \chapter*{LIST OF FIGURES\@mkboth{LIST OF FIGURES}{List of Figures}}
- \printercalibration%
  \noindent
  Figure \hfill Page
 
@@ -227,7 +226,6 @@
  \begin{center}
   {#1}
  \end{center}
- \printercalibration%
  \noindent
 }
 
@@ -246,7 +244,6 @@
 \def\listoftables{%
  \clearpage
  \chapter*{LIST OF TABLES\@mkboth{LIST OF TABLES}{LIST OF TABLES}}
- \printercalibration%
  \noindent
  Table \hfill Page
 
