@@ -319,9 +319,15 @@
   -- node[midway,anchor=east,red] {top = 1 in} ++(0,-1in)
   -- node[midway,anchor=north,red] {side = 1 in}
   ++(-1in,0);
+  \draw[line width=4pt,red,arrows=->] (current page.north east) ++(-1in,0)
+  -- ++(0,-1in)
+  -- ++(1in,0);
   \draw[line width=4pt,red,arrows=->] (current page.south east) ++(-1in,0)
   -- ++(0,1in)
   -- ++(1in,0);
+  \draw[line width=4pt,red,arrows=->] (current page.south west) ++(1in,0)
+  -- ++(0,1in)
+  -- ++(-1in,0);
   % 2 inch printer calibration
   \draw[line width=4pt,blue,arrows=->] (current page.north)
   -- node[pos=0.7,anchor=west,blue] {2 in}
