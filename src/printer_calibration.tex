@@ -1,0 +1,18 @@
+\chapter{Printer Calibration}\label{chapter:printer_calibration}
+
+As you may know, printers do not print your PDF file exactly.
+They will scale it to match their own preset configurations and potentially add padding spaces around the edges.
+There is no way to control for this as every printer is unique and there are no base standards.
+The only thing a user can do is have their generated PDF file have the correct distances and then ask that the person printing their document calibrate the printer accordingly.
+
+\printercalibration{}
+
+\vspace{2.5in}
+This chapter will provide printer calibrations.
+All the \textcolor{red}{red lines} drawn are $1$~inch in length.
+All the \textcolor{blue}{blue lines} drawn are $2$~inches in length.
+These are drawn from the edge of the document in TikZ, which has good distance metrics built into it, so these distances are accurate.
+Print this page and measure the margins and the length of the arrows.
+If your measurements do not match those printed \textbf{you need to calibrate your printer}.
+It is probable that your printer has an option that is along the lines of ``actual size'', so that might be a good starting point.
+It can also help to turn on \verb|\geometry{showframe=true}| in your preamble.

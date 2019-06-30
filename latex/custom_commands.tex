@@ -312,3 +312,35 @@
 %======================================================================
 % END SMU Custom Commands
 %======================================================================
+\newcommand{\printercalibration}{%
+ \begin{tikzpicture}[remember picture,overlay]
+  % 1 inch printer calibration
+  \draw[line width=4pt,red,arrows=->] (current page.north west) ++(1in,0)
+  -- node[midway,anchor=east,red] {top = 1 in} ++(0,-1in)
+  -- node[midway,anchor=north,red] {side = 1 in}
+  ++(-1in,0);
+  \draw[line width=4pt,red,arrows=->] (current page.south east) ++(-1in,0)
+  -- ++(0,1in)
+  -- ++(1in,0);
+  % 2 inch printer calibration
+  \draw[line width=4pt,blue,arrows=->] (current page.north)
+  -- node[pos=0.7,anchor=west,blue] {2 in}
+  ++(0,-2in);
+  \draw[line width=4pt,blue,arrows=->] (current page.east)
+  -- node[pos=0.7,anchor=south,blue] {2 in}
+  ++(-2in,0);
+  \draw[line width=4pt,blue,arrows=->] (current page.south)
+  -- node[pos=0.7,anchor=west,blue] {2 in}
+  ++(0,2in);
+  \draw[line width=4pt,blue,arrows=->] (current page.west)
+  -- node[pos=0.7,anchor=south,blue] {2 in}
+  ++(2in,0);
+  % 2 inch box
+  \filldraw (current page.center) circle (1pt);
+  \node [draw, thick, blue, shape=rectangle, minimum width=2in, minimum height=2in, anchor=center] at (current page.center) {};
+  \draw (current page.center) ++(0,1in) node [blue, above] {2 inches};
+  % 1 inch box
+  \node [draw, thick, red, shape=rectangle, minimum width=1in, minimum height=1in, anchor=center] at (current page.center) {};
+  \draw (current page.center) ++(0,0.5in) node [red, above] {1 inch};
+ \end{tikzpicture}
+}
