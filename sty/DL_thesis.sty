@@ -540,17 +540,23 @@
 
 % Abstract Page
 \newenvironment{Abstract}{\newpage
+ % Dynamically calculate the size of the minipages needed from author name
+ % Do this before the \noindent to avoid a spurious space
+ \newcommand{\authorName}{NULL}%
+ \ifnum\pdfstrcmp{\@AuthorNameSuffix@noerror}{}=0%
+  \renewcommand{\authorName}{\@AuthorLastName, \@AuthorFirstName}
+ \else%
+  \renewcommand{\authorName}{\@AuthorLastName~\@AuthorNameSuffix, \@AuthorFirstName}
+ \fi%
+ \newlength{\nameWidth}%
+ \settowidth{\nameWidth}{\authorName}%
  \noindent
- \begin{minipage}[t]{0.3\textwidth}
+ \begin{minipage}[t]{\nameWidth}
   \begin{flushleft}
-   \ifnum\pdfstrcmp{\@AuthorNameSuffix@noerror}{}=0%
-   \@AuthorLastName, \@AuthorFirstName%
-   \else%
-   \@AuthorLastName~\@AuthorNameSuffix, \@AuthorFirstName%
-   \fi%
+   \authorName%
   \end{flushleft}%
  \end{minipage}%
- \begin{minipage}[t]{0.7\textwidth}
+ \begin{minipage}[t]{\textwidth-\nameWidth}
   \baselineskip0.20in
   \begin{flushright}
    \ifnum\numdegree>0 \DegreeA{} \fi%
