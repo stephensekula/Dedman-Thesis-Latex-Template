@@ -62,8 +62,7 @@
   \sectionmark{#1}
   \noindent %T
   %T \centerline{$\underline{\hbox{\thesection.} _{\ } \ \hbox{#1}}$}
-  \Null {\bf \thesection. \ #1}%T Removed preceeding space before bf which makes headers misaligned TCM
-  \vskip -0.23in %% Julie
+  \Null \textbf{\thesection. \ #1}%T Removed preceeding space before bf which makes headers misaligned TCM
   \indent
  }
 
@@ -78,7 +77,6 @@
  \centerline{$\underline{\hbox{\thesection.} _{\ } \ \hbox{#1}}$}
  \centerline{$\underline{\hbox{\thesection.} _{\ } \ \hbox{#1}}$}
  \centerline{$\underline{_{\ } \hbox{#2}}$}
- \vskip -0.09in %% Julie
  \indent
 }
 
@@ -91,9 +89,7 @@
  %T \centerline{\thesubsection. \ #1}
  \noindent %T
  \Null \thesubsection. \ #1
- \vskip -0.27in  %% Julie: space betw. name to the fisrt line
  \indent
-
 }
 
 \def\subsectiondl#1#2{\vskip 0.25in \ifnum \c@secnumdepth >\m@ne
@@ -102,8 +98,6 @@
    \numberline{\thesubsection.}#1 #2}\else
   \addcontentsline{toc}{subsection}{#1 #2}\fi
  \subsectionmark{#1}
-
-
 }
 
 \def\subsubsection#1{\vskip 0.25in \ifnum \c@secnumdepth >\m@ne
@@ -113,13 +107,9 @@
   \addcontentsline{toc}{subsubsection}{#1}\fi
  \subsubsectionmark{#1}
  \noindent
- %\centerline{\thesubsubsection. \ #1}  %% title is on the middle originally
- %T\Null \thesubsubsection. \ #1  %% Julie move it to the left ( standard requirement)
  \Null {\em \thesubsubsection. \ #1 } %% Julie move it to the left ( standard requirement) % Removed preceeding space before em which makes headers misaligned TCM
  %T \Null added to show first numeral
- \vskip -0.27in
  \indent
-
 }
 
 \def\subsubsectiondl#1#2{\vskip 0.25in \ifnum \c@secnumdepth >\m@ne
@@ -131,7 +121,6 @@
  \noindent
  \centerline{\em \thesubsubsection. \ #1} \vskip -0.08in
  \centerline{\em #2}
- \vskip -0.27in
  \indent
 }
 
