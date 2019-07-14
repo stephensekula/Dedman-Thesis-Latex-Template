@@ -606,13 +606,15 @@
 
 % Acknowledgment Page
 \newenvironment{Acknowledgment}{
- \newpage
- \newgeometry{margin=1in,top=2in}
- \begin{center}
-  ACKNOWLEDGMENTS
- \end{center} \par
- \indent
-}{  }
+ \newgeometry{margin=1in}
+ % Space equivalent to using \newgeometry{top=2in}
+ \vspace*{0.28in}% Space at top of text page
+ {\parindent 0pt
+  \begin{center}
+   \textsc{Acknowledgments}
+  \end{center} \par
+ }
+}{\clearpage}
 %--------------------------------------------------------------------
 % BEGIN Acknowledgment Page
 %--------------------------------------------------------------------
