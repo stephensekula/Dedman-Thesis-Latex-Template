@@ -14,6 +14,9 @@
 }
 \makeatother
 
+% Left align all captions, regardless of if they fit on one line
+\captionsetup{singlelinecheck=off,justification=raggedright}
+
 % Todonotes Command to use single line spacing (sls) in note
 \newcommand{\slstodo}[2][]
 {\todo[caption={#2}, size=\small, #1]{\renewcommand{\baselinestretch}{0.5}\selectfont#2\par}}
