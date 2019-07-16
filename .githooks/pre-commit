@@ -1,0 +1,20 @@
+#!/bin/sh
+
+# Redirect output to stderr.
+exec 1>&2
+
+if [ "$(git grep -E "(\b[a-zA-Z]+) \1\b" -- '*.tex')" ]; then
+	cat <<\EOF
+
+COMMIT FAILED: There are repeated words in your LaTeX files, which is probably a typo:
+
+EOF
+	git grep -E "(\b[a-zA-Z]+) \1\b" -- '*.tex'
+
+	cat <<\EOF
+
+If this is intentional you can force the commit by using the --no-verify option.
+
+EOF
+	exit 1
+fi
