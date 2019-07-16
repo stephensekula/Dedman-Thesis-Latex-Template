@@ -66,6 +66,15 @@ function install {
     cp -r Dedman-Thesis-Latex-Template/figures .
     cp -r Dedman-Thesis-Latex-Template/bib .
     install_check "Makefile"
+    if [ ! -d ".githooks" ]; then
+        mkdir .githooks
+    fi
+    install_check ".githooks/pre-commit"
+    if [[ $? -eq 0 ]]; then
+        # Keep .githooks/pre-commit under template control
+        # https://stackoverflow.com/a/4594681/8931942
+        ln -s -f ../../Dedman-Thesis-Latex-Template/.githooks/pre-commit .git/hooks/pre-commit
+    fi
 
     # Use the template base files
     # -i.bak is used for compatability across GNU and BSD/macOS sed
