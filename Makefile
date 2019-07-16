@@ -59,6 +59,9 @@ clean_drafts:
 realclean: clean clean_figures
 	rm -f *.ps *.pdf
 
+lint:
+	grep -E --color=always -r -i --include=\*.tex --include=\*.bib "(\b[a-zA-Z]+) \1\b" || true
+
 final:
 	if [ -f *.aux ]; then \
 		$(MAKE) clean; \
@@ -67,6 +70,7 @@ final:
 	$(MAKE) abstract
 	$(MAKE) text
 	$(MAKE) clean
+	$(MAKE) lint
 
 arXiv: realclean document
 	mkdir submit_to_arXiv
