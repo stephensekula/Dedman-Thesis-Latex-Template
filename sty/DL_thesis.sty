@@ -245,6 +245,11 @@
 % END LOT Customization
 %--------------------------------------------------------------
 
+% Add chapter level numbering to preface equation, figures, and tables
+\renewcommand{\theequation}{\arabic{chapter}.\arabic{equation}}
+\renewcommand{\thefigure}{\arabic{chapter}.\arabic{figure}}
+\renewcommand{\thetable}{\arabic{chapter}.\arabic{table}}
+
 % BEGIN Bibliography
 
 %% BEGIN thebibliography
