@@ -2,10 +2,12 @@
 
 Fork of the [SMU Dedman College Ph.D. Thesis LaTeX template](https://www.smu.edu/graduate/CurrentStudents/Graduation/DissThesisGuide)
 
+[![GitHub Actions Status: CI](https://github.com/matthewfeickert/Dedman-Thesis-Latex-Template/workflows/CI/badge.svg)](https://github.com/matthewfeickert/Dedman-Thesis-Latex-Template/actions?query=workflow%3A"CI"+branch%3Amaster)
+[![GitHub Actions Status: Publish Docs](https://github.com/matthewfeickert/Dedman-Thesis-Latex-Template/workflows/Publish%20docs/badge.svg)](https://github.com/matthewfeickert/Dedman-Thesis-Latex-Template/actions?query=workflow%3A"Publish+docs"+branch%3Amaster)
 [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
 
-[![CircleCI](https://circleci.com/gh/matthewfeickert/Dedman-Thesis-Latex-Template/tree/master.svg?style=svg)](https://circleci.com/gh/matthewfeickert/Dedman-Thesis-Latex-Template/tree/master)
-A pdf copy of the latest build of the template is [available here](https://www.physics.smu.edu/mfeickert/dedman-thesis-latex-template/template.pdf)
+A pdf copy of the latest build of the template is available here:
+[![download](https://img.shields.io/badge/download-template%20build-blue.svg)](https://matthewfeickert.github.io/Dedman-Thesis-Latex-Template/template/template.pdf)
 
 ## Graduation Deadlines and Checklist
 
