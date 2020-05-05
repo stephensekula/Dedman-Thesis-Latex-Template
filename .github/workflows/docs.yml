@@ -20,12 +20,14 @@ jobs:
         echo "\lipsum[6-7]" >> src/abstract.tex
         echo "\lipsum[8-11]" >> src/introduction.tex
     - name: Compile LaTeX document
-      uses: xu-cheng/latex-action@1.3.0
+      uses: docker://xucheng/texlive-full:latest
       with:
-        extra_system_packages: "make"
-        pre_compile: "make final"
-        root_file: user_thesis.tex # root_file is required by latex-action
-        post_compile: "ls -lhtra"
+        entrypoint: /bin/sh
+        args: |
+          -c "\
+          apk --no-cache add make && \
+          make final && \
+          ls -lhtra"
     - name: Setup docs for deployment
       run: |
         mkdir -p docs/_build/template

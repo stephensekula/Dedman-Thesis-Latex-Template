@@ -20,12 +20,14 @@ jobs:
         echo "\lipsum[6-7]" >> src/abstract.tex
         echo "\lipsum[8-11]" >> src/introduction.tex
     - name: Compile Template in Place
-      uses: xu-cheng/latex-action@1.3.0
+      uses: docker://xucheng/texlive-full:latest
       with:
-        extra_system_packages: "make"
-        pre_compile: "make final"
-        root_file: user_thesis.tex # root_file is required by latex-action
-        post_compile: "ls -lhtra"
+        entrypoint: /bin/sh
+        args: |
+          -c "\
+          apk --no-cache add make && \
+          make final && \
+          ls -lhtra"
     - name: Checkout repo again for run as user
       uses: actions/checkout@v2
       with:
@@ -37,18 +39,24 @@ jobs:
         bash Dedman-Thesis-Latex-Template/update_template.sh install
         ls -lhtra
     - name: Compile Template as User
-      uses: xu-cheng/latex-action@1.3.0
+      uses: docker://xucheng/texlive-full:latest
       with:
-        working_directory: run_as_user
-        extra_system_packages: "make"
-        pre_compile: "make final"
-        root_file: user_thesis.tex # root_file is required by latex-action
-        post_compile: "ls -lhtra"
+        entrypoint: /bin/sh
+        args: |
+          -c "\
+          apk --no-cache add make && \
+          cd run_as_user && \
+          make final && \
+          ls -lhtra"
     - name: Make arXiv submission tar.gz
-      uses: xu-cheng/latex-action@1.3.0
+      uses: docker://xucheng/texlive-full:latest
       with:
-        working_directory: run_as_user
-        extra_system_packages: "make tar"
-        pre_compile: "make document"
-        root_file: user_thesis.tex # root_file is required by latex-action
-        post_compile: "make arXiv && ls -lhtra && tar -tf submit_to_arXiv.tar.gz"
+        entrypoint: /bin/sh
+        args: |
+          -c "\
+          apk --no-cache add make tar && \
+          cd run_as_user && \
+          make document && \
+          make arXiv && \
+          ls -lhtra && \
+          tar -tf submit_to_arXiv.tar.gz"
