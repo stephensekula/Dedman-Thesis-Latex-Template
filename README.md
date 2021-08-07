@@ -85,5 +85,5 @@ A Docker image with the latest version of Tex Live in it exists: [LaTeX-Docker](
 
 ## Authors
 
- - Maintainer (of fork): [Matthew Feickert](http://www.matthewfeickert.com/)
- - [Matthew Feickert](http://www.matthewfeickert.com/): Project fork creator
+ - [Stephen Sekula](https://github.com/stephensekula): Maintainer
+ - [Matthew Feickert](https://github.com/matthewfeickert): Creator of Git submodule template system
