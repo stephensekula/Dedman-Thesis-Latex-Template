@@ -2,12 +2,12 @@
 
 Fork of the [SMU Dedman College Ph.D. Thesis LaTeX template](https://www.smu.edu/graduate/CurrentStudents/Graduation/DissThesisGuide)
 
-[![GitHub Actions Status: CI](https://github.com/matthewfeickert/Dedman-Thesis-Latex-Template/workflows/CI/badge.svg)](https://github.com/matthewfeickert/Dedman-Thesis-Latex-Template/actions?query=workflow%3A"CI"+branch%3Amain)
-[![GitHub Actions Status: Publish Docs](https://github.com/matthewfeickert/Dedman-Thesis-Latex-Template/workflows/Publish%20docs/badge.svg)](https://github.com/matthewfeickert/Dedman-Thesis-Latex-Template/actions?query=workflow%3A"Publish+docs"+branch%3Amain)
+[![GitHub Actions Status: CI](https://github.com/stephensekula/Dedman-Thesis-Latex-Template/workflows/CI/badge.svg)](https://github.com/stephensekula/Dedman-Thesis-Latex-Template/actions?query=workflow%3A"CI"+branch%3Amain)
+[![GitHub Actions Status: Publish Docs](https://github.com/stephensekula/Dedman-Thesis-Latex-Template/workflows/Publish%20docs/badge.svg)](https://github.com/stephensekula/Dedman-Thesis-Latex-Template/actions?query=workflow%3A"Publish+docs"+branch%3Amain)
 [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
 
 A pdf copy of the latest build of the template is available here:
-[![download](https://img.shields.io/badge/download-template%20build-blue.svg)](https://matthewfeickert.github.io/Dedman-Thesis-Latex-Template/template/template.pdf)
+[![download](https://img.shields.io/badge/download-template%20build-blue.svg)](https://stephensekula.github.io/Dedman-Thesis-Latex-Template/template/template.pdf)
 
 ## Graduation Deadlines and Checklist
 
@@ -22,7 +22,7 @@ This is a template for how your thesis files and directory structure might look.
 To use the template, add the template as a Git submodule after you've setup your thesis Git repository.
 
 ```bash
-git submodule add git@github.com:matthewfeickert/Dedman-Thesis-Latex-Template.git
+git submodule add git@github.com:stephensekula/Dedman-Thesis-Latex-Template.git
 ```
 
 > Note: The above assumes that you've [setup an `ssh` key with GitHub](https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/)
@@ -60,7 +60,7 @@ bash Dedman-Thesis-Latex-Template/update_template.sh
 
 ## Compilation
 
-The template should compile "out of the box". For Unix like operating systems a template [`Makefile`](https://github.com/matthewfeickert/Dedman-Thesis-Latex-Template/blob/main/Makefile) is provided.
+The template should compile "out of the box". For Unix like operating systems a template [`Makefile`](https://github.com/stephensekula/Dedman-Thesis-Latex-Template/blob/main/Makefile) is provided.
 
 ### Linux
 
@@ -85,4 +85,5 @@ A Docker image with the latest version of Tex Live in it exists: [LaTeX-Docker](
 
 ## Authors
 
- - Maintainer (of fork): [Matthew Feickert](http://www.matthewfeickert.com/)
+ - [Stephen Sekula](https://github.com/stephensekula): Maintainer
+ - [Matthew Feickert](https://github.com/matthewfeickert): Creator of Git submodule template system
