@@ -2,8 +2,8 @@
 
 Fork of the [SMU Dedman College Ph.D. Thesis LaTeX template](https://www.smu.edu/graduate/CurrentStudents/Graduation/DissThesisGuide)
 
-[![GitHub Actions Status: CI](https://github.com/matthewfeickert/Dedman-Thesis-Latex-Template/workflows/CI/badge.svg)](https://github.com/matthewfeickert/Dedman-Thesis-Latex-Template/actions?query=workflow%3A"CI"+branch%3Amaster)
-[![GitHub Actions Status: Publish Docs](https://github.com/matthewfeickert/Dedman-Thesis-Latex-Template/workflows/Publish%20docs/badge.svg)](https://github.com/matthewfeickert/Dedman-Thesis-Latex-Template/actions?query=workflow%3A"Publish+docs"+branch%3Amaster)
+[![GitHub Actions Status: CI](https://github.com/matthewfeickert/Dedman-Thesis-Latex-Template/workflows/CI/badge.svg)](https://github.com/matthewfeickert/Dedman-Thesis-Latex-Template/actions?query=workflow%3A"CI"+branch%3Amain)
+[![GitHub Actions Status: Publish Docs](https://github.com/matthewfeickert/Dedman-Thesis-Latex-Template/workflows/Publish%20docs/badge.svg)](https://github.com/matthewfeickert/Dedman-Thesis-Latex-Template/actions?query=workflow%3A"Publish+docs"+branch%3Amain)
 [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
 
 A pdf copy of the latest build of the template is available here:
@@ -60,7 +60,7 @@ bash Dedman-Thesis-Latex-Template/update_template.sh
 
 ## Compilation
 
-The template should compile "out of the box". For Unix like operating systems a template [`Makefile`](https://github.com/matthewfeickert/Dedman-Thesis-Latex-Template/blob/master/Makefile) is provided.
+The template should compile "out of the box". For Unix like operating systems a template [`Makefile`](https://github.com/matthewfeickert/Dedman-Thesis-Latex-Template/blob/main/Makefile) is provided.
 
 ### Linux
 
